@@ -686,6 +686,43 @@
             fetchBusinessNewsHighlights();
         };
 
+        function switchTab(tabId) {
+            const viewDashboard = document.getElementById('view-dashboard');
+            const viewLogger = document.getElementById('view-logger');
+            const navDashboard = document.getElementById('nav-dashboard');
+            const navLogger = document.getElementById('nav-logger');
+
+            const activeTabClass = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-gradient-to-r from-crimson-600 to-amber-500 text-white shadow-lg shadow-crimson-600/30 font-sport";
+            const inactiveTabClass = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-neutral-400 hover:text-white font-sport";
+
+            if (tabId === 'dashboard') {
+                if (viewDashboard) viewDashboard.classList.remove('hidden');
+                if (viewLogger) viewLogger.classList.add('hidden');
+                if (navDashboard) navDashboard.className = activeTabClass;
+                if (navLogger) navLogger.className = inactiveTabClass;
+            } else if (tabId === 'logger') {
+                if (viewDashboard) viewDashboard.classList.add('hidden');
+                if (viewLogger) viewLogger.classList.remove('hidden');
+                if (navLogger) navLogger.className = activeTabClass;
+                if (navDashboard) navDashboard.className = inactiveTabClass;
+            }
+        }
+
+        function showNotification(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            if (!toast || !toastMsg) return;
+
+            toastMsg.innerText = message;
+            toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+            }, 3000);
+        }
+
         function initQuoteOfDay() {
             const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
             const selectedQuote = quotesCollection[dayOfYear % quotesCollection.length];
