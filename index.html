@@ -2,8 +2,8 @@
 <html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RTF - Road to Fitness</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>RTF - Road to Fitness | Step Edition & Executive News</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script>
@@ -13,11 +13,11 @@
                 extend: {
                     colors: {
                         sport: {
-                            50: '#f0fdf4',
-                            500: '#10b981',
-                            600: '#059669',
-                            900: '#064e3b',
-                            950: '#022c22'
+                            50: '#fefce8',
+                            500: '#eab308', // Sun Gold
+                            600: '#ca8a04',
+                            900: '#713f12',
+                            950: '#422006'
                         },
                         neon: {
                             cyan: '#06b6d4',
@@ -26,63 +26,93 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        sport: ['Chakra Petch', 'Plus Jakarta Sans', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         @keyframes pulseGlow {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(1.08); }
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(1.06); }
         }
         .glow-bg {
             animation: pulseGlow 8s ease-in-out infinite;
         }
+        /* Matte Black Background styling */
+        .matte-black-bg {
+            background-color: #0b0b0c;
+        }
+        /* Subtle geometric dot pattern */
+        .pattern-bg {
+            background-image: radial-gradient(#eab308 0.75px, transparent 0.75px), radial-gradient(#eab308 0.75px, #0b0b0c 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            opacity: 0.03;
+        }
+        .border-gradient {
+            background: linear-gradient(90deg, #eab308 0%, #f97316 50%, #06b6d4 100%);
+        }
+        /* Safari iOS tap highlight & smooth scrolling fixes */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: 100%;
+        }
         ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(11, 11, 12, 0.9);
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(16, 185, 129, 0.4);
+            background: rgba(234, 179, 8, 0.4);
             border-radius: 9999px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(16, 185, 129, 0.8);
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-sport-500 selection:text-slate-950 font-sans antialiased relative overflow-x-hidden">
+<body class="matte-black-bg text-slate-100 min-h-screen selection:bg-sport-500 selection:text-slate-950 font-sans antialiased relative overflow-x-hidden pb-12">
 
-    <div class="absolute top-0 left-1/3 w-[500px] h-[500px] bg-sport-500/15 rounded-full blur-[140px] pointer-events-none glow-bg"></div>
-    <div class="absolute bottom-10 right-1/4 w-[450px] h-[450px] bg-neon-cyan/10 rounded-full blur-[140px] pointer-events-none glow-bg" style="animation-delay: -4s;"></div>
+    <div class="absolute inset-0 pattern-bg pointer-events-none z-0"></div>
+    <div class="absolute top-0 left-1/3 w-[500px] h-[500px] bg-sport-500/10 rounded-full blur-[140px] pointer-events-none glow-bg z-0"></div>
+    <div class="absolute bottom-10 right-1/4 w-[450px] h-[450px] bg-neon-orange/10 rounded-full blur-[140px] pointer-events-none glow-bg z-0" style="animation-delay: -4s;"></div>
 
-    <div class="max-w-4xl mx-auto px-4 py-8 min-h-screen flex flex-col justify-between relative z-10">
+    <div class="max-w-4xl mx-auto px-4 py-6 sm:py-8 min-h-screen flex flex-col justify-between relative z-10">
         
-        <header class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-slate-800/80 mb-8 gap-4">
-            <div class="flex items-center space-x-3.5">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-sport-500 via-emerald-400 to-neon-cyan flex items-center justify-center shadow-xl shadow-sport-500/30 transform hover:rotate-6 transition-transform">
-                    <i class="ph-bold ph-sneaker text-slate-950 text-2xl"></i>
-                </div>
-                <div>
-                    <h1 class="text-2xl font-black tracking-tight text-white italic">RTF</h1>
-                    <p class="text-xs text-slate-400 font-medium flex items-center gap-1 mt-0.5">
-                        <i class="ph-fill ph-lightning text-neon-lime"></i> Road to Fitness
-                    </p>
+        <header class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-neutral-800/80 mb-8 gap-4">
+            <div class="flex items-center space-x-3.5 w-full sm:w-auto justify-between sm:justify-start">
+                <div class="flex items-center space-x-3.5">
+                    <!-- Updated to Zulu Spear SVG Icon -->
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-600 via-neutral-900 to-amber-500 flex items-center justify-center shadow-xl shadow-sport-500/20 transform hover:rotate-6 transition-transform border border-amber-400/30 flex-shrink-0">
+                        <svg class="w-7 h-7 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14.5 9.5L21 3m-6.5 6.5L3 21m11.5-11.5L12 12m2.5-2.5l-5 5" />
+                            <path d="M15 3l6 6-3 3-6-6 3-3z" fill="currentColor" fill-opacity="0.3"/>
+                            <path d="M9 15l-6 6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl sm:text-3xl font-black tracking-tighter text-white uppercase font-sport flex items-center gap-2">
+                            RTF <span class="text-[10px] non-italic font-extrabold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 uppercase tracking-widest">Executive Engine</span>
+                        </h1>
+                        <p class="text-xs text-neutral-400 font-medium flex items-center gap-1 mt-0.5">
+                            <i class="ph-fill ph-lightning text-neon-lime"></i> Step Habit & Global Business Intelligence
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <!-- Page Switcher Tabs -->
-            <div class="flex bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 shadow-inner gap-1">
-                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-sport-500 text-slate-950 shadow-lg shadow-sport-500/30">
+            <div class="flex bg-neutral-900/90 p-1.5 rounded-2xl border border-neutral-800 shadow-inner gap-1 w-full sm:w-auto">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-sport-500 text-slate-950 shadow-lg shadow-sport-500/30 font-sport">
                     <i class="ph-bold ph-gauge"><span>Dashboard</span></i>
                 </button>
-                <button onclick="switchTab('logger')" id="nav-logger" class="flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-slate-400 hover:text-white">
+                <button onclick="switchTab('logger')" id="nav-logger" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-neutral-400 hover:text-white font-sport">
                     <i class="ph-bold ph-calendar-plus"><span>Daily Ledger</span></i>
                 </button>
             </div>
@@ -90,182 +120,204 @@
 
         <main id="view-dashboard" class="space-y-6 flex-grow">
             
-            <!-- Target Goal Ribbon -->
-            <div class="bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/90 backdrop-blur-xl border border-slate-800/80 p-5 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-neon-orange/10 border border-neon-orange/30 flex items-center justify-center text-neon-orange">
-                        <i class="ph-bold ph-target text-xl"></i>
-                    </div>
-                    <div>
-                        <h2 class="text-sm font-black text-white uppercase tracking-wider">Weekly Target Vector</h2>
-                        <p class="text-xs text-slate-400">Lock in your target kilometer volume for peak Road to Fitness performance.</p>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-3 w-full sm:w-auto">
-                    <input type="number" id="weekly-goal-input" value="25" onchange="updateWeeklyGoal()" class="bg-slate-950 border border-slate-700/80 rounded-xl px-4 py-2.5 text-sport-400 font-black text-base w-32 text-center focus:outline-none focus:ring-2 focus:ring-sport-500">
-                    <span class="text-xs font-bold text-slate-400">KM / WK</span>
-                </div>
-            </div>
-
-            <!-- Daily Elite CEO Quote & Life Mantra Box -->
-            <div class="bg-gradient-to-r from-sport-950/60 via-slate-900/80 to-emerald-950/40 border border-sport-500/30 p-6 rounded-3xl relative overflow-hidden shadow-xl">
+            <!-- Replaced Fitness Mantra with Quote of the Day -->
+            <div class="bg-gradient-to-r from-amber-950/30 via-neutral-900/90 to-neutral-900 border border-sport-500/30 p-6 rounded-3xl relative overflow-hidden shadow-xl">
                 <div class="absolute -right-6 -bottom-6 w-36 h-36 bg-sport-500/10 rounded-full blur-2xl pointer-events-none"></div>
                 <div class="relative z-10 flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-2xl bg-sport-500/20 border border-sport-500/40 flex items-center justify-center text-sport-400 flex-shrink-0 mt-0.5">
-                        <i class="ph-fill ph-quotes text-xl animate-pulse"></i>
+                    <div class="w-10 h-10 rounded-2xl bg-sport-500/20 border border-sport-500/40 flex items-center justify-center text-sport-500 flex-shrink-0 mt-0.5">
+                        <i class="ph-fill ph-quotes text-xl"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex items-center justify-between">
-                            <span id="quote-author-badge" class="text-[10px] font-black uppercase tracking-widest text-sport-400 flex items-center gap-1.5">
-                                <span class="w-1.5 h-1.5 rounded-full bg-sport-400 animate-ping"></span> Elite Thinker & Life Mantra
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-sport-500 flex items-center gap-1.5 font-sport">
+                                <span class="w-1.5 h-1.5 rounded-full bg-sport-500 animate-ping"></span> Quote of the Day
                             </span>
-                            <span class="text-[10px] font-bold text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">Daily Refresh</span>
+                            <span id="qod-date" class="text-[10px] font-bold text-neutral-400 bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">Daily Inspiration</span>
                         </div>
-                        <p id="motivational-quote" class="text-sm sm:text-base font-bold text-slate-100 mt-1.5 italic">"Discipline is choosing between what you want now and what you want most."</p>
+                        <p id="qod-text" class="text-sm sm:text-base font-bold text-slate-100 mt-1.5 italic">"Discipline is choosing between what you want now and what you want most."</p>
+                        <p id="qod-author" class="text-xs font-semibold text-amber-400/90 mt-1">— Abraham Lincoln</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global & SA Business News Daily Highlights Briefing -->
+            <div class="bg-neutral-900/90 backdrop-blur-xl border border-neutral-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-800 pb-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center text-neon-cyan">
+                            <i class="ph-bold ph-globe-hemisphere-east text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-base font-extrabold text-white uppercase tracking-wide font-sport">World & South Africa Business Highlights</h3>
+                            <p class="text-xs text-neutral-400">AI-curated daily executive briefing powered by live web search.</p>
+                        </div>
+                    </div>
+                    <button onclick="fetchBusinessNewsHighlights()" id="news-refresh-btn" class="px-4 py-2.5 bg-neutral-800 hover:bg-neutral-700 text-neon-cyan border border-neon-cyan/30 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 font-sport shadow-lg">
+                        <i id="news-refresh-icon" class="ph-bold ph-arrows-clockwise text-base"></i> <span>Fetch Daily Briefing</span>
+                    </button>
+                </div>
+
+                <!-- News Container -->
+                <div id="news-loading" class="hidden py-8 text-center space-y-3">
+                    <div class="inline-block w-8 h-8 border-4 border-sport-500 border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-xs font-bold text-neutral-400 uppercase tracking-widest">Searching top global markets and JSE updates...</p>
+                </div>
+
+                <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Default State before fetch -->
+                    <div class="col-span-1 md:col-span-2 bg-black/80 border border-neutral-800 p-6 rounded-2xl text-center space-y-3">
+                        <i class="ph-bold ph-newspaper text-3xl text-neutral-600"></i>
+                        <p class="text-sm font-bold text-neutral-300">Click <span class="text-neon-cyan">"Fetch Daily Briefing"</span> above to load today's top business highlights from South Africa and worldwide markets.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Core Progress Card -->
-            <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800/80 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+            <div class="bg-neutral-900/90 backdrop-blur-xl border border-neutral-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
                 <div class="flex items-center justify-between">
                     <div>
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
-                            <i class="ph-bold ph-activity text-sport-400"></i> Active Training Week
+                        <span class="text-xs font-bold text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
+                            <i class="ph-bold ph-activity text-sport-500"></i> Active Week (Monday Start)
                         </span>
-                        <h3 class="text-3xl font-black text-white mt-1"><span id="dash-total-km">0.0</span> <span class="text-base font-medium text-slate-400">/ <span id="dash-goal-km">25</span> km</span></h3>
+                        <h3 class="text-3xl font-extrabold text-white mt-1 font-sport"><span id="dash-total-steps">0.0K</span> <span class="text-base font-medium text-neutral-400">/ <span id="dash-goal-steps">60.0K</span> steps</span></h3>
                     </div>
                     <div class="text-right">
-                        <span id="dash-percent-badge" class="px-3.5 py-1.5 bg-sport-500/20 text-sport-300 border border-sport-500/40 rounded-full text-xs font-black shadow-lg shadow-sport-500/10">0% COMPLETED</span>
+                        <span id="dash-percent-badge" class="px-3.5 py-1.5 bg-sport-500/20 text-amber-300 border border-sport-500/40 rounded-full text-xs font-black shadow-lg shadow-sport-500/10 font-sport tracking-wider">0% COMPLETED</span>
                     </div>
                 </div>
 
                 <!-- Animated Progress Bar -->
-                <div class="w-full bg-slate-950 rounded-full h-4 p-0.5 border border-slate-800 overflow-hidden shadow-inner">
-                    <div id="dash-progress-bar" class="bg-gradient-to-r from-sport-500 via-emerald-400 to-neon-cyan h-full rounded-full transition-all duration-700 shadow-lg shadow-sport-500/40" style="width: 0%"></div>
+                <div class="w-full bg-black rounded-full h-4 p-0.5 border border-neutral-800 overflow-hidden shadow-inner">
+                    <div id="dash-progress-bar" class="bg-gradient-to-r from-sport-500 via-amber-400 to-neon-orange h-full rounded-full transition-all duration-700 shadow-lg shadow-sport-500/40" style="width: 0%"></div>
                 </div>
 
                 <!-- Grid Metric Cards -->
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                    <div class="bg-slate-950/80 border border-slate-800/90 rounded-2xl p-4 hover:border-slate-700 transition-all group">
-                        <div class="flex items-center justify-between text-slate-400 mb-1">
+                    <div class="bg-black/80 border border-neutral-800 rounded-2xl p-4 hover:border-neutral-700 transition-all group">
+                        <div class="flex items-center justify-between text-neutral-400 mb-1">
                             <span class="text-[10px] font-black uppercase tracking-wider">Remaining</span>
                             <i class="ph-bold ph-flag text-neon-orange group-hover:scale-110 transition-transform"></i>
                         </div>
-                        <p class="text-xl font-black text-white mt-1"><span id="dash-remaining">25.0</span> <span class="text-xs font-semibold text-slate-500">km</span></p>
+                        <p class="text-xl font-black text-white mt-1 font-sport"><span id="dash-remaining">60.0K</span></p>
                     </div>
 
-                    <div class="bg-slate-950/80 border border-slate-800/90 rounded-2xl p-4 hover:border-slate-700 transition-all group">
-                        <div class="flex items-center justify-between text-slate-400 mb-1">
-                            <span class="text-[10px] font-black uppercase tracking-wider">Daily Pace</span>
-                            <i class="ph-bold ph-timer text-sport-400 group-hover:scale-110 transition-transform"></i>
+                    <div class="bg-black/80 border border-neutral-800 rounded-2xl p-4 hover:border-neutral-700 transition-all group">
+                        <div class="flex items-center justify-between text-neutral-400 mb-1">
+                            <span class="text-[10px] font-black uppercase tracking-wider">Daily Needed</span>
+                            <i class="ph-bold ph-timer text-sport-500 group-hover:scale-110 transition-transform"></i>
                         </div>
-                        <p class="text-xl font-black text-sport-400 mt-1"><span id="dash-pace">3.6</span> <span class="text-xs font-semibold text-slate-500">km/d</span></p>
+                        <p class="text-xl font-black text-sport-500 mt-1 font-sport"><span id="dash-daily-needed">8.5K</span></p>
                     </div>
 
-                    <div class="bg-slate-950/80 border border-slate-800/90 rounded-2xl p-4 hover:border-slate-700 transition-all group">
-                        <div class="flex items-center justify-between text-slate-400 mb-1">
+                    <div class="bg-black/80 border border-neutral-800 rounded-2xl p-4 hover:border-neutral-700 transition-all group">
+                        <div class="flex items-center justify-between text-neutral-400 mb-1">
                             <span class="text-[10px] font-black uppercase tracking-wider">Streak</span>
-                            <i class="ph-bold ph-lightning text-neon-lime group-hover:scale-110 transition-transform"></i>
+                            <i class="ph-bold ph-lightning text-amber-400 group-hover:scale-110 transition-transform"></i>
                         </div>
-                        <p class="text-xl font-black text-neon-lime mt-1"><span id="dash-streak">0</span> <span class="text-xs font-semibold text-slate-500">days</span></p>
+                        <p class="text-xl font-black text-amber-400 mt-1 font-sport"><span id="dash-streak">0</span> <span class="text-xs font-semibold text-neutral-500">days</span></p>
                     </div>
 
-                    <div class="bg-slate-950/80 border border-slate-800/90 rounded-2xl p-4 hover:border-slate-700 transition-all group">
-                        <div class="flex items-center justify-between text-slate-400 mb-1">
-                            <span class="text-[10px] font-black uppercase tracking-wider">Days Left</span>
-                            <i class="ph-bold ph-calendar text-neon-cyan group-hover:scale-110 transition-transform"></i>
+                    <div class="bg-black/80 border border-neutral-800 rounded-2xl p-4 hover:border-neutral-700 transition-all group">
+                        <div class="flex items-center justify-between text-neutral-400 mb-1">
+                            <span class="text-[10px] font-black uppercase tracking-wider">Estimated KM</span>
+                            <i class="ph-bold ph-map-pin text-neon-cyan group-hover:scale-110 transition-transform"></i>
                         </div>
-                        <p class="text-xl font-black text-white mt-1"><span id="dash-days-left">7</span> <span class="text-xs font-semibold text-slate-500">days</span></p>
+                        <p class="text-xl font-black text-white mt-1 font-sport"><span id="dash-est-km">0.0</span> <span class="text-xs font-semibold text-neutral-500">km</span></p>
                     </div>
                 </div>
             </div>
 
-            <!-- Performance Intelligence Section -->
-            <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800/80 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4">
+            <div class="bg-neutral-900/90 backdrop-blur-xl border border-neutral-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-neutral-800 pb-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center text-neon-cyan">
+                        <div class="w-10 h-10 rounded-xl bg-sport-500/10 border border-sport-500/30 flex items-center justify-center text-sport-500">
                             <i class="ph-bold ph-chart-line-up text-xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-base font-black text-white uppercase tracking-wide">Performance Intelligence</h3>
-                            <p class="text-xs text-slate-400">Comparing selected week volume against your YTD average baseline.</p>
+                            <h3 class="text-base font-extrabold text-white uppercase tracking-wide font-sport">Performance Intelligence (Panda Math Engine)</h3>
+                            <p class="text-xs text-neutral-400">Weekly progression compared against your baseline average.</p>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-2 bg-slate-950 px-3.5 py-2 rounded-xl border border-slate-800">
-                        <i class="ph-bold ph-calendar-blank text-sport-400"></i>
-                        <span class="text-xs text-slate-400 font-bold uppercase">Week:</span>
-                        <select id="analytics-week-select" onchange="renderAnalytics()" class="bg-transparent text-sport-400 font-black text-xs focus:outline-none cursor-pointer">
-                            <!-- Populated dynamically -->
-                        </select>
+                    
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <!-- Chart Metric Toggle (Steps vs KM) -->
+                        <div class="flex bg-black p-1 rounded-xl border border-neutral-800 text-[11px] font-bold">
+                            <button onclick="setChartMode('steps')" id="btn-mode-steps" class="px-3 py-1.5 rounded-lg bg-sport-500 text-slate-950 transition-all">Steps</button>
+                            <button onclick="setChartMode('km')" id="btn-mode-km" class="px-3 py-1.5 rounded-lg text-neutral-400 hover:text-white transition-all">KM (Est)</button>
+                        </div>
+
+                        <!-- Week Selector -->
+                        <div class="flex items-center space-x-2 bg-black px-3 py-2 rounded-xl border border-neutral-800">
+                            <i class="ph-bold ph-calendar-blank text-sport-500"></i>
+                            <select id="analytics-week-select" onchange="renderAnalytics()" class="bg-transparent text-sport-500 font-black text-xs focus:outline-none cursor-pointer">
+                                <!-- Populated dynamically -->
+                            </select>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Comparison Cards -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="bg-slate-950/90 border border-slate-800 p-5 rounded-2xl relative overflow-hidden group">
-                        <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                            <i class="ph-bold ph-calendar text-sport-400"></i> Selected Week Volume
+                    <div class="bg-black border border-neutral-800 p-5 rounded-2xl relative overflow-hidden group">
+                        <span class="text-[10px] font-black uppercase tracking-wider text-neutral-400 flex items-center gap-1.5">
+                            <i class="ph-bold ph-calendar text-sport-500"></i> Selected Week Volume
                         </span>
                         <div class="flex items-baseline justify-between mt-3">
-                            <h4 id="stat-selected-week-total" class="text-2xl font-black text-white">0.0 km</h4>
-                            <span id="stat-selected-vs-avg-badge" class="text-xs font-black px-2.5 py-1 rounded-full bg-slate-800 text-slate-300">0% vs Avg</span>
+                            <h4 id="stat-selected-week-total" class="text-2xl font-black text-white font-sport">0.0K</h4>
+                            <span id="stat-selected-vs-avg-badge" class="text-xs font-black px-2.5 py-1 rounded-full bg-neutral-800 text-neutral-300 font-sport">0% vs Avg</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-950/90 border border-slate-800 p-5 rounded-2xl relative overflow-hidden group">
-                        <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                            <i class="ph-bold ph-trophy text-neon-lime"></i> YTD Weekly Average
+                    <div class="bg-black border border-neutral-800 p-5 rounded-2xl relative overflow-hidden group">
+                        <span class="text-[10px] font-black uppercase tracking-wider text-neutral-400 flex items-center gap-1.5">
+                            <i class="ph-bold ph-trophy text-amber-400"></i> Weekly Average Baseline
                         </span>
                         <div class="flex items-baseline justify-between mt-3">
-                            <h4 id="stat-ytd-avg-total" class="text-2xl font-black text-sport-400">0.0 km</h4>
-                            <span class="text-xs font-bold text-slate-500 uppercase">Baseline</span>
+                            <h4 id="stat-ytd-avg-total" class="text-2xl font-black text-sport-500 font-sport">0.0K</h4>
+                            <span class="text-xs font-bold text-neutral-500 uppercase">Baseline</span>
                         </div>
                     </div>
 
-                    <div class="bg-slate-950/90 border border-slate-800 p-5 rounded-2xl relative overflow-hidden group">
-                        <span class="text-[10px] font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                    <div class="bg-black border border-neutral-800 p-5 rounded-2xl relative overflow-hidden group">
+                        <span class="text-[10px] font-black uppercase tracking-wider text-neutral-400 flex items-center gap-1.5">
                             <i class="ph-bold ph-trend-up text-neon-orange"></i> Velocity Delta
                         </span>
                         <div class="flex items-baseline justify-between mt-3">
-                            <h4 id="stat-delta-velocity" class="text-2xl font-black text-white">+0.0%</h4>
-                            <span id="stat-delta-label" class="text-xs font-black text-slate-400 uppercase">Stable</span>
+                            <h4 id="stat-delta-velocity" class="text-2xl font-black text-amber-400 font-sport">+0.0%</h4>
+                            <span id="stat-delta-label" class="text-xs font-bold text-neutral-400">Baseline Delta</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Flash Comic Style Smooth Trend Chart -->
-                <div class="mt-6 bg-slate-950 p-5 rounded-3xl border-2 border-slate-800 shadow-xl relative overflow-hidden">
+                <!-- Smooth Trend Chart (Last 5 Weeks with Horizontal Scroll) -->
+                <div class="mt-6 bg-neutral-950 p-5 rounded-3xl border-2 border-neutral-800 shadow-xl relative overflow-hidden">
                     <div class="flex items-center justify-between mb-4">
-                        <span class="text-xs font-black uppercase tracking-wider text-sport-400 flex items-center gap-1.5">
-                            <i class="ph-bold ph-lightning text-neon-lime"></i> Flash Comic Trend Line (Weekly Volume Progression)
+                        <span id="chart-title-label" class="text-xs font-black uppercase tracking-wider text-sport-400 flex items-center gap-1.5">
+                            <i class="ph-bold ph-lightning text-neon-lime"></i> Trend Line (Last 5 Weeks Progression in Steps)
                         </span>
-                        <span class="text-[10px] font-bold text-slate-400 bg-sport-500/10 border border-sport-500/30 text-sport-300 px-2.5 py-1 rounded-full uppercase">Smooth Curve</span>
+                        <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full uppercase">Swipe or Scroll</span>
                     </div>
                     
-                    <div class="w-full h-48 relative flex items-end">
-                        <!-- SVG Smooth Trend Chart -->
-                        <svg id="comic-trend-svg" class="w-full h-full overflow-visible" viewBox="0 0 600 160" preserveAspectRatio="none">
-                            <!-- Grid lines -->
-                            <line x1="0" y1="40" x2="600" y2="40" stroke="#1e293b" stroke-dasharray="4" stroke-width="1" />
-                            <line x1="0" y1="80" x2="600" y2="80" stroke="#1e293b" stroke-dasharray="4" stroke-width="1" />
-                            <line x1="0" y1="120" x2="600" y2="120" stroke="#1e293b" stroke-dasharray="4" stroke-width="1" />
-                            
-                            <!-- Gradient Area Fill -->
-                            <defs>
-                                <linearGradient id="comicGradient" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%" stop-color="#10b981" stop-opacity="0.4"/>
-                                    <stop offset="100%" stop-color="#10b981" stop-opacity="0.0"/>
-                                </linearGradient>
-                            </defs>
-                            <path id="trend-area-path" d="M0,160 L600,160 Z" fill="url(#comicGradient)" />
-                            
-                            <!-- Smooth Bezier Curve Line -->
-                            <path id="trend-line-path" d="M0,140 Q150,140 300,140 T600,140" fill="none" stroke="#10b981" stroke-width="4" stroke-linecap="round" />
-                        </svg>
+                    <div class="w-full overflow-x-auto pb-2">
+                        <div class="min-w-[420px] h-52 relative flex items-end">
+                            <svg id="comic-trend-svg" class="w-full h-full overflow-visible" viewBox="0 0 600 170" preserveAspectRatio="none">
+                                <line x1="0" y1="40" x2="600" y2="40" stroke="#262626" stroke-dasharray="4" stroke-width="1" />
+                                <line x1="0" y1="80" x2="600" y2="80" stroke="#262626" stroke-dasharray="4" stroke-width="1" />
+                                <line x1="0" y1="120" x2="600" y2="120" stroke="#262626" stroke-dasharray="4" stroke-width="1" />
+                                
+                                <defs>
+                                    <linearGradient id="comicGradient" x1="0" y1="0" x2="0" y2="1">
+                                        <stop offset="0%" stop-color="#eab308" stop-opacity="0.4"/>
+                                        <stop offset="100%" stop-color="#eab308" stop-opacity="0.0"/>
+                                    </linearGradient>
+                                </defs>
+                                <path id="trend-area-path" d="M0,170 L600,170 Z" fill="url(#comicGradient)" />
+                                <path id="trend-line-path" d="M0,140 Q150,140 300,140 T600,140" fill="none" stroke="#eab308" stroke-width="4" stroke-linecap="round" />
+                                <g id="chart-data-nodes"></g>
+                            </svg>
+                        </div>
                     </div>
-                    <div id="chart-week-labels" class="flex justify-between text-[10px] font-black text-slate-500 uppercase mt-2 px-1">
+                    <div id="chart-week-labels" class="flex justify-between text-[10px] font-black text-neutral-400 uppercase mt-2 px-1">
                         <!-- Populated dynamically -->
                     </div>
                 </div>
@@ -275,67 +327,84 @@
 
         <main id="view-logger" class="space-y-6 flex-grow hidden">
             
-            <div class="bg-slate-900/80 backdrop-blur-xl border border-slate-800/80 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+            <!-- Weekly Target Vector Configuration -->
+            <div class="bg-gradient-to-r from-neutral-900 via-neutral-900/90 to-neutral-900 backdrop-blur-xl border border-neutral-800 p-6 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-1 border-gradient"></div>
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-sport-500/10 border border-sport-500/30 flex items-center justify-center text-sport-400">
-                        <i class="ph-bold ph-calendar-plus text-xl"></i>
+                    <div class="w-10 h-10 rounded-xl bg-sport-500/10 border border-sport-500/30 flex items-center justify-center text-sport-500">
+                        <i class="ph-bold ph-target text-xl"></i>
                     </div>
                     <div>
-                        <h2 class="text-lg font-black text-white uppercase tracking-wide">Historical Daily Ledger</h2>
-                        <p class="text-xs text-slate-400">Log or adjust kilometer records. Autosaves instantly to your local Road to Fitness session.</p>
+                        <h2 class="text-sm font-extrabold text-white uppercase tracking-wider font-sport">Weekly Step Vector</h2>
+                        <p class="text-xs text-neutral-400">Set your total target steps for the week (Recommended: 60,000 for adults in 30s).</p>
                     </div>
+                </div>
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <input type="number" id="weekly-goal-input" value="60000" step="1000" onchange="updateWeeklyGoal()" class="bg-black border border-neutral-700 rounded-xl px-4 py-2.5 text-sport-500 font-black text-base w-36 text-center focus:outline-none focus:ring-2 focus:ring-sport-500 font-sport">
+                    <span class="text-xs font-bold text-neutral-400 uppercase tracking-widest">STEPS</span>
+                </div>
+            </div>
+
+            <!-- Historical Daily Ledger Input Card -->
+            <div class="bg-neutral-900/90 backdrop-blur-xl border border-neutral-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
+                <div class="flex items-center justify-between flex-wrap gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-sport-500/10 border border-sport-500/30 flex items-center justify-center text-sport-500">
+                            <i class="ph-bold ph-calendar-plus text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-extrabold text-white uppercase tracking-wide font-sport">Daily Step Ledger</h2>
+                            <p class="text-xs text-neutral-400">Log your daily step counts. Autosaves instantly to your secure session.</p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="confirmResetData()" class="px-4 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2">
+                        <i class="ph-bold ph-trash"><span>Reset Data</span></i>
+                    </button>
                 </div>
 
                 <!-- Input Form Row -->
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950/80 p-5 rounded-2xl border border-slate-800 shadow-inner">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-black p-5 rounded-2xl border border-neutral-800 shadow-inner">
                     <div>
-                        <label for="ledger-date" class="block text-xs font-black uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5">
-                            <i class="ph-bold ph-calendar text-sport-400"></i> Target Date
+                        <label for="ledger-date" class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1.5 flex items-center gap-1.5">
+                            <i class="ph-bold ph-calendar text-sport-500"></i> Date
                         </label>
-                        <input type="date" id="ledger-date" class="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-4 py-2.5 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-sport-500">
+                        <input type="date" id="ledger-date" class="w-full bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-2.5 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-sport-500">
                     </div>
 
                     <div>
-                        <label for="ledger-km" class="block text-xs font-black uppercase tracking-wider text-slate-400 mb-1.5 flex items-center gap-1.5">
-                            <i class="ph-bold ph-sneaker text-neon-cyan"></i> Distance (KM)
+                        <label for="ledger-steps" class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1.5 flex items-center gap-1.5">
+                            <i class="ph-bold ph-sneaker text-amber-400"></i> Steps (e.g. 8500)
                         </label>
-                        <input type="number" id="ledger-km" step="0.1" min="0" placeholder="e.g. 6.2" class="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-4 py-2.5 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-sport-500">
+                        <input type="number" id="ledger-steps" step="100" min="0" placeholder="e.g. 8500" class="w-full bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-2.5 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-sport-500">
                     </div>
 
                     <div class="flex items-end">
-                        <button onclick="logDailyKm()" class="w-full bg-gradient-to-r from-sport-500 via-emerald-400 to-neon-cyan hover:opacity-95 text-slate-950 font-black py-2.5 px-4 rounded-xl shadow-lg shadow-sport-500/30 active:scale-[0.98] transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+                        <button onclick="logDailySteps()" class="w-full bg-gradient-to-r from-sport-500 via-amber-400 to-neon-orange hover:opacity-95 text-slate-950 font-black py-2.5 px-4 rounded-xl shadow-lg shadow-sport-500/30 active:scale-[0.98] transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 font-sport">
                             <i class="ph-bold ph-check-circle text-base"></i> Commit Entry
                         </button>
                     </div>
                 </div>
 
-                <!-- Quick Filter & Count -->
-                <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
-                    <div class="flex items-center space-x-2 bg-slate-950 px-3.5 py-2 rounded-xl border border-slate-800">
-                        <i class="ph-bold ph-funnel text-sport-400"></i>
-                        <span class="text-xs font-black text-slate-400 uppercase">Year Filter:</span>
-                        <select id="filter-year" onchange="renderLedgerTable()" class="bg-transparent text-white font-black text-xs rounded-xl focus:outline-none cursor-pointer">
-                            <option value="2026" class="bg-slate-900">2026</option>
-                            <option value="2025" class="bg-slate-900">2025</option>
-                        </select>
-                    </div>
-                    <div class="text-xs font-bold text-slate-400 flex items-center gap-1.5">
-                        <i class="ph-bold ph-database text-sport-400"></i> Total Logs: <span id="total-entries-count" class="font-black text-sport-400">0</span>
+                <div class="flex items-center justify-between pt-2">
+                    <span class="text-xs font-black text-sport-500 uppercase tracking-widest font-sport">Complete Step Record Ledger</span>
+                    <div class="text-xs font-bold text-neutral-400 flex items-center gap-1.5">
+                        <i class="ph-bold ph-database text-sport-500"></i> Total Logs: <span id="total-entries-count" class="font-black text-sport-500">0</span>
                     </div>
                 </div>
 
-                <!-- Logs Table Container -->
-                <div class="border border-slate-800 rounded-2xl overflow-hidden bg-slate-950/60 max-h-[380px] overflow-y-auto shadow-inner">
+                <div class="border border-neutral-800 rounded-2xl overflow-hidden bg-black/60 max-h-[380px] overflow-y-auto shadow-inner">
                     <table class="w-full text-left border-collapse">
                         <thead>
-                            <tr class="bg-slate-900/95 text-[11px] font-black text-slate-400 uppercase tracking-wider border-b border-slate-800 sticky top-0 z-10">
+                            <tr class="bg-neutral-900/95 text-[11px] font-black text-neutral-400 uppercase tracking-wider border-b border-neutral-800 sticky top-0 z-10 font-sport">
                                 <th class="py-3 px-4">Date</th>
                                 <th class="py-3 px-4">Day</th>
-                                <th class="py-3 px-4">Distance</th>
+                                <th class="py-3 px-4">Steps</th>
+                                <th class="py-3 px-4">Est. KM</th>
                                 <th class="py-3 px-4 text-right">Action</th>
                             </tr>
                         </thead>
-                        <tbody id="ledger-table-body" class="divide-y divide-slate-800/60 text-xs">
+                        <tbody id="ledger-table-body" class="divide-y divide-neutral-800/60 text-xs">
                             <!-- Populated via script -->
                         </tbody>
                     </table>
@@ -344,68 +413,257 @@
 
         </main>
 
-        <footer class="mt-12 text-center text-xs text-slate-500 border-t border-slate-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-            <span>RTF (Road to Fitness) &bull; High-Performance Habit Engine</span>
-            <span class="flex items-center gap-1 text-sport-400 font-bold"><i class="ph-fill ph-shield-check"></i> Secure Local Session</span>
+        <footer class="mt-12 text-center text-xs text-neutral-500 border-t border-neutral-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <span>RTF &bull; Road to Fitness &bull; Step Habit Engine</span>
+            <span class="flex items-center gap-1 text-sport-500 font-bold"><i class="ph-fill ph-shield-check"></i> Secure Local Session</span>
         </footer>
 
         <!-- Custom Notification Toast -->
-        <div id="toast" class="fixed bottom-6 right-6 bg-slate-900 border border-sport-500/50 text-white text-xs py-3.5 px-5 rounded-2xl shadow-2xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4 flex items-center gap-3.5 z-50 backdrop-blur-xl">
-            <div class="w-3 h-3 rounded-full bg-sport-400 animate-ping flex-shrink-0"></div>
+        <div id="toast" class="fixed bottom-6 right-6 bg-neutral-900 border border-sport-500/50 text-white text-xs py-3.5 px-5 rounded-2xl shadow-2xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4 flex items-center gap-3.5 z-50 backdrop-blur-xl">
+            <div class="w-3 h-3 rounded-full bg-sport-500 animate-ping flex-shrink-0"></div>
             <span id="toast-message" class="font-bold">Notification message</span>
+        </div>
+
+        <!-- Custom Confirmation Modal for Data Reset -->
+        <div id="reset-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300 z-50">
+            <div class="bg-neutral-900 border border-neutral-800 p-6 sm:p-8 rounded-3xl max-w-md w-full shadow-2xl space-y-5 text-center">
+                <div class="w-14 h-14 rounded-2xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-500 mx-auto">
+                    <i class="ph-bold ph-warning text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-black text-white uppercase font-sport">Reset All Training Data?</h3>
+                    <p class="text-xs text-neutral-400 mt-1">This will permanently clear your step logs and allow you to start fresh.</p>
+                </div>
+                <div class="flex gap-3 pt-2">
+                    <button onclick="closeResetModal()" class="flex-1 bg-neutral-800 hover:bg-neutral-700 text-white font-bold py-3 rounded-xl text-xs uppercase tracking-wider transition-all">Cancel</button>
+                    <button onclick="executeResetData()" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white font-black py-3 rounded-xl text-xs uppercase tracking-wider transition-all">Yes, Clear Data</button>
+                </div>
+            </div>
         </div>
 
     </div>
 
     <script>
+        // Core App State
         let appData = {
-            weeklyGoal: 25,
+            weeklyGoal: 60000,
             logs: {}
         };
 
-        // Curated elite CEO business transformation insights and high-energy positive life mantras
-        const ceoLearningQuotes = [
-            // Elite CEO Business Transformation & Strategic Execution
-            { quote: "If you define problems broadly, you can solve them. If you define problems narrowly, you get stuck in the weeds.", author: "Satya Nadella (Microsoft - Cloud & AI Pivot)" },
-            { quote: "If you are not embarrassed by the first version of your product, you've launched too late.", author: "Reid Hoffman (LinkedIn - Network Effects & Speed)" },
-            { quote: "Persistence is very important. You should not give up unless you are forced to give up.", author: "Elon Musk (Tesla & SpaceX - First Principles Engineering)" },
-            { quote: "Risk more than others think is safe. Dream more than others think is practical.", author: "Howard Schultz (Starbucks - Experiential Brand Scaling)" },
-            { quote: "The biggest risk is not taking any risk... In a world that's changing really quickly, the only strategy that is guaranteed to fail is not taking risks.", author: "Mark Zuckerberg (Meta - Agile Scale)" },
-            { quote: "Price is what you pay. Value is what you get.", author: "Warren Buffett (Berkshire Hathaway - Compound Long-Term Value)" },
-            { quote: "Innovation distinguishes between a leader and a follower.", author: "Steve Jobs (Apple - Design & Ecosystem Supremacy)" },
-            { quote: "Simple can be harder than complex: You have to work hard to get your thinking clean to make it simple.", author: "Steve Jobs (Apple - Radical Simplification)" },
-            { quote: "Play long-term games with long-term people.", author: "Naval Ravikant (AngelList - Leverage & Mental Models)" },
-            { quote: "Brand is what people say about you when you are not in the room.", author: "Jeff Bezos (Amazon - Obsessive Customer Centricity)" },
-            { quote: "Your most unhappy customers are your greatest source of learning.", author: "Bill Gates (Microsoft - Feedback Loops & Execution)" },
-            { quote: "Strategy is about making choices, deciding what not to do.", author: "Michael Porter (Strategy Legend - Competitive Advantage)" },
+        let chartMode = 'steps'; // 'steps' or 'km'
 
-            // High-Energy Positive Life & Vitality Mantras
-            { quote: "Energy flows where attention goes. Focus on your strength, velocity, and limitless potential today!", author: "Positive Energy Mantra ⚡" },
-            { quote: "Small daily disciplines repeated with consistency lead to great achievements gained slowly over time.", author: "High-Performance Life Mantra 🔥" },
-            { quote: "Your body can stand almost anything. It's your mind that you have to convince. Push past the limits!", author: "Endurance & Resilience Mantra 💪" },
-            { quote: "Every stride forward, no matter how small, compounds into extraordinary momentum. Keep going!", author: "Momentum Mantra 🚀" },
-            { quote: "Action breeds clarity. Don't wait for inspiration; create it through relentless motion and execution.", author: "Daily Action Mantra ✨" },
-            { quote: "Breathe in confidence, exhale doubt. Today is a brand new canvas for your absolute best performance.", author: "Vitality & Focus Mantra 🌟" }
+        // Daily Quotes Array for Rotation
+        const quotesCollection = [
+            { quote: "Discipline is choosing between what you want now and what you want most.", author: "Abraham Lincoln" },
+            { quote: "Action is the foundational key to all success.", author: "Pablo Picasso" },
+            { quote: "Successful people do what unsuccessful people are not willing to do.", author: "Dyson Taylor" },
+            { quote: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+            { quote: "Focus on being productive instead of busy.", author: "Tim Ferriss" },
+            { quote: "In the middle of difficulty lies opportunity.", author: "Albert Einstein" },
+            { quote: "Quality is not an act, it is a habit.", author: "Aristotle" }
         ];
+
+        // Panda-style Math Utility Functions
+        const PandaMath = {
+            formatStepsK: function(steps) {
+                if(steps === undefined || isNaN(steps)) return "0.0K";
+                return (steps / 1000).toFixed(1) + "K";
+            },
+            stepsToKm: function(steps) {
+                return (steps * 0.00074);
+            },
+            calculateWeeklyStats: function(logs, weeklyGoal) {
+                const today = new Date();
+                let currentWeekTotal = 0;
+                const dayOfWeek = today.getDay();
+                const distanceToMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+
+                for(let i = 0; i <= distanceToMonday; i++) {
+                    const d = new Date(today);
+                    d.setDate(today.getDate() - i);
+                    const key = d.toISOString().split('T')[0];
+                    if(logs[key]) {
+                        currentWeekTotal += logs[key];
+                    }
+                }
+
+                const daysElapsed = distanceToMonday + 1;
+                const dailyNeeded = daysElapsed > 0 ? Math.max(0, (weeklyGoal - currentWeekTotal) / Math.max(1, (7 - daysElapsed))) : weeklyGoal / 7;
+                const percent = weeklyGoal > 0 ? Math.min(100, Math.round((currentWeekTotal / weeklyGoal) * 100)) : 0;
+                const remaining = Math.max(0, weeklyGoal - currentWeekTotal);
+
+                return { currentWeekTotal, dailyNeeded, percent, remaining };
+            },
+            calculateStreak: function(logs) {
+                let streak = 0;
+                let checkDate = new Date();
+                while(true) {
+                    const key = checkDate.toISOString().split('T')[0];
+                    if(logs[key] && logs[key] > 0) {
+                        streak++;
+                        checkDate.setDate(checkDate.getDate() - 1);
+                    } else {
+                        if(streak === 0 && checkDate.toDateString() === new Date().toDateString()) {
+                            checkDate.setDate(checkDate.getDate() - 1);
+                            const yesterdayKey = checkDate.toISOString().split('T')[0];
+                            if(logs[yesterdayKey] && logs[yesterdayKey] > 0) {
+                                continue;
+                            }
+                        }
+                        break;
+                    }
+                }
+                return streak;
+            },
+            groupLogsByWeeks: function(logs) {
+                let weeksMap = {};
+                for(const [dateStr, steps] of Object.entries(logs)) {
+                    const d = new Date(dateStr + 'T00:00:00');
+                    const iso = getISOWeekNumber(d);
+                    const weekKey = `${iso.year}-W${String(iso.week).padStart(2, '0')}`;
+                    
+                    if(!weeksMap[weekKey]) {
+                        weeksMap[weekKey] = { year: iso.year, week: iso.week, totalSteps: 0, daysCount: 0 };
+                    }
+                    weeksMap[weekKey].totalSteps += steps;
+                    weeksMap[weekKey].daysCount++;
+                }
+                return weeksMap;
+            }
+        };
 
         window.onload = function() {
             loadFromStorage();
+            initQuoteOfDay();
             
             const todayStr = new Date().toISOString().split('T')[0];
             const dateInput = document.getElementById('ledger-date');
-            if(dateInput) dateInput.value = todayStr;
-            
-            const currentYear = new Date().getFullYear();
-            const yearSelect = document.getElementById('filter-year');
-            if(yearSelect) {
-                yearSelect.value = currentYear.toString();
+            if(dateInput) {
+                dateInput.value = todayStr;
             }
 
             refreshUI();
         };
 
+        function initQuoteOfDay() {
+            const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            const selectedQuote = quotesCollection[dayOfYear % quotesCollection.length];
+            
+            safeSetText('qod-text', `"${selectedQuote.quote}"`);
+            safeSetText('qod-author', `— ${selectedQuote.author}`);
+            const dateStr = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            safeSetText('qod-date', dateStr);
+        }
+
+        // Fetch Top World & South Africa Business News Highlights via Gemini API with Search Grounding
+        async function fetchBusinessNewsHighlights() {
+            const loadingEl = document.getElementById('news-loading');
+            const gridEl = document.getElementById('news-grid');
+            const btnEl = document.getElementById('news-refresh-btn');
+            const iconEl = document.getElementById('news-refresh-icon');
+
+            if(loadingEl) loadingEl.classList.remove('hidden');
+            if(gridEl) gridEl.innerHTML = '';
+            if(btnEl) btnEl.disabled = true;
+            if(iconEl) iconEl.classList.add('animate-spin');
+
+            const systemPrompt = "Act as an elite financial analyst. Provide 4 concise top business news highlights formatted in JSON: 2 for global markets and 2 for South Africa (JSE/Economy). Include title, category ('Global' or 'South Africa'), a 2-sentence highlight summary, and a suggested search topic to look deeper.";
+            const userQuery = "What are the top business and economic news headlines in the world and in South Africa right now? Return as JSON array of objects with keys: title, category, summary, searchTopic.";
+            
+            const apiKey = "";
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+            const payload = {
+                contents: [{ parts: [{ text: userQuery }] }],
+                tools: [{ "google_search": {} }],
+                systemInstruction: { parts: [{ text: systemPrompt }] },
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "ARRAY",
+                        items: {
+                            type: "OBJECT",
+                            properties: {
+                                "title": { "type": "STRING" },
+                                "category": { "type": "STRING" },
+                                "summary": { "type": "STRING" },
+                                "searchTopic": { "type": "STRING" }
+                            },
+                            "propertyOrdering": ["title", "category", "summary", "searchTopic"]
+                        }
+                    }
+                }
+            };
+
+            let attempts = 0;
+            let success = false;
+            let articles = [];
+
+            while(attempts < 3 && !success) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+                    if(candidate && candidate.content?.parts?.[0]?.text) {
+                        const parsed = JSON.parse(candidate.content.parts[0].text);
+                        articles = parsed;
+                        success = true;
+                    }
+                } catch(err) {
+                    attempts++;
+                    await new Promise(r => setTimeout(r, attempts * 1000));
+                }
+            }
+
+            if(loadingEl) loadingEl.classList.add('hidden');
+            if(btnEl) btnEl.disabled = false;
+            if(iconEl) iconEl.classList.remove('animate-spin');
+
+            if(success && articles.length > 0) {
+                gridEl.innerHTML = '';
+                articles.forEach(art => {
+                    const isSA = art.category && art.category.toLowerCase().includes('south');
+                    const badgeColor = isSA ? 'bg-amber-500/20 text-amber-400 border-amber-500/30' : 'bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30';
+                    
+                    const card = document.createElement('div');
+                    card.className = "bg-black/80 border border-neutral-800 hover:border-neutral-700 p-5 rounded-2xl flex flex-col justify-between transition-all group";
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full border ${badgeColor} uppercase tracking-wider">${art.category || 'Business'}</span>
+                                <i class="ph-bold ph-trend-up text-sport-500 group-hover:scale-110 transition-transform"></i>
+                            </div>
+                            <h4 class="text-sm font-extrabold text-white group-hover:text-amber-400 transition-colors font-sport">${art.title}</h4>
+                            <p class="text-xs text-neutral-300 mt-2 leading-relaxed">${art.summary}</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-neutral-900 flex items-center justify-between">
+                            <span class="text-[10px] font-bold text-neutral-500">Deep Dive: ${art.searchTopic || 'Market Analysis'}</span>
+                            <a href="https://www.google.com/search?q=${encodeURIComponent(art.searchTopic || art.title)}" target="_blank" rel="noopener noreferrer" class="text-xs font-black text-sport-500 hover:underline flex items-center gap-1 uppercase">
+                                Explore <i class="ph-bold ph-arrow-square-out"></i>
+                            </a>
+                        </div>
+                    `;
+                    gridEl.appendChild(card);
+                });
+                showNotification("📰 Daily business intelligence briefing loaded successfully!");
+            } else {
+                gridEl.innerHTML = `
+                    <div class="col-span-1 md:col-span-2 bg-black/80 border border-neutral-800 p-6 rounded-2xl text-center space-y-3">
+                        <i class="ph-bold ph-warning text-3xl text-amber-500"></i>
+                        <p class="text-sm font-bold text-neutral-300">Could not retrieve live headlines at this moment. Please check your connection and try again.</p>
+                        <button onclick="fetchBusinessNewsHighlights()" class="px-4 py-2 bg-sport-500 text-slate-950 font-black rounded-xl text-xs uppercase">Retry Briefing</button>
+                    </div>
+                `;
+            }
+        }
+
         function showNotification(message) {
             const toast = document.getElementById('toast');
+            if(!toast) return;
             const toastMsg = document.getElementById('toast-message');
             toastMsg.innerText = message;
             toast.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
@@ -426,21 +684,21 @@
             if(tabName === 'dashboard') {
                 dashView.classList.remove('hidden');
                 loggerView.classList.add('hidden');
-                navDash.className = "flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-sport-500 text-slate-950 shadow-lg shadow-sport-500/30";
-                navLogger.className = "flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-slate-400 hover:text-white";
+                navDash.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-sport-500 text-slate-950 shadow-lg shadow-sport-500/30 font-sport";
+                navLogger.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-neutral-400 hover:text-white font-sport";
                 refreshDashboard();
             } else {
                 dashView.classList.add('hidden');
                 loggerView.classList.remove('hidden');
-                navLogger.className = "flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-sport-500 text-slate-950 shadow-lg shadow-sport-500/30";
-                navDash.className = "flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-slate-400 hover:text-white";
+                navLogger.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-sport-500 text-slate-950 shadow-lg shadow-sport-500/30 font-sport";
+                navDash.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-neutral-400 hover:text-white font-sport";
                 renderLedgerTable();
             }
         }
 
         function saveToStorage() {
             try {
-                localStorage.setItem('rtf_road_to_fitness_data', JSON.stringify(appData));
+                localStorage.setItem('rtf_step_habit_engine', JSON.stringify(appData));
             } catch (e) {
                 console.error("Storage save failed", e);
             }
@@ -448,11 +706,11 @@
 
         function loadFromStorage() {
             try {
-                const saved = localStorage.getItem('rtf_road_to_fitness_data');
+                const saved = localStorage.getItem('rtf_step_habit_engine');
                 if(saved) {
                     appData = JSON.parse(saved);
                 } else {
-                    generateDemoData();
+                    appData = { weeklyGoal: 60000, logs: {} };
                 }
             } catch (e) {
                 console.error("Storage load failed", e);
@@ -461,27 +719,34 @@
             if(goalInput) goalInput.value = appData.weeklyGoal;
         }
 
-        function generateDemoData() {
-            const today = new Date();
-            for(let i = 0; i < 42; i++) {
-                const d = new Date(today);
-                d.setDate(today.getDate() - i);
-                const dateKey = d.toISOString().split('T')[0];
-                appData.logs[dateKey] = +(Math.random() * 6 + 3).toFixed(1);
-            }
+        function confirmResetData() {
+            const modal = document.getElementById('reset-modal');
+            if(modal) modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeResetModal() {
+            const modal = document.getElementById('reset-modal');
+            if(modal) modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function executeResetData() {
+            appData.logs = {};
             saveToStorage();
+            closeResetModal();
+            refreshUI();
+            showNotification("🧹 All step logs cleared. Ready for fresh input!");
         }
 
         function updateWeeklyGoal() {
-            const val = parseFloat(document.getElementById('weekly-goal-input').value);
+            const val = parseInt(document.getElementById('weekly-goal-input').value, 10);
             if(isNaN(val) || val <= 0) {
-                showNotification("⚠️ Please enter a valid weekly goal.");
+                showNotification("⚠️ Please enter a valid weekly step goal.");
                 return;
             }
             appData.weeklyGoal = val;
             saveToStorage();
             refreshDashboard();
-            showNotification("⚡ Weekly target vector locked in!");
+            showNotification("⚡ Weekly step target updated!");
         }
 
         function refreshUI() {
@@ -499,121 +764,86 @@
 
         function refreshDashboard() {
             const goal = appData.weeklyGoal;
-            document.getElementById('dash-goal-km').innerText = goal;
+            safeSetText('dash-goal-steps', PandaMath.formatStepsK(goal));
 
-            const today = new Date();
-            let currentWeekTotal = 0;
+            const stats = PandaMath.calculateWeeklyStats(appData.logs, goal);
+            const streak = PandaMath.calculateStreak(appData.logs);
 
-            for(let i = 0; i < 7; i++) {
-                const d = new Date(today);
-                d.setDate(today.getDate() - i);
-                const key = d.toISOString().split('T')[0];
-                if(appData.logs[key]) {
-                    currentWeekTotal += appData.logs[key];
-                }
-            }
-
-            const dayOfWeek = today.getDay();
-            const daysLeft = dayOfWeek === 0 ? 0 : (7 - dayOfWeek);
-
-            const remaining = Math.max(0, goal - currentWeekTotal);
-            const dailyPaceNeeded = daysLeft > 0 ? (remaining / daysLeft) : remaining;
-            const percent = goal > 0 ? Math.min(100, Math.round((currentWeekTotal / goal) * 100)) : 0;
-
-            let streak = 0;
-            let checkDate = new Date(today);
-            while(true) {
-                const key = checkDate.toISOString().split('T')[0];
-                if(appData.logs[key] && appData.logs[key] > 0) {
-                    streak++;
-                    checkDate.setDate(checkDate.getDate() - 1);
-                } else {
-                    if(streak === 0 && checkDate.toDateString() === today.toDateString()) {
-                        checkDate.setDate(checkDate.getDate() - 1);
-                        const yesterdayKey = checkDate.toISOString().split('T')[0];
-                        if(appData.logs[yesterdayKey] && appData.logs[yesterdayKey] > 0) {
-                            continue;
-                        }
-                    }
-                    break;
-                }
-            }
-
-            document.getElementById('dash-total-km').innerText = currentWeekTotal.toFixed(1);
-            document.getElementById('dash-remaining').innerText = remaining.toFixed(1);
-            document.getElementById('dash-pace').innerText = dailyPaceNeeded.toFixed(1);
-            document.getElementById('dash-streak').innerText = streak;
-            document.getElementById('dash-days-left').innerText = daysLeft;
-            document.getElementById('dash-progress-bar').style.width = percent + '%';
-            document.getElementById('dash-percent-badge').innerText = percent + '% COMPLETED';
-
-            const startOfYear = new Date(today.getFullYear(), 0, 0);
-            const diff = today - startOfYear;
-            const oneDay = 1000 * 60 * 60 * 24;
-            const dayOfYear = Math.floor(diff / oneDay);
-            const quoteObj = ceoLearningQuotes[dayOfYear % ceoLearningQuotes.length];
-
-            document.getElementById('motivational-quote').innerText = `"${quoteObj.quote}"`;
-            document.getElementById('quote-author-badge').innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-sport-400 animate-ping"></span> ${quoteObj.author}`;
+            safeSetText('dash-total-steps', PandaMath.formatStepsK(stats.currentWeekTotal));
+            safeSetText('dash-remaining', PandaMath.formatStepsK(stats.remaining));
+            safeSetText('dash-daily-needed', PandaMath.formatStepsK(stats.dailyNeeded));
+            safeSetText('dash-streak', streak);
+            safeSetText('dash-est-km', PandaMath.stepsToKm(stats.currentWeekTotal).toFixed(1));
+            
+            const progressBar = document.getElementById('dash-progress-bar');
+            if(progressBar) progressBar.style.width = stats.percent + '%';
+            safeSetText('dash-percent-badge', stats.percent + '% COMPLETED');
 
             populateAnalyticsWeeks();
         }
 
-        function logDailyKm() {
+        function safeSetText(id, val) {
+            const el = document.getElementById(id);
+            if(el) el.innerText = val;
+        }
+
+        function logDailySteps() {
             const dateVal = document.getElementById('ledger-date').value;
-            const kmVal = parseFloat(document.getElementById('ledger-km').value);
+            const stepsVal = parseInt(document.getElementById('ledger-steps').value, 10);
 
             if(!dateVal) {
-                showNotification("⚠️ Please pick a target date.");
+                showNotification("⚠️ Please select a date.");
                 return;
             }
-            if(isNaN(kmVal) || kmVal < 0) {
-                showNotification("⚠️ Please enter a valid distance in kilometers.");
+            if(isNaN(stepsVal) || stepsVal < 0) {
+                showNotification("⚠️ Please enter a valid step count.");
                 return;
             }
 
-            appData.logs[dateVal] = kmVal;
+            appData.logs[dateVal] = stepsVal;
             saveToStorage();
 
-            document.getElementById('ledger-km').value = '';
+            document.getElementById('ledger-steps').value = '';
             renderLedgerTable();
-            showNotification(`🔥 Logged ${kmVal} km for ${dateVal}!`);
+            refreshDashboard();
+            showNotification(`🔥 Logged ${stepsVal.toLocaleString()} steps for ${dateVal}!`);
         }
 
         function deleteLogEntry(dateKey) {
             if(appData.logs[dateKey] !== undefined) {
                 delete appData.logs[dateKey];
                 saveToStorage();
-                renderLedgerTable();
+                refreshUI();
                 showNotification(`🗑️ Removed entry for ${dateKey}.`);
             }
         }
 
         function renderLedgerTable() {
-            const selectedYear = document.getElementById('filter-year').value;
             const tbody = document.getElementById('ledger-table-body');
+            if(!tbody) return;
             tbody.innerHTML = '';
 
             const sortedKeys = Object.keys(appData.logs).sort().reverse();
-            let filteredKeys = sortedKeys.filter(key => key.startsWith(selectedYear));
-            document.getElementById('total-entries-count').innerText = filteredKeys.length;
+            safeSetText('total-entries-count', sortedKeys.length);
 
-            if(filteredKeys.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="4" class="py-8 text-center text-slate-500 font-medium">No workout entries found for ${selectedYear}. Use the form above to log your distance.</td></tr>`;
+            if(sortedKeys.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="py-8 text-center text-neutral-500 font-medium">No step entries found. Use the form above to log your daily steps.</td></tr>`;
                 return;
             }
 
-            filteredKeys.forEach(dateKey => {
-                const km = appData.logs[dateKey];
+            sortedKeys.forEach(dateKey => {
+                const steps = appData.logs[dateKey];
                 const d = new Date(dateKey + 'T00:00:00');
                 const dayName = d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+                const estKm = PandaMath.stepsToKm(steps).toFixed(1);
 
                 const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-900/60 transition-colors";
+                tr.className = "hover:bg-neutral-900/60 transition-colors";
                 tr.innerHTML = `
                     <td class="py-3.5 px-4 font-bold text-white">${dateKey}</td>
-                    <td class="py-3.5 px-4 text-slate-400 font-medium">${dayName}</td>
-                    <td class="py-3.5 px-4 font-black text-sport-400">${km.toFixed(1)} km</td>
+                    <td class="py-3.5 px-4 text-neutral-400 font-medium">${dayName}</td>
+                    <td class="py-3.5 px-4 font-black text-sport-500">${steps.toLocaleString()} steps</td>
+                    <td class="py-3.5 px-4 font-bold text-neutral-300">${estKm} km</td>
                     <td class="py-3.5 px-4 text-right">
                         <button onclick="deleteLogEntry('${dateKey}')" class="px-3 py-1 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded-lg text-[11px] font-black transition-all border border-rose-500/20 uppercase">Remove</button>
                     </td>
@@ -622,24 +852,8 @@
             });
         }
 
-        function groupLogsByWeeks() {
-            let weeksMap = {};
-            for(const [dateStr, km] of Object.entries(appData.logs)) {
-                const d = new Date(dateStr + 'T00:00:00');
-                const iso = getISOWeekNumber(d);
-                const weekKey = `${iso.year}-W${String(iso.week).padStart(2, '0')}`;
-                
-                if(!weeksMap[weekKey]) {
-                    weeksMap[weekKey] = { year: iso.year, week: iso.week, totalKm: 0, daysCount: 0 };
-                }
-                weeksMap[weekKey].totalKm += km;
-                weeksMap[weekKey].daysCount++;
-            }
-            return weeksMap;
-        }
-
         function populateAnalyticsWeeks() {
-            const weeksMap = groupLogsByWeeks();
+            const weeksMap = PandaMath.groupLogsByWeeks(appData.logs);
             const select = document.getElementById('analytics-week-select');
             if(!select) return;
 
@@ -650,17 +864,17 @@
 
             if(sortedWeekKeys.length === 0) {
                 select.innerHTML = `<option value="">No data recorded</option>`;
-                document.getElementById('stat-selected-week-total').innerText = "0.0 km";
-                document.getElementById('stat-ytd-avg-total').innerText = "0.0 km";
-                document.getElementById('stat-delta-velocity').innerText = "+0.0%";
+                safeSetText('stat-selected-week-total', "0.0K");
+                safeSetText('stat-ytd-avg-total', "0.0K");
+                safeSetText('stat-delta-velocity', "+0.0%");
                 return;
             }
 
             sortedWeekKeys.forEach(wKey => {
                 const opt = document.createElement('option');
                 opt.value = wKey;
-                opt.className = "bg-slate-900";
-                opt.innerText = `Week ${wKey} (${weeksMap[wKey].totalKm.toFixed(1)} km)`;
+                opt.className = "bg-neutral-900";
+                opt.innerText = `Week ${wKey} (${PandaMath.formatStepsK(weeksMap[wKey].totalSteps)})`;
                 select.appendChild(opt);
             });
 
@@ -671,12 +885,30 @@
             renderAnalytics();
         }
 
+        function setChartMode(mode) {
+            chartMode = mode;
+            const btnSteps = document.getElementById('btn-mode-steps');
+            const btnKm = document.getElementById('btn-mode-km');
+            const titleLabel = document.getElementById('chart-title-label');
+
+            if(mode === 'steps') {
+                btnSteps.className = "px-3 py-1.5 rounded-lg bg-sport-500 text-slate-950 transition-all";
+                btnKm.className = "px-3 py-1.5 rounded-lg text-neutral-400 hover:text-white transition-all";
+                if(titleLabel) titleLabel.innerHTML = `<i class="ph-bold ph-lightning text-neon-lime"></i> Trend Line (Last 5 Weeks Progression in Steps)`;
+            } else {
+                btnKm.className = "px-3 py-1.5 rounded-lg bg-sport-500 text-slate-950 transition-all";
+                btnSteps.className = "px-3 py-1.5 rounded-lg text-neutral-400 hover:text-white transition-all";
+                if(titleLabel) titleLabel.innerHTML = `<i class="ph-bold ph-lightning text-neon-lime"></i> Trend Line (Last 5 Weeks Progression in Est. KM)`;
+            }
+            renderAnalytics();
+        }
+
         function renderAnalytics() {
             const select = document.getElementById('analytics-week-select');
             if(!select || !select.value) return;
 
             const selectedWeekKey = select.value;
-            const weeksMap = groupLogsByWeeks();
+            const weeksMap = PandaMath.groupLogsByWeeks(appData.logs);
             const selectedWeekData = weeksMap[selectedWeekKey];
 
             if(!selectedWeekData) return;
@@ -684,54 +916,69 @@
             const allWeekKeys = Object.keys(weeksMap).sort();
             let sumAllWeeks = 0;
             allWeekKeys.forEach(k => {
-                sumAllWeeks += weeksMap[k].totalKm;
+                sumAllWeeks += weeksMap[k].totalSteps;
             });
             const avgWeeklyVolume = allWeekKeys.length > 0 ? (sumAllWeeks / allWeekKeys.length) : 0;
 
-            const selectedTotal = selectedWeekData.totalKm;
+            const selectedTotal = selectedWeekData.totalSteps;
             const diff = selectedTotal - avgWeeklyVolume;
             const percentChange = avgWeeklyVolume > 0 ? (diff / avgWeeklyVolume) * 100 : 0;
 
-            document.getElementById('stat-selected-week-total').innerText = selectedTotal.toFixed(1) + " km";
-            document.getElementById('stat-ytd-avg-total').innerText = avgWeeklyVolume.toFixed(1) + " km";
+            if(chartMode === 'steps') {
+                safeSetText('stat-selected-week-total', PandaMath.formatStepsK(selectedTotal));
+                safeSetText('stat-ytd-avg-total', PandaMath.formatStepsK(avgWeeklyVolume));
+            } else {
+                safeSetText('stat-selected-week-total', PandaMath.stepsToKm(selectedTotal).toFixed(1) + " km");
+                safeSetText('stat-ytd-avg-total', PandaMath.stepsToKm(avgWeeklyVolume).toFixed(1) + " km");
+            }
 
             const deltaEl = document.getElementById('stat-delta-velocity');
             const deltaLabel = document.getElementById('stat-delta-label');
             const badgeEl = document.getElementById('stat-selected-vs-avg-badge');
 
-            if(percentChange >= 0) {
-                deltaEl.innerText = `+${percentChange.toFixed(1)}%`;
-                deltaEl.className = "text-2xl font-black text-neon-lime";
-                deltaLabel.innerText = "Above Baseline 🚀";
-                badgeEl.className = "text-xs font-black px-2.5 py-1 rounded-full bg-neon-lime/20 text-neon-lime border border-neon-lime/30";
-                badgeEl.innerText = `+${percentChange.toFixed(0)}% vs Avg`;
-            } else {
-                deltaEl.innerText = `${percentChange.toFixed(1)}%`;
-                deltaEl.className = "text-2xl font-black text-neon-orange";
-                deltaLabel.innerText = "Below Baseline 📉";
-                badgeEl.className = "text-xs font-black px-2.5 py-1 rounded-full bg-neon-orange/20 text-neon-orange border border-neon-orange/30";
-                badgeEl.innerText = `${percentChange.toFixed(0)}% vs Avg`;
+            if(deltaEl) {
+                if(percentChange >= 0) {
+                    deltaEl.innerText = `+${percentChange.toFixed(1)}%`;
+                    deltaEl.className = "text-2xl font-black text-amber-400 font-sport";
+                    if(deltaLabel) deltaLabel.innerText = "Above Baseline 🚀";
+                    if(badgeEl) {
+                        badgeEl.className = "text-xs font-black px-2.5 py-1 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 font-sport";
+                        badgeEl.innerText = `+${percentChange.toFixed(0)}% vs Avg`;
+                    }
+                } else {
+                    deltaEl.innerText = `${percentChange.toFixed(1)}%`;
+                    deltaEl.className = "text-2xl font-black text-neon-orange font-sport";
+                    if(deltaLabel) deltaLabel.innerText = "Below Baseline 📉";
+                    if(badgeEl) {
+                        badgeEl.className = "text-xs font-black px-2.5 py-1 rounded-full bg-neon-orange/20 text-neon-orange border border-neon-orange/30 font-sport";
+                        badgeEl.innerText = `${percentChange.toFixed(0)}% vs Avg`;
+                    }
+                }
             }
 
             renderComicTrendChart(allWeekKeys, weeksMap);
         }
 
         function renderComicTrendChart(weekKeys, weeksMap) {
-            const recentKeys = weekKeys.slice(-8);
+            const recentKeys = weekKeys.slice(-5);
             if(recentKeys.length === 0) return;
 
-            const values = recentKeys.map(k => weeksMap[k].totalKm);
-            const maxVal = Math.max(...values, 10);
+            const values = recentKeys.map(k => {
+                const steps = weeksMap[k].totalSteps;
+                return chartMode === 'steps' ? steps : PandaMath.stepsToKm(steps);
+            });
+
+            const maxVal = Math.max(...values, chartMode === 'steps' ? 10000 : 10);
             
             const svgWidth = 600;
-            const svgHeight = 140;
-            const paddingY = 20;
+            const svgHeight = 170;
+            const paddingY = 32;
             const usableHeight = svgHeight - (paddingY * 2);
 
             const points = values.map((val, idx) => {
                 const x = recentKeys.length === 1 ? svgWidth / 2 : (idx / (recentKeys.length - 1)) * svgWidth;
                 const y = svgHeight - paddingY - (val / maxVal) * usableHeight;
-                return { x, y, val };
+                return { x, y, val, weekKey: recentKeys[idx] };
             });
 
             let pathD = `M ${points[0].x},${points[0].y}`;
@@ -751,18 +998,61 @@
 
             const lastX = points[points.length - 1].x;
             const firstX = points[0].x;
-            const areaD = `${pathD} L ${lastX},160 L ${firstX},160 Z`;
+            const areaD = `${pathD} L ${lastX},${svgHeight} L ${firstX},${svgHeight} Z`;
 
-            document.getElementById('trend-line-path').setAttribute('d', pathD);
-            document.getElementById('trend-area-path').setAttribute('d', areaD);
+            const linePath = document.getElementById('trend-line-path');
+            const areaPath = document.getElementById('trend-area-path');
+            if(linePath) linePath.setAttribute('d', pathD);
+            if(areaPath) areaPath.setAttribute('d', areaD);
+
+            const nodesGroup = document.getElementById('chart-data-nodes');
+            if(!nodesGroup) return;
+            nodesGroup.innerHTML = '';
+
+            points.forEach(pt => {
+                const halo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                halo.setAttribute('cx', pt.x);
+                halo.setAttribute('cy', pt.y);
+                halo.setAttribute('r', '7');
+                halo.setAttribute('fill', '#eab308');
+                halo.setAttribute('opacity', '0.35');
+                nodesGroup.appendChild(halo);
+
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', pt.x);
+                circle.setAttribute('cy', pt.y);
+                circle.setAttribute('r', '4');
+                circle.setAttribute('fill', '#eab308');
+                circle.setAttribute('stroke', '#ffffff');
+                circle.setAttribute('stroke-width', '1.5');
+                nodesGroup.appendChild(circle);
+
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', pt.x);
+                text.setAttribute('y', Math.max(14, pt.y - 10));
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('fill', '#f3f4f6');
+                text.setAttribute('font-size', '11');
+                text.setAttribute('font-weight', '900');
+                text.setAttribute('letter-spacing', '0.5');
+                
+                if(chartMode === 'steps') {
+                    text.textContent = PandaMath.formatStepsK(pt.val);
+                } else {
+                    text.textContent = pt.val.toFixed(1) + "km";
+                }
+                nodesGroup.appendChild(text);
+            });
 
             const labelsContainer = document.getElementById('chart-week-labels');
-            labelsContainer.innerHTML = '';
-            recentKeys.forEach(k => {
-                const span = document.createElement('span');
-                span.innerText = k.replace('-W', ' W');
-                labelsContainer.appendChild(span);
-            });
+            if(labelsContainer) {
+                labelsContainer.innerHTML = '';
+                recentKeys.forEach(k => {
+                    const span = document.createElement('span');
+                    span.innerText = k.replace('-W', ' W');
+                    labelsContainer.appendChild(span);
+                });
+            }
         }
     </script>
 </body>
