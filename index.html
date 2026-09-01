@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>RTF - Road to Fitness | Step Edition & Public Business Intelligence</title>
+    <title>RTF - Road to Fitness | Global Step & Business Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script>
@@ -18,6 +18,13 @@
                             600: '#ca8a04',
                             900: '#713f12',
                             950: '#422006'
+                        },
+                        crimson: {
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            800: '#991b1b',
+                            950: '#450a0a'
                         },
                         neon: {
                             cyan: '#06b6d4',
@@ -36,25 +43,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         @keyframes pulseGlow {
-            0%, 100% { opacity: 0.15; transform: scale(1); }
-            50% { opacity: 0.35; transform: scale(1.06); }
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.45; transform: scale(1.05); }
+        }
+        @keyframes radarPing {
+            0% { transform: scale(0.6); opacity: 0.9; }
+            100% { transform: scale(2.8); opacity: 0; }
+        }
+        @keyframes arcDash {
+            to { stroke-dashoffset: -200; }
         }
         .glow-bg {
-            animation: pulseGlow 8s ease-in-out infinite;
+            animation: pulseGlow 7s ease-in-out infinite;
         }
-        /* Matte Black Background styling */
+        .ping-beacon {
+            animation: radarPing 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+        }
+        .animated-arc {
+            stroke-dasharray: 12 8;
+            animation: arcDash 15s linear infinite;
+        }
         .matte-black-bg {
-            background-color: #0b0b0c;
+            background-color: #070708;
         }
-        /* Subtle geometric dot pattern */
-        .pattern-bg {
-            background-image: radial-gradient(#eab308 0.75px, transparent 0.75px), radial-gradient(#eab308 0.75px, #0b0b0c 0.75px);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            opacity: 0.03;
-        }
-        .border-gradient {
-            background: linear-gradient(90deg, #eab308 0%, #f97316 50%, #06b6d4 100%);
+        .border-gradient-gold {
+            background: linear-gradient(90deg, #dc2626 0%, #eab308 50%, #06b6d4 100%);
         }
         * {
             -webkit-tap-highlight-color: transparent;
@@ -68,26 +81,74 @@
             height: 5px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(11, 11, 12, 0.9);
+            background: rgba(7, 7, 8, 0.9);
         }
         ::-webkit-scrollbar-thumb {
-            background: rgba(234, 179, 8, 0.4);
+            background: rgba(220, 38, 38, 0.4);
             border-radius: 9999px;
         }
     </style>
 </head>
-<body class="matte-black-bg text-slate-100 min-h-screen selection:bg-sport-500 selection:text-slate-950 font-sans antialiased relative overflow-x-hidden pb-12">
+<body class="matte-black-bg text-slate-100 min-h-screen selection:bg-crimson-600 selection:text-white font-sans antialiased relative overflow-x-hidden pb-12">
 
-    <div class="absolute inset-0 pattern-bg pointer-events-none z-0"></div>
-    <div class="absolute top-0 left-1/3 w-[500px] h-[500px] bg-sport-500/10 rounded-full blur-[140px] pointer-events-none glow-bg z-0"></div>
-    <div class="absolute bottom-10 right-1/4 w-[450px] h-[450px] bg-neon-orange/10 rounded-full blur-[140px] pointer-events-none glow-bg z-0" style="animation-delay: -4s;"></div>
+    <!-- Custom Vector World Map Dotted Matrix & Arc Overlay Background (Matches Reference Visual) -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden opacity-30">
+        <!-- Ambient Glowing Gradients -->
+        <div class="absolute -top-20 left-1/4 w-[600px] h-[600px] bg-crimson-600/15 rounded-full blur-[160px] glow-bg"></div>
+        <div class="absolute bottom-0 right-1/4 w-[550px] h-[550px] bg-amber-500/10 rounded-full blur-[150px] glow-bg" style="animation-delay: -3.5s;"></div>
+
+        <!-- SVG Dotted World Grid & Arc Vector Overlay -->
+        <svg class="w-full h-full object-cover" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <pattern id="dotGrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="1.8" fill="#ef4444" opacity="0.35" />
+                </pattern>
+                
+                <radialGradient id="saGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#ef4444" stop-opacity="1"/>
+                    <stop offset="100%" stop-color="#991b1b" stop-opacity="0"/>
+                </radialGradient>
+
+                <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#dc2626" stop-opacity="0.2"/>
+                    <stop offset="50%" stop-color="#ef4444" stop-opacity="0.95"/>
+                    <stop offset="100%" stop-color="#eab308" stop-opacity="0.3"/>
+                </linearGradient>
+            </defs>
+
+            <!-- Continental Shape Dot Mask Simulations -->
+            <g fill="#dc2626" opacity="0.45">
+                <!-- North America -->
+                <ellipse cx="220" cy="180" rx="110" ry="70" fill="url(#dotGrid)" />
+                <!-- South America -->
+                <ellipse cx="320" cy="380" rx="60" ry="110" fill="url(#dotGrid)" />
+                <!-- Europe & Asia -->
+                <ellipse cx="620" cy="160" rx="200" ry="85" fill="url(#dotGrid)" />
+                <!-- Africa continent -->
+                <ellipse cx="520" cy="310" rx="85" ry="115" fill="url(#dotGrid)" />
+                <!-- Australia -->
+                <ellipse cx="820" cy="410" rx="75" ry="50" fill="url(#dotGrid)" />
+            </g>
+
+            <!-- Red Arc Curve Sweeping over Global Coordinates -->
+            <path d="M 120 480 Q 520 -50 920 480" fill="none" stroke="url(#arcGrad)" stroke-width="3" class="animated-arc" />
+            <path d="M 120 480 Q 520 -50 920 480" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.5" />
+
+            <!-- Highlighted Beacon on South Africa (Sandton / SA Focal Point) -->
+            <g transform="translate(535, 425)">
+                <circle cx="0" cy="0" r="18" fill="url(#saGlow)" class="ping-beacon" />
+                <circle cx="0" cy="0" r="7" fill="#ef4444" />
+                <circle cx="0" cy="0" r="3.5" fill="#ffffff" />
+            </g>
+        </svg>
+    </div>
 
     <div class="max-w-4xl mx-auto px-4 py-6 sm:py-8 min-h-screen flex flex-col justify-between relative z-10">
         
         <header class="flex flex-col sm:flex-row items-center justify-between pb-6 border-b border-neutral-800/80 mb-8 gap-4">
             <div class="flex items-center space-x-3.5 w-full sm:w-auto justify-between sm:justify-start">
                 <div class="flex items-center space-x-3.5">
-                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-amber-600 via-neutral-900 to-amber-500 flex items-center justify-center shadow-xl shadow-sport-500/20 transform hover:rotate-6 transition-transform border border-amber-400/30 flex-shrink-0">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-crimson-600 via-neutral-900 to-amber-500 flex items-center justify-center shadow-xl shadow-crimson-600/30 transform hover:rotate-6 transition-transform border border-crimson-500/40 flex-shrink-0">
                         <svg class="w-7 h-7 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M14.5 9.5L21 3m-6.5 6.5L3 21m11.5-11.5L12 12m2.5-2.5l-5 5" />
                             <path d="M15 3l6 6-3 3-6-6 3-3z" fill="currentColor" fill-opacity="0.3"/>
@@ -96,10 +157,10 @@
                     </div>
                     <div>
                         <h1 class="text-2xl sm:text-3xl font-black tracking-tighter text-white uppercase font-sport flex items-center gap-2">
-                            RTF <span class="text-[10px] non-italic font-extrabold px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/30 uppercase tracking-widest">Road to Fitness and new thoughts</span>
+                            RTF <span class="text-[10px] non-italic font-extrabold px-2 py-0.5 rounded-full bg-crimson-600/20 text-crimson-400 border border-crimson-500/40 uppercase tracking-widest">Global & Executive Edition</span>
                         </h1>
                         <p class="text-xs text-neutral-400 font-medium flex items-center gap-1 mt-0.5">
-                            <i class="ph-fill ph-lightning text-neon-lime"></i> Step Habit & Public Domain Market Intelligence
+                            <i class="ph-fill ph-lightning text-amber-400"></i> Step Habit & Public Domain Market Intelligence
                         </p>
                     </div>
                 </div>
@@ -107,7 +168,7 @@
 
             <!-- Page Switcher Tabs -->
             <div class="flex bg-neutral-900/90 p-1.5 rounded-2xl border border-neutral-800 shadow-inner gap-1 w-full sm:w-auto">
-                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-sport-500 text-slate-950 shadow-lg shadow-sport-500/30 font-sport">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-gradient-to-r from-crimson-600 to-amber-500 text-white shadow-lg shadow-crimson-600/30 font-sport">
                     <i class="ph-bold ph-gauge"><span>Dashboard</span></i>
                 </button>
                 <button onclick="switchTab('logger')" id="nav-logger" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-neutral-400 hover:text-white font-sport">
@@ -118,17 +179,17 @@
 
         <main id="view-dashboard" class="space-y-6 flex-grow">
             
-            <!-- Quote of the Day -->
-            <div class="bg-gradient-to-r from-amber-950/30 via-neutral-900/90 to-neutral-900 border border-sport-500/30 p-6 rounded-3xl relative overflow-hidden shadow-xl">
-                <div class="absolute -right-6 -bottom-6 w-36 h-36 bg-sport-500/10 rounded-full blur-2xl pointer-events-none"></div>
+            <!-- Quote of the Day Card -->
+            <div class="bg-gradient-to-r from-crimson-950/40 via-neutral-900/90 to-neutral-900 border border-crimson-500/30 p-6 rounded-3xl relative overflow-hidden shadow-2xl">
+                <div class="absolute -right-6 -bottom-6 w-36 h-36 bg-crimson-600/10 rounded-full blur-2xl pointer-events-none"></div>
                 <div class="relative z-10 flex items-start gap-4">
-                    <div class="w-10 h-10 rounded-2xl bg-sport-500/20 border border-sport-500/40 flex items-center justify-center text-sport-500 flex-shrink-0 mt-0.5">
+                    <div class="w-10 h-10 rounded-2xl bg-crimson-600/20 border border-crimson-500/40 flex items-center justify-center text-crimson-400 flex-shrink-0 mt-0.5">
                         <i class="ph-fill ph-quotes text-xl"></i>
                     </div>
                     <div class="flex-grow">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-sport-500 flex items-center gap-1.5 font-sport">
-                                <span class="w-1.5 h-1.5 rounded-full bg-sport-500 animate-ping"></span> Quote of the Day
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-crimson-400 flex items-center gap-1.5 font-sport">
+                                <span class="w-1.5 h-1.5 rounded-full bg-crimson-500 animate-ping"></span> Quote of the Day
                             </span>
                             <span id="qod-date" class="text-[10px] font-bold text-neutral-400 bg-neutral-900 px-2 py-0.5 rounded border border-neutral-800">Daily Inspiration</span>
                         </div>
@@ -147,24 +208,21 @@
                         </div>
                         <div>
                             <h3 class="text-base font-extrabold text-white uppercase tracking-wide font-sport">Public Business & Market Intelligence</h3>
-                            <p class="text-xs text-neutral-400">Compliant public domain summaries covering South Africa, Africa, and World markets.</p>
+                            <p class="text-xs text-neutral-400">Strictly compliant public domain summaries (South Africa, Africa & World).</p>
                         </div>
                     </div>
                     <button onclick="fetchBusinessNewsHighlights()" id="news-refresh-btn" class="px-4 py-2.5 bg-neutral-800 hover:bg-neutral-700 text-neon-cyan border border-neon-cyan/30 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 font-sport shadow-lg">
-                        <i id="news-refresh-icon" class="ph-bold ph-arrows-clockwise text-base"></i> <span>Fetch Public Briefing</span>
+                        <i id="news-refresh-icon" class="ph-bold ph-arrows-clockwise text-base"></i> <span>Refresh Intelligence</span>
                     </button>
                 </div>
 
                 <div id="news-loading" class="hidden py-8 text-center space-y-3">
-                    <div class="inline-block w-8 h-8 border-4 border-sport-500 border-t-transparent rounded-full animate-spin"></div>
-                    <p class="text-xs font-bold text-neutral-400 uppercase tracking-widest">Scanning public markets across SA, Africa, and Global indices...</p>
+                    <div class="inline-block w-8 h-8 border-4 border-crimson-500 border-t-transparent rounded-full animate-spin"></div>
+                    <p class="text-xs font-bold text-neutral-400 uppercase tracking-widest">Scanning verified public domain market sources across SA, Africa & Global markets...</p>
                 </div>
 
                 <div id="news-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="col-span-1 md:col-span-3 bg-black/80 border border-neutral-800 p-6 rounded-2xl text-center space-y-3">
-                        <i class="ph-bold ph-newspaper text-3xl text-neutral-600"></i>
-                        <p class="text-sm font-bold text-neutral-300">Click <span class="text-neon-cyan">"Fetch Public Briefing"</span> above to load today's publicly available market headlines spanning South Africa, Continental Africa, and Global sources.</p>
-                    </div>
+                    <!-- Dynamic business news cards populated by JS -->
                 </div>
             </div>
 
@@ -173,17 +231,17 @@
                 <div class="flex items-center justify-between">
                     <div>
                         <span class="text-xs font-bold text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
-                            <i class="ph-bold ph-activity text-sport-500"></i> Active Week (Monday Start)
+                            <i class="ph-bold ph-activity text-crimson-500"></i> Active Week (Monday Start)
                         </span>
                         <h3 class="text-3xl font-extrabold text-white mt-1 font-sport"><span id="dash-total-steps">0.0K</span> <span class="text-base font-medium text-neutral-400">/ <span id="dash-goal-steps">60.0K</span> steps</span></h3>
                     </div>
                     <div class="text-right">
-                        <span id="dash-percent-badge" class="px-3.5 py-1.5 bg-sport-500/20 text-amber-300 border border-sport-500/40 rounded-full text-xs font-black shadow-lg shadow-sport-500/10 font-sport tracking-wider">0% COMPLETED</span>
+                        <span id="dash-percent-badge" class="px-3.5 py-1.5 bg-crimson-600/20 text-crimson-400 border border-crimson-500/40 rounded-full text-xs font-black shadow-lg shadow-crimson-600/10 font-sport tracking-wider">0% COMPLETED</span>
                     </div>
                 </div>
 
                 <div class="w-full bg-black rounded-full h-4 p-0.5 border border-neutral-800 overflow-hidden shadow-inner">
-                    <div id="dash-progress-bar" class="bg-gradient-to-r from-sport-500 via-amber-400 to-neon-orange h-full rounded-full transition-all duration-700 shadow-lg shadow-sport-500/40" style="width: 0%"></div>
+                    <div id="dash-progress-bar" class="bg-gradient-to-r from-crimson-600 via-amber-500 to-neon-orange h-full rounded-full transition-all duration-700 shadow-lg shadow-crimson-600/40" style="width: 0%"></div>
                 </div>
 
                 <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
@@ -198,17 +256,17 @@
                     <div class="bg-black/80 border border-neutral-800 rounded-2xl p-4 hover:border-neutral-700 transition-all group">
                         <div class="flex items-center justify-between text-neutral-400 mb-1">
                             <span class="text-[10px] font-black uppercase tracking-wider">Daily Needed</span>
-                            <i class="ph-bold ph-timer text-sport-500 group-hover:scale-110 transition-transform"></i>
+                            <i class="ph-bold ph-timer text-amber-400 group-hover:scale-110 transition-transform"></i>
                         </div>
-                        <p class="text-xl font-black text-sport-500 mt-1 font-sport"><span id="dash-daily-needed">8.5K</span></p>
+                        <p class="text-xl font-black text-amber-400 mt-1 font-sport"><span id="dash-daily-needed">8.5K</span></p>
                     </div>
 
                     <div class="bg-black/80 border border-neutral-800 rounded-2xl p-4 hover:border-neutral-700 transition-all group">
                         <div class="flex items-center justify-between text-neutral-400 mb-1">
                             <span class="text-[10px] font-black uppercase tracking-wider">Streak</span>
-                            <i class="ph-bold ph-lightning text-amber-400 group-hover:scale-110 transition-transform"></i>
+                            <i class="ph-bold ph-lightning text-crimson-400 group-hover:scale-110 transition-transform"></i>
                         </div>
-                        <p class="text-xl font-black text-amber-400 mt-1 font-sport"><span id="dash-streak">0</span> <span class="text-xs font-semibold text-neutral-500">days</span></p>
+                        <p class="text-xl font-black text-crimson-400 mt-1 font-sport"><span id="dash-streak">0</span> <span class="text-xs font-semibold text-neutral-500">days</span></p>
                     </div>
 
                     <div class="bg-black/80 border border-neutral-800 rounded-2xl p-4 hover:border-neutral-700 transition-all group">
@@ -225,24 +283,24 @@
             <div class="bg-neutral-900/90 backdrop-blur-xl border border-neutral-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-neutral-800 pb-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-sport-500/10 border border-sport-500/30 flex items-center justify-center text-sport-500">
+                        <div class="w-10 h-10 rounded-xl bg-crimson-600/10 border border-crimson-500/30 flex items-center justify-center text-crimson-400">
                             <i class="ph-bold ph-chart-line-up text-xl"></i>
                         </div>
                         <div>
                             <h3 class="text-base font-extrabold text-white uppercase tracking-wide font-sport">Performance Intelligence</h3>
-                            <p class="text-xs text-neutral-400">Weekly progression compared against your baseline average.</p>
+                            <p class="text-xs text-neutral-400 font-medium">Weekly volume vs. baseline average.</p>
                         </div>
                     </div>
                     
                     <div class="flex items-center gap-2 flex-wrap">
                         <div class="flex bg-black p-1 rounded-xl border border-neutral-800 text-[11px] font-bold">
-                            <button onclick="setChartMode('steps')" id="btn-mode-steps" class="px-3 py-1.5 rounded-lg bg-sport-500 text-slate-950 transition-all">Steps</button>
+                            <button onclick="setChartMode('steps')" id="btn-mode-steps" class="px-3 py-1.5 rounded-lg bg-crimson-600 text-white transition-all">Steps</button>
                             <button onclick="setChartMode('km')" id="btn-mode-km" class="px-3 py-1.5 rounded-lg text-neutral-400 hover:text-white transition-all">KM (Est)</button>
                         </div>
 
                         <div class="flex items-center space-x-2 bg-black px-3 py-2 rounded-xl border border-neutral-800">
-                            <i class="ph-bold ph-calendar-blank text-sport-500"></i>
-                            <select id="analytics-week-select" onchange="renderAnalytics()" class="bg-transparent text-sport-500 font-black text-xs focus:outline-none cursor-pointer">
+                            <i class="ph-bold ph-calendar-blank text-crimson-400"></i>
+                            <select id="analytics-week-select" onchange="renderAnalytics()" class="bg-transparent text-crimson-400 font-black text-xs focus:outline-none cursor-pointer">
                             </select>
                         </div>
                     </div>
@@ -251,7 +309,7 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <div class="bg-black border border-neutral-800 p-5 rounded-2xl relative overflow-hidden group">
                         <span class="text-[10px] font-black uppercase tracking-wider text-neutral-400 flex items-center gap-1.5">
-                            <i class="ph-bold ph-calendar text-sport-500"></i> Selected Week Volume
+                            <i class="ph-bold ph-calendar text-crimson-400"></i> Selected Week Volume
                         </span>
                         <div class="flex items-baseline justify-between mt-3">
                             <h4 id="stat-selected-week-total" class="text-2xl font-black text-white font-sport">0.0K</h4>
@@ -264,7 +322,7 @@
                             <i class="ph-bold ph-trophy text-amber-400"></i> Weekly Average Baseline
                         </span>
                         <div class="flex items-baseline justify-between mt-3">
-                            <h4 id="stat-ytd-avg-total" class="text-2xl font-black text-sport-500 font-sport">0.0K</h4>
+                            <h4 id="stat-ytd-avg-total" class="text-2xl font-black text-amber-400 font-sport">0.0K</h4>
                             <span class="text-xs font-bold text-neutral-500 uppercase">Baseline</span>
                         </div>
                     </div>
@@ -274,7 +332,7 @@
                             <i class="ph-bold ph-trend-up text-neon-orange"></i> Velocity Delta
                         </span>
                         <div class="flex items-baseline justify-between mt-3">
-                            <h4 id="stat-delta-velocity" class="text-2xl font-black text-amber-400 font-sport">+0.0%</h4>
+                            <h4 id="stat-delta-velocity" class="text-2xl font-black text-crimson-400 font-sport">+0.0%</h4>
                             <span id="stat-delta-label" class="text-xs font-bold text-neutral-400">Baseline Delta</span>
                         </div>
                     </div>
@@ -282,10 +340,10 @@
 
                 <div class="mt-6 bg-neutral-950 p-5 rounded-3xl border-2 border-neutral-800 shadow-xl relative overflow-hidden">
                     <div class="flex items-center justify-between mb-4">
-                        <span id="chart-title-label" class="text-xs font-black uppercase tracking-wider text-sport-400 flex items-center gap-1.5">
-                            <i class="ph-bold ph-lightning text-neon-lime"></i> Trend Line (Last 5 Weeks Progression in Steps)
+                        <span id="chart-title-label" class="text-xs font-black uppercase tracking-wider text-crimson-400 flex items-center gap-1.5">
+                            <i class="ph-bold ph-lightning text-amber-400"></i> Trend Line (Last 5 Weeks Progression in Steps)
                         </span>
-                        <span class="text-[10px] font-bold text-amber-400 bg-amber-500/10 border border-amber-500/30 px-2.5 py-1 rounded-full uppercase">Swipe or Scroll</span>
+                        <span class="text-[10px] font-bold text-crimson-400 bg-crimson-600/10 border border-crimson-500/30 px-2.5 py-1 rounded-full uppercase">Swipe or Scroll</span>
                     </div>
                     
                     <div class="w-full overflow-x-auto pb-2">
@@ -297,12 +355,12 @@
                                 
                                 <defs>
                                     <linearGradient id="comicGradient" x1="0" y1="0" x2="0" y2="1">
-                                        <stop offset="0%" stop-color="#eab308" stop-opacity="0.4"/>
-                                        <stop offset="100%" stop-color="#eab308" stop-opacity="0.0"/>
+                                        <stop offset="0%" stop-color="#ef4444" stop-opacity="0.45"/>
+                                        <stop offset="100%" stop-color="#ef4444" stop-opacity="0.0"/>
                                     </linearGradient>
                                 </defs>
                                 <path id="trend-area-path" d="M0,170 L600,170 Z" fill="url(#comicGradient)" />
-                                <path id="trend-line-path" d="M0,140 Q150,140 300,140 T600,140" fill="none" stroke="#eab308" stroke-width="4" stroke-linecap="round" />
+                                <path id="trend-line-path" d="M0,140 Q150,140 300,140 T600,140" fill="none" stroke="#ef4444" stroke-width="4" stroke-linecap="round" />
                                 <g id="chart-data-nodes"></g>
                             </svg>
                         </div>
@@ -317,18 +375,18 @@
         <main id="view-logger" class="space-y-6 flex-grow hidden">
             
             <div class="bg-gradient-to-r from-neutral-900 via-neutral-900/90 to-neutral-900 backdrop-blur-xl border border-neutral-800 p-6 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 left-0 right-0 h-1 border-gradient"></div>
+                <div class="absolute top-0 left-0 right-0 h-1 border-gradient-gold"></div>
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-sport-500/10 border border-sport-500/30 flex items-center justify-center text-sport-500">
+                    <div class="w-10 h-10 rounded-xl bg-crimson-600/10 border border-crimson-500/30 flex items-center justify-center text-crimson-400">
                         <i class="ph-bold ph-target text-xl"></i>
                     </div>
                     <div>
-                        <h2 class="text-sm font-extrabold text-white uppercase tracking-wider font-sport">Weekly Step Vector</h2>
+                        <h2 class="text-sm font-extrabold text-white uppercase tracking-wider font-sport">Weekly Step Target</h2>
                         <p class="text-xs text-neutral-400">Set your total target steps for the week (Recommended: 60,000).</p>
                     </div>
                 </div>
                 <div class="flex items-center space-x-3 w-full sm:w-auto">
-                    <input type="number" id="weekly-goal-input" value="60000" step="1000" onchange="updateWeeklyGoal()" class="bg-black border border-neutral-700 rounded-xl px-4 py-2.5 text-sport-500 font-black text-base w-36 text-center focus:outline-none focus:ring-2 focus:ring-sport-500 font-sport">
+                    <input type="number" id="weekly-goal-input" value="60000" step="1000" onchange="updateWeeklyGoal()" class="bg-black border border-neutral-700 rounded-xl px-4 py-2.5 text-crimson-400 font-black text-base w-36 text-center focus:outline-none focus:ring-2 focus:ring-crimson-500 font-sport">
                     <span class="text-xs font-bold text-neutral-400 uppercase tracking-widest">STEPS</span>
                 </div>
             </div>
@@ -337,17 +395,17 @@
             <div class="bg-neutral-900/90 backdrop-blur-xl border border-neutral-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-6">
                 <div class="flex items-center justify-between flex-wrap gap-4">
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-sport-500/10 border border-sport-500/30 flex items-center justify-center text-sport-500">
+                        <div class="w-10 h-10 rounded-xl bg-crimson-600/10 border border-crimson-500/30 flex items-center justify-center text-crimson-400">
                             <i class="ph-bold ph-calendar-plus text-xl"></i>
                         </div>
                         <div>
                             <h2 class="text-lg font-extrabold text-white uppercase tracking-wide font-sport">Daily Step Ledger</h2>
-                            <p class="text-xs text-neutral-400">Log your daily step counts. Autosaves instantly to your secure session.</p>
+                            <p class="text-xs text-neutral-400">Log daily step counts. Autosaves locally in real-time.</p>
                         </div>
                     </div>
                     
                     <div class="flex items-center gap-2 flex-wrap">
-                        <button onclick="exportDataJSON()" class="px-3.5 py-2 bg-neutral-800 hover:bg-neutral-700 text-sport-500 border border-sport-500/30 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5">
+                        <button onclick="exportDataJSON()" class="px-3.5 py-2 bg-neutral-800 hover:bg-neutral-700 text-amber-400 border border-amber-500/30 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5">
                             <i class="ph-bold ph-download-simple"><span>Backup JSON</span></i>
                         </button>
                         <button onclick="confirmResetData()" class="px-3.5 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-xl text-xs font-black uppercase tracking-wider transition-all flex items-center gap-1.5">
@@ -360,21 +418,21 @@
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-black p-5 rounded-2xl border border-neutral-800 shadow-inner">
                     <div>
                         <label for="ledger-date" class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1.5 flex items-center gap-1.5">
-                            <i class="ph-bold ph-calendar text-sport-500"></i> Date
+                            <i class="ph-bold ph-calendar text-crimson-400"></i> Date
                         </label>
-                        <input type="date" id="ledger-date" class="w-full bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-2.5 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-sport-500">
+                        <input type="date" id="ledger-date" class="w-full bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-2.5 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-crimson-500">
                     </div>
 
                     <div>
                         <label for="ledger-steps" class="block text-xs font-black uppercase tracking-wider text-neutral-400 mb-1.5 flex items-center justify-between">
                             <span class="flex items-center gap-1.5"><i class="ph-bold ph-sneaker text-amber-400"></i> Steps</span>
-                            <span class="text-[10px] text-sport-500 font-bold">Quick Presets below</span>
+                            <span class="text-[10px] text-crimson-400 font-bold">Presets below</span>
                         </label>
-                        <input type="number" id="ledger-steps" step="100" min="0" placeholder="e.g. 8500" class="w-full bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-2.5 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-sport-500">
+                        <input type="number" id="ledger-steps" step="100" min="0" placeholder="e.g. 8500" class="w-full bg-neutral-900 border border-neutral-700 rounded-xl px-4 py-2.5 text-white font-bold text-sm focus:outline-none focus:ring-2 focus:ring-crimson-500">
                     </div>
 
                     <div class="flex items-end">
-                        <button onclick="logDailySteps()" class="w-full bg-gradient-to-r from-sport-500 via-amber-400 to-neon-orange hover:opacity-95 text-slate-950 font-black py-2.5 px-4 rounded-xl shadow-lg shadow-sport-500/30 active:scale-[0.98] transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 font-sport">
+                        <button onclick="logDailySteps()" class="w-full bg-gradient-to-r from-crimson-600 via-amber-500 to-neon-orange hover:opacity-95 text-white font-black py-2.5 px-4 rounded-xl shadow-lg shadow-crimson-600/30 active:scale-[0.98] transition-all text-xs uppercase tracking-wider flex items-center justify-center gap-2 font-sport">
                             <i class="ph-bold ph-check-circle text-base"></i> Commit Entry
                         </button>
                     </div>
@@ -382,7 +440,7 @@
 
                 <!-- Quick Step Add Presets -->
                 <div class="flex items-center gap-2 flex-wrap">
-                    <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider mr-1">Quick Add Presets:</span>
+                    <span class="text-xs font-bold text-neutral-400 uppercase tracking-wider mr-1">Quick Presets:</span>
                     <button onclick="addPresetSteps(3000)" class="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl text-xs font-black border border-neutral-700">+3,000</button>
                     <button onclick="addPresetSteps(6000)" class="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl text-xs font-black border border-neutral-700">+6,000</button>
                     <button onclick="addPresetSteps(8500)" class="px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl text-xs font-black border border-neutral-700">+8,500</button>
@@ -391,9 +449,9 @@
                 </div>
 
                 <div class="flex items-center justify-between pt-2">
-                    <span class="text-xs font-black text-sport-500 uppercase tracking-widest font-sport">Complete Step Record Ledger</span>
+                    <span class="text-xs font-black text-crimson-400 uppercase tracking-widest font-sport">Step Record History</span>
                     <div class="text-xs font-bold text-neutral-400 flex items-center gap-1.5">
-                        <i class="ph-bold ph-database text-sport-500"></i> Total Logs: <span id="total-entries-count" class="font-black text-sport-500">0</span>
+                        <i class="ph-bold ph-database text-crimson-400"></i> Logs Count: <span id="total-entries-count" class="font-black text-white">0</span>
                     </div>
                 </div>
 
@@ -417,13 +475,13 @@
         </main>
 
         <footer class="mt-12 text-center text-xs text-neutral-500 border-t border-neutral-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-            <span>RTF &bull; Road to Fitness &bull; Public Domain Compliance</span>
-            <span class="flex items-center gap-1 text-sport-500 font-bold"><i class="ph-fill ph-shield-check"></i> Secure Local Session</span>
+            <span>RTF &bull; Road to Fitness &bull; Public Domain Compliance Standard</span>
+            <span class="flex items-center gap-1 text-crimson-400 font-bold"><i class="ph-fill ph-shield-check"></i> Sandton Focal Node &bull; Secure Local Session</span>
         </footer>
 
         <!-- Custom Notification Toast -->
-        <div id="toast" class="fixed bottom-6 right-6 bg-neutral-900 border border-sport-500/50 text-white text-xs py-3.5 px-5 rounded-2xl shadow-2xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4 flex items-center gap-3.5 z-50 backdrop-blur-xl">
-            <div class="w-3 h-3 rounded-full bg-sport-500 animate-ping flex-shrink-0"></div>
+        <div id="toast" class="fixed bottom-6 right-6 bg-neutral-900 border border-crimson-500/50 text-white text-xs py-3.5 px-5 rounded-2xl shadow-2xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4 flex items-center gap-3.5 z-50 backdrop-blur-xl">
+            <div class="w-3 h-3 rounded-full bg-crimson-500 animate-ping flex-shrink-0"></div>
             <span id="toast-message" class="font-bold">Notification message</span>
         </div>
 
@@ -462,6 +520,28 @@
             { quote: "Focus on being productive instead of busy.", author: "Tim Ferriss" },
             { quote: "In the middle of difficulty lies opportunity.", author: "Albert Einstein" },
             { quote: "Quality is not an act, it is a habit.", author: "Aristotle" }
+        ];
+
+        // Compliant fallback business market updates (SA, Continental Africa, World)
+        const verifiedPublicBriefings = [
+            {
+                title: "JSE Financial Equities Lead Volume Surges in SA Markets",
+                category: "SA Top Business News",
+                summary: "Johannesburg Stock Exchange sees robust institutional participation across key banking, mining, and retail benchmark counters.",
+                searchTopic: "JSE South Africa business headlines"
+            },
+            {
+                title: "AfCFTA Corridors Accelerate Regional Trade Infrastructure",
+                category: "Africa Top Business News",
+                summary: "Continental Free Trade initiatives expand intra-African supply chain logistics, tech hubs, and renewable energy grid investments.",
+                searchTopic: "AfCFTA intra African trade news"
+            },
+            {
+                title: "Global Tech and Clean Energy Indices Hold Steady",
+                category: "World Top Business News",
+                summary: "International equity markets respond to stable macroeconomic signals, semiconductor expansion, and clean energy financing.",
+                searchTopic: "Global market economic news world"
+            }
         ];
 
         const PandaMath = {
@@ -546,6 +626,9 @@
             }
 
             refreshUI();
+            
+            // Automatically populate/fetch business news briefing on launch & refresh
+            fetchBusinessNewsHighlights();
         };
 
         function initQuoteOfDay() {
@@ -565,133 +648,99 @@
             const iconEl = document.getElementById('news-refresh-icon');
 
             if(loadingEl) loadingEl.classList.remove('hidden');
-            if(gridEl) gridEl.innerHTML = '';
             if(btnEl) btnEl.disabled = true;
             if(iconEl) iconEl.classList.add('animate-spin');
 
-            // Strictly restricted to public domain legal summaries adhering to South African, African continental, and international laws
-            const systemPrompt = "Act as an objective public data research assistant. Provide exactly 3 concise public business and economic news highlights formatted in JSON: 1 for South African top business news, 1 for African continental business news, and 1 for world top business news. Ensure all summaries are strictly derived from publicly available, non-confidential information, respecting copyright, privacy laws, and international compliance standards.";
-            const userQuery = "What are the top public business and economic headlines for South Africa, Africa, and World markets right now? Return as a JSON array of 3 objects with keys: title, category, summary, searchTopic.";
-            
-            const apiKey = "";
-            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
-
-            const payload = {
-                contents: [{ parts: [{ text: userQuery }] }],
-                tools: [{ "google_search": {} }],
-                systemInstruction: { parts: [{ text: systemPrompt }] }
-            };
-
-            let attempts = 0;
-            let success = false;
             let articles = [];
+            let success = false;
 
-            while(attempts < 2 && !success) {
-                try {
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
-                    
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
+            try {
+                // Strictly restricted to public domain legal summaries adhering to SA, continental Africa, and international laws
+                const systemPrompt = "Act as an objective public data research assistant. Provide exactly 3 concise public business news highlights formatted in JSON: 1 for South African top business news, 1 for African continental business news, and 1 for world top business news. Ensure all summaries are strictly derived from publicly available, non-confidential information, respecting copyright, privacy laws, and international compliance standards.";
+                const userQuery = "What are the top public business and economic headlines for South Africa, Africa, and World markets right now? Return as a JSON array of 3 objects with keys: title, category, summary, searchTopic.";
+                
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
 
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    tools: [{ "google_search": {} }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (response.ok) {
                     const result = await response.json();
-                    
                     let candidateText = result.candidates?.[0]?.content?.parts?.map(p => p.text).join('') || '';
                     if (candidateText) {
                         let cleanText = candidateText.replace(/```json/g, '').replace(/```/g, '').trim();
-                        
                         const firstBracket = cleanText.indexOf('[');
                         const lastBracket = cleanText.lastIndexOf(']');
                         if (firstBracket !== -1 && lastBracket !== -1 && lastBracket > firstBracket) {
                             cleanText = cleanText.substring(firstBracket, lastBracket + 1);
                         }
-
-                        articles = JSON.parse(cleanText);
-                        if (Array.isArray(articles) && articles.length > 0) {
+                        const parsed = JSON.parse(cleanText);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            articles = parsed;
                             success = true;
                         }
                     }
-                } catch(err) {
-                    console.warn(`Attempt ${attempts + 1} failed:`, err);
-                    attempts++;
-                    await new Promise(r => setTimeout(r, 600));
                 }
+            } catch (err) {
+                console.warn("Live API fetch notice, utilizing compliant public domain baseline briefing:", err);
             }
 
-            // Reliable verified fallback articles covering SA, Africa, and World if API times out
             if (!success || articles.length === 0) {
-                articles = [
-                    {
-                        title: "JSE Records Robust Activity as Financial Services Drive Volumes",
-                        category: "SA Top Business News",
-                        summary: "Johannesburg Stock Exchange sees heightened institutional engagement driven by resilient banking and retail equities.",
-                        searchTopic: "JSE top business news South Africa market"
-                    },
-                    {
-                        title: "AfCFTA Accelerates Intra-African Trade Corridors",
-                        category: "Africa Top Business News",
-                        summary: "Continental free trade agreements drive cross-border digital logistics and manufacturing investments across key African economic hubs.",
-                        searchTopic: "AfCFTA intra African trade business news"
-                    },
-                    {
-                        title: "Global Tech and Clean Energy Markets Reach New Valuations",
-                        category: "World Top Business News",
-                        summary: "International equity markets react positively to steady inflation indicators and expanded clean energy infrastructure funding.",
-                        searchTopic: "World top business news global markets"
-                    }
-                ];
-                success = true;
+                articles = verifiedPublicBriefings;
             }
 
             if(loadingEl) loadingEl.classList.add('hidden');
             if(btnEl) btnEl.disabled = false;
             if(iconEl) iconEl.classList.remove('animate-spin');
 
-            if(success && articles.length > 0) {
-                gridEl.innerHTML = '';
-                articles.forEach(art => {
-                    const cat = (art.category || '').toLowerCase();
-                    let badgeColor = 'bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30';
-                    if (cat.includes('sa') || cat.includes('south')) {
-                        badgeColor = 'bg-amber-500/20 text-amber-400 border-amber-500/30';
-                    } else if (cat.includes('africa')) {
-                        badgeColor = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
-                    }
-                    
-                    const card = document.createElement('div');
-                    card.className = "bg-black/80 border border-neutral-800 hover:border-neutral-700 p-5 rounded-2xl flex flex-col justify-between transition-all group";
-                    card.innerHTML = `
-                        <div>
-                            <div class="flex items-center justify-between mb-2">
-                                <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full border ${badgeColor} uppercase tracking-wider">${art.category || 'Business'}</span>
-                                <i class="ph-bold ph-trend-up text-sport-500 group-hover:scale-110 transition-transform"></i>
-                            </div>
-                            <h4 class="text-sm font-extrabold text-white group-hover:text-amber-400 transition-colors font-sport">${art.title}</h4>
-                            <p class="text-xs text-neutral-300 mt-2 leading-relaxed">${art.summary}</p>
+            renderNewsGrid(articles);
+        }
+
+        function renderNewsGrid(articles) {
+            const gridEl = document.getElementById('news-grid');
+            if(!gridEl) return;
+            gridEl.innerHTML = '';
+
+            articles.forEach(art => {
+                const cat = (art.category || '').toLowerCase();
+                let badgeColor = 'bg-neon-cyan/20 text-neon-cyan border-neon-cyan/30';
+                if (cat.includes('sa') || cat.includes('south')) {
+                    badgeColor = 'bg-crimson-600/20 text-crimson-400 border-crimson-500/40';
+                } else if (cat.includes('africa')) {
+                    badgeColor = 'bg-amber-500/20 text-amber-400 border-amber-500/30';
+                }
+                
+                const card = document.createElement('div');
+                card.className = "bg-black/80 border border-neutral-800 hover:border-neutral-700 p-5 rounded-2xl flex flex-col justify-between transition-all group shadow-xl backdrop-blur-sm";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[10px] font-black px-2.5 py-0.5 rounded-full border ${badgeColor} uppercase tracking-wider font-sport">${art.category || 'Business'}</span>
+                            <i class="ph-bold ph-trend-up text-crimson-400 group-hover:scale-110 transition-transform"></i>
                         </div>
-                        <div class="mt-4 pt-3 border-t border-neutral-900 flex items-center justify-between">
-                            <span class="text-[10px] font-bold text-neutral-500">Public Domain Source</span>
-                            <a href="https://www.google.com/search?q=${encodeURIComponent(art.searchTopic || art.title)}" target="_blank" rel="noopener noreferrer" class="text-xs font-black text-sport-500 hover:underline flex items-center gap-1 uppercase">
-                                Explore <i class="ph-bold ph-arrow-square-out"></i>
-                            </a>
-                        </div>
-                    `;
-                    gridEl.appendChild(card);
-                });
-                showNotification("📰 SA, Africa, and World public business briefing loaded!");
-            } else {
-                gridEl.innerHTML = `
-                    <div class="col-span-1 md:col-span-3 bg-black/80 border border-neutral-800 p-6 rounded-2xl text-center space-y-3">
-                        <i class="ph-bold ph-warning text-3xl text-amber-500"></i>
-                        <p class="text-sm font-bold text-neutral-300">Could not retrieve live public headlines at this moment. Please check your connection and try again.</p>
-                        <button onclick="fetchBusinessNewsHighlights()" class="px-4 py-2 bg-sport-500 text-slate-950 font-black rounded-xl text-xs uppercase">Retry Briefing</button>
+                        <h4 class="text-sm font-extrabold text-white group-hover:text-amber-400 transition-colors font-sport">${art.title}</h4>
+                        <p class="text-xs text-neutral-300 mt-2 leading-relaxed">${art.summary}</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-neutral-900 flex items-center justify-between">
+                        <span class="text-[10px] font-bold text-neutral-500">Public Domain Intelligence</span>
+                        <a href="https://www.google.com/search?q=${encodeURIComponent(art.searchTopic || art.title)}" target="_blank" rel="noopener noreferrer" class="text-xs font-black text-amber-400 hover:underline flex items-center gap-1 uppercase font-sport">
+                            Explore <i class="ph-bold ph-arrow-square-out"></i>
+                        </a>
                     </div>
                 `;
-            }
+                gridEl.appendChild(card);
+            });
+            showNotification("📰 SA, Africa, and World public business briefing active!");
         }
 
         function showNotification(message) {
@@ -717,13 +766,13 @@
             if(tabName === 'dashboard') {
                 dashView.classList.remove('hidden');
                 loggerView.classList.add('hidden');
-                navDash.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-sport-500 text-slate-950 shadow-lg shadow-sport-500/30 font-sport";
+                navDash.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-gradient-to-r from-crimson-600 to-amber-500 text-white shadow-lg shadow-crimson-600/30 font-sport";
                 navLogger.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-neutral-400 hover:text-white font-sport";
                 refreshDashboard();
             } else {
                 dashView.classList.add('hidden');
                 loggerView.classList.remove('hidden');
-                navLogger.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-sport-500 text-slate-950 shadow-lg shadow-sport-500/30 font-sport";
+                navLogger.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 bg-gradient-to-r from-crimson-600 to-amber-500 text-white shadow-lg shadow-crimson-600/30 font-sport";
                 navDash.className = "flex-1 sm:flex-none flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-black uppercase tracking-wider transition-all duration-200 text-neutral-400 hover:text-white font-sport";
                 renderLedgerTable();
             }
@@ -895,7 +944,7 @@
                 tr.innerHTML = `
                     <td class="py-3.5 px-4 font-bold text-white">${dateKey}</td>
                     <td class="py-3.5 px-4 text-neutral-400 font-medium">${dayName}</td>
-                    <td class="py-3.5 px-4 font-black text-sport-500">${steps.toLocaleString()} steps</td>
+                    <td class="py-3.5 px-4 font-black text-amber-400">${steps.toLocaleString()} steps</td>
                     <td class="py-3.5 px-4 font-bold text-neutral-300">${estKm} km</td>
                     <td class="py-3.5 px-4 text-right">
                         <button onclick="deleteLogEntry('${dateKey}')" class="px-3 py-1 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 rounded-lg text-[11px] font-black transition-all border border-rose-500/20 uppercase">Remove</button>
@@ -945,13 +994,13 @@
             const titleLabel = document.getElementById('chart-title-label');
 
             if(mode === 'steps') {
-                btnSteps.className = "px-3 py-1.5 rounded-lg bg-sport-500 text-slate-950 transition-all";
+                btnSteps.className = "px-3 py-1.5 rounded-lg bg-crimson-600 text-white transition-all";
                 btnKm.className = "px-3 py-1.5 rounded-lg text-neutral-400 hover:text-white transition-all";
-                if(titleLabel) titleLabel.innerHTML = `<i class="ph-bold ph-lightning text-neon-lime"></i> Trend Line (Last 5 Weeks Progression in Steps)`;
+                if(titleLabel) titleLabel.innerHTML = `<i class="ph-bold ph-lightning text-amber-400"></i> Trend Line (Last 5 Weeks Progression in Steps)`;
             } else {
-                btnKm.className = "px-3 py-1.5 rounded-lg bg-sport-500 text-slate-950 transition-all";
+                btnKm.className = "px-3 py-1.5 rounded-lg bg-crimson-600 text-white transition-all";
                 btnSteps.className = "px-3 py-1.5 rounded-lg text-neutral-400 hover:text-white transition-all";
-                if(titleLabel) titleLabel.innerHTML = `<i class="ph-bold ph-lightning text-neon-lime"></i> Trend Line (Last 5 Weeks Progression in Est. KM)`;
+                if(titleLabel) titleLabel.innerHTML = `<i class="ph-bold ph-lightning text-amber-400"></i> Trend Line (Last 5 Weeks Progression in Est. KM)`;
             }
             renderAnalytics();
         }
@@ -1000,10 +1049,10 @@
                     }
                 } else {
                     deltaEl.innerText = `${percentChange.toFixed(1)}%`;
-                    deltaEl.className = "text-2xl font-black text-neon-orange font-sport";
+                    deltaEl.className = "text-2xl font-black text-crimson-400 font-sport";
                     if(deltaLabel) deltaLabel.innerText = "Below Baseline 📉";
                     if(badgeEl) {
-                        badgeEl.className = "text-xs font-black px-2.5 py-1 rounded-full bg-neon-orange/20 text-neon-orange border border-neon-orange/30 font-sport";
+                        badgeEl.className = "text-xs font-black px-2.5 py-1 rounded-full bg-crimson-600/20 text-crimson-400 border border-crimson-500/30 font-sport";
                         badgeEl.innerText = `${percentChange.toFixed(0)}% vs Avg`;
                     }
                 }
@@ -1067,15 +1116,15 @@
                 halo.setAttribute('cx', pt.x);
                 halo.setAttribute('cy', pt.y);
                 halo.setAttribute('r', '7');
-                halo.setAttribute('fill', '#eab308');
-                halo.setAttribute('opacity', '0.35');
+                halo.setAttribute('fill', '#ef4444');
+                halo.setAttribute('opacity', '0.4');
                 nodesGroup.appendChild(halo);
 
                 const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
                 circle.setAttribute('cx', pt.x);
                 circle.setAttribute('cy', pt.y);
                 circle.setAttribute('r', '4');
-                circle.setAttribute('fill', '#eab308');
+                circle.setAttribute('fill', '#ef4444');
                 circle.setAttribute('stroke', '#ffffff');
                 circle.setAttribute('stroke-width', '1.5');
                 nodesGroup.appendChild(circle);
