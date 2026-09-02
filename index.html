@@ -20,26 +20,22 @@
                             amber: '#f59e0b',
                             gold: '#eab308',
                             cyan: '#06b6d4',
+                            blue: '#38bdf8',
                             purple: '#a855f7',
-                            bg: '#09090b',
-                            card: 'rgba(24, 24, 27, 0.75)'
+                            bg: '#08080a',
+                            card: '#121216',
+                            widget: '#18181f'
                         }
+                    },
+                    borderRadius: {
+                        '3xl': '1.75rem',
+                        '4xl': '2.25rem'
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'radar-sweep': 'sweep 8s linear infinite',
-                        'scanline': 'scan 6s linear infinite',
                         'float-particle': 'float 12s ease-in-out infinite'
                     },
                     keyframes: {
-                        sweep: {
-                            '0%': { transform: 'rotate(0deg)' },
-                            '100%': { transform: 'rotate(360deg)' }
-                        },
-                        scan: {
-                            '0%': { transform: 'translateY(-100%)' },
-                            '100%': { transform: 'translateY(100%)' }
-                        },
                         float: {
                             '0%, 100%': { transform: 'translateY(0) scale(1)', opacity: '0.3' },
                             '50%': { transform: 'translateY(-20px) scale(1.2)', opacity: '0.8' }
@@ -67,20 +63,18 @@
             background: rgba(239, 68, 68, 0.8);
         }
         
-        .glass-panel {
-            background: rgba(18, 18, 22, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+        .sleek-card {
+            background: #141419;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.8);
         }
 
-        .glass-panel:hover {
-            border-color: rgba(239, 68, 68, 0.4);
+        .sleek-card:hover {
+            border-color: rgba(255, 255, 255, 0.15);
         }
 
-        /* SVG Grid pattern background */
         .dot-matrix-bg {
-            background-color: #050507;
+            background-color: #070709;
             background-image: radial-gradient(rgba(239, 68, 68, 0.15) 1px, transparent 1px);
             background-size: 24px 24px;
         }
@@ -88,9 +82,9 @@
 </head>
 <body class="bg-brand-bg text-gray-100 min-h-screen font-sans relative overflow-x-hidden dot-matrix-bg selection:bg-red-900 selection:text-white">
 
-    <!-- DYNAMIC GRAPHIC BACKGROUND OVERLAY -->
+    <!-- DYNAMIC BACKGROUND OVERLAY -->
     <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <svg class="absolute w-full h-full opacity-35" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
+        <svg class="absolute w-full h-full opacity-30" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" preserveAspectRatio="xMidYMid slice">
             <defs>
                 <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stop-color="#ef4444" stop-opacity="0.1" />
@@ -103,69 +97,60 @@
                 </filter>
             </defs>
 
-            <!-- Sweeping Equatorial Crimson Arc -->
+            <!-- Sweeping Crimson Arc -->
             <path d="M 10 500 C 150 100, 850 100, 990 500" fill="none" stroke="url(#arcGrad)" stroke-width="3" filter="url(#glow)" />
             <path d="M 10 500 C 150 100, 850 100, 990 500" fill="none" stroke="#f59e0b" stroke-width="1" stroke-dasharray="8 6" opacity="0.6" />
 
-            <!-- South Africa Beacon Focal Node (x:410, y:460) -->
+            <!-- Focal Node -->
             <circle cx="410" cy="460" r="18" fill="#ef4444" opacity="0.25" class="animate-ping" />
             <circle cx="410" cy="460" r="10" fill="#ef4444" opacity="0.6" />
             <circle cx="410" cy="460" r="5" fill="#ffffff" filter="url(#glow)" />
             <circle cx="410" cy="460" r="28" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="4 4" class="animate-spin" style="transform-origin: 410px 460px; animation-duration: 12s;" />
 
-            <!-- Dynamic Scan Lines -->
+            <!-- Scan Lines -->
             <line x1="410" y1="460" x2="120" y2="180" stroke="#ef4444" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.4" />
             <line x1="410" y1="460" x2="780" y2="220" stroke="#ef4444" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.4" />
-            <circle cx="120" cy="180" r="3" fill="#f59e0b" />
-            <circle cx="780" cy="220" r="3" fill="#06b6d4" />
         </svg>
 
-        <!-- Ambient Glowing Orbs -->
+        <!-- Ambient Orbs -->
         <div class="absolute -top-32 -left-32 w-96 h-96 bg-red-600/10 rounded-full blur-3xl"></div>
-        <div class="absolute top-1/2 -right-32 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-1/3 w-96 h-96 bg-purple-900/15 rounded-full blur-3xl"></div>
-
-        <!-- Floating Particles -->
-        <div class="absolute top-1/4 left-10 w-2 h-2 bg-red-500 rounded-full animate-float-particle"></div>
-        <div class="absolute top-2/3 right-20 w-3 h-3 bg-amber-400 rounded-full animate-float-particle" style="animation-delay: 2s;"></div>
-        <div class="absolute bottom-1/4 left-1/2 w-2 h-2 bg-purple-400 rounded-full animate-float-particle" style="animation-delay: 4s;"></div>
+        <div class="absolute top-1/2 -right-32 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl"></div>
     </div>
 
-    <!-- MAIN CONTAINER -->
+    <!-- MAIN APP CONTAINER -->
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col min-h-screen">
         
         <!-- HEADER NAV BAR -->
-        <header class="glass-panel rounded-2xl p-4 sm:p-6 mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <header class="sleek-card rounded-3xl p-4 sm:p-5 mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-4">
                 <div class="relative">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-red-600 via-red-500 to-amber-500 flex items-center justify-center shadow-lg shadow-red-900/40">
-                        <i data-lucide="activity" class="w-7 h-7 text-white"></i>
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-red-600 via-red-500 to-amber-500 flex items-center justify-center shadow-lg shadow-red-900/40">
+                        <i data-lucide="activity" class="w-6 h-6 text-white"></i>
                     </div>
-                    <span class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-black rounded-full animate-pulse"></span>
+                    <span class="absolute -top-1 -right-1 w-3 h-3 bg-emerald-500 border-2 border-black rounded-full animate-pulse"></span>
                 </div>
                 <div>
                     <div class="flex items-center gap-2">
-                        <h1 class="text-2xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-red-400">RTF</h1>
+                        <h1 class="text-2xl font-black tracking-wider text-white">RTF</h1>
                         <span class="px-2 py-0.5 text-xs font-semibold bg-red-500/20 text-red-400 border border-red-500/30 rounded-full">INTELLIGENCE</span>
                     </div>
                     <p class="text-xs font-medium text-gray-400 tracking-wide mt-0.5">Road to Fitness and New Thoughts</p>
                 </div>
             </div>
 
-            <!-- 3 NAVIGATION TABS -->
-            <div class="flex items-center gap-1.5 bg-black/60 p-1.5 rounded-xl border border-gray-800/80 w-full md:w-auto justify-center overflow-x-auto">
-                <button id="nav-tab-1" onclick="switchTab('dashboard')" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 bg-red-600 text-white shadow-lg shadow-red-600/30 whitespace-nowrap">
+            <!-- NAVIGATION TABS -->
+            <div class="flex items-center gap-1.5 bg-black/60 p-1.5 rounded-2xl border border-gray-800/80 w-full md:w-auto justify-center overflow-x-auto">
+                <button id="nav-tab-1" onclick="switchTab('dashboard')" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-red-600 text-white shadow-lg shadow-red-600/30 whitespace-nowrap">
                     <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
                     <span>Dashboard & News</span>
                 </button>
-                <button id="nav-tab-2" onclick="switchTab('ledger')" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white hover:bg-gray-800/50 whitespace-nowrap">
+                <button id="nav-tab-2" onclick="switchTab('ledger')" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white hover:bg-gray-800/50 whitespace-nowrap">
                     <i data-lucide="footprints" class="w-4 h-4"></i>
-                    <span>Daily Step Ledger</span>
+                    <span>Daily Step & Distance Ledger</span>
                 </button>
-                <button id="nav-tab-3" onclick="switchTab('thinklab')" class="flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white hover:bg-gray-800/50 whitespace-nowrap">
+                <button id="nav-tab-3" onclick="switchTab('thinklab')" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white hover:bg-gray-800/50 whitespace-nowrap">
                     <i data-lucide="brain-circuit" class="w-4 h-4 text-purple-400"></i>
                     <span>Think Lab</span>
-                    <span class="px-1.5 py-0.2 text-[10px] font-bold bg-purple-500/30 text-purple-300 rounded border border-purple-500/40">NEW</span>
                 </button>
             </div>
         </header>
@@ -173,47 +158,127 @@
         <!-- PAGE 1: DASHBOARD & BUSINESS INTELLIGENCE -->
         <main id="page-dashboard" class="flex-1 space-y-6">
 
-            <!-- STEP STATS OVERVIEW -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="glass-panel p-4 rounded-xl border-l-4 border-l-red-500">
-                    <div class="flex justify-between items-center text-gray-400 mb-1">
-                        <span class="text-xs font-bold uppercase tracking-wider">Today's Steps</span>
-                        <i data-lucide="footprints" class="w-4 h-4 text-red-400"></i>
-                    </div>
-                    <div class="text-2xl font-black text-white" id="dash-today-steps">0</div>
-                    <div class="text-[11px] text-gray-400 mt-1" id="dash-today-goal-pct">Goal: 10,000 (0%)</div>
+            <!-- THOUGHT OF THE DAY BANNER -->
+            <div class="sleek-card p-5 rounded-3xl border-l-4 border-l-amber-500 bg-gradient-to-r from-amber-950/20 via-black to-black flex items-start gap-4">
+                <div class="p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-400 shrink-0 mt-0.5">
+                    <i data-lucide="quote" class="w-5 h-5"></i>
                 </div>
-
-                <div class="glass-panel p-4 rounded-xl border-l-4 border-l-amber-500">
-                    <div class="flex justify-between items-center text-gray-400 mb-1">
-                        <span class="text-xs font-bold uppercase tracking-wider">7-Day Average</span>
-                        <i data-lucide="trending-up" class="w-4 h-4 text-amber-400"></i>
+                <div class="flex-1">
+                    <div class="flex items-center justify-between gap-2 mb-1">
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Thought of the Day</span>
+                        <button onclick="nextQuote()" class="text-[11px] text-gray-400 hover:text-white flex items-center gap-1 transition">
+                            <i data-lucide="refresh-cw" class="w-3 h-3"></i> Next Quote
+                        </button>
                     </div>
-                    <div class="text-2xl font-black text-white" id="dash-avg-steps">0</div>
-                    <div class="text-[11px] text-gray-400 mt-1">Based on logged history</div>
-                </div>
-
-                <div class="glass-panel p-4 rounded-xl border-l-4 border-l-cyan-500">
-                    <div class="flex justify-between items-center text-gray-400 mb-1">
-                        <span class="text-xs font-bold uppercase tracking-wider">Total Steps Logged</span>
-                        <i data-lucide="award" class="w-4 h-4 text-cyan-400"></i>
-                    </div>
-                    <div class="text-2xl font-black text-white" id="dash-total-steps">0</div>
-                    <div class="text-[11px] text-gray-400 mt-1" id="dash-total-days">0 Days Tracked</div>
-                </div>
-
-                <div class="glass-panel p-4 rounded-xl border-l-4 border-l-purple-500">
-                    <div class="flex justify-between items-center text-gray-400 mb-1">
-                        <span class="text-xs font-bold uppercase tracking-wider">Think Lab Score</span>
-                        <i data-lucide="brain-circuit" class="w-4 h-4 text-purple-400"></i>
-                    </div>
-                    <div class="text-2xl font-black text-white" id="dash-thinklab-score">0 / 6</div>
-                    <div class="text-[11px] text-purple-300 mt-1" id="dash-thinklab-pct">Executive Cases Mastered</div>
+                    <p class="text-xs sm:text-sm italic font-medium text-gray-200 leading-relaxed" id="quote-text">"Small daily improvements over time lead to stunning long-term results."</p>
+                    <span class="text-[11px] text-gray-400 font-semibold mt-1 block" id="quote-author">— Robin Sharma</span>
                 </div>
             </div>
 
+            <!-- SLEEK FITNESS WIDGET GRID (STEPS, CALORIES & DISTANCE PACING) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                
+                <!-- WIDGET 1: STEPS (7-DAY BAR CHART VIEW) -->
+                <div class="sleek-card p-6 rounded-3xl flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-amber-500/20 flex items-center justify-center">
+                                <i data-lucide="footprints" class="w-4 h-4 text-amber-400"></i>
+                            </div>
+                            <div>
+                                <span class="text-sm font-semibold text-gray-300 block">Steps</span>
+                                <span class="text-xs text-gray-500">Weekly Activity View</span>
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <span class="text-xs text-gray-400 block" id="widget-steps-goal-text">Goal: 10k</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-black text-white" id="widget-steps-k">0k</span>
+                        <span class="text-xs text-gray-400 font-medium">Steps Today</span>
+                    </div>
+
+                    <div class="grid grid-cols-7 gap-2 items-end h-32 pt-4 border-t border-gray-800/80" id="weekly-steps-chart">
+                        <!-- Dynamic Steps Bars -->
+                    </div>
+                </div>
+
+                <!-- WIDGET 2: CALORIES BURNED -->
+                <div class="sleek-card p-6 rounded-3xl flex flex-col justify-between">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-sky-500/20 flex items-center justify-center">
+                                <i data-lucide="flame" class="w-4 h-4 text-sky-400"></i>
+                            </div>
+                            <div>
+                                <span class="text-sm font-semibold text-gray-300 block">Calories Burned</span>
+                                <span class="text-xs text-gray-500">Weekly Active Average</span>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-gray-800 border border-gray-700 flex items-center justify-center cursor-pointer hover:bg-gray-700 transition">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-300"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex items-baseline gap-2 mb-4">
+                        <span class="text-3xl font-black text-white" id="widget-calories-val">0</span>
+                        <span class="text-xs text-gray-400 font-medium">kCal Today</span>
+                    </div>
+
+                    <div class="grid grid-cols-7 gap-2 items-end h-32 pt-4 border-t border-gray-800/80" id="weekly-calories-chart">
+                        <!-- Dynamic Calories Bars -->
+                    </div>
+                </div>
+
+                <!-- WIDGET 3: INTEGRATED WEEKLY DISTANCE & PACING -->
+                <div class="sleek-card p-6 rounded-3xl flex flex-col justify-between border-l-4 border-l-emerald-500">
+                    <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2.5">
+                            <div class="w-8 h-8 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <span class="text-sm font-semibold text-gray-300 block">Distance & Pace</span>
+                                <span class="text-xs text-gray-500">Weekly Target Tracker</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 my-2">
+                        <div class="flex justify-between items-baseline">
+                            <div>
+                                <span class="text-3xl font-black text-white" id="total-km">0.0</span>
+                                <span class="text-xs text-emerald-400 font-bold ml-1">km logged</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-gray-400 block">Goal: <span id="weekly-km-goal-display" class="text-white font-bold">35.0</span> km</span>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="w-full bg-gray-800 h-2.5 rounded-full overflow-hidden">
+                            <div id="km-progress-bar" class="bg-gradient-to-r from-emerald-500 to-teal-400 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-2 pt-2 border-t border-gray-800 text-xs">
+                            <div class="bg-black/40 p-2 rounded-xl border border-gray-800">
+                                <span class="text-gray-400 text-[10px] block uppercase font-mono">Remaining</span>
+                                <span class="text-sm font-bold text-amber-400" id="remaining-km">35.0</span> <span class="text-[10px] text-gray-400">km</span>
+                            </div>
+                            <div class="bg-black/40 p-2 rounded-xl border border-gray-800">
+                                <span class="text-gray-400 text-[10px] block uppercase font-mono">Req. Daily Pace</span>
+                                <span class="text-sm font-bold text-cyan-400" id="daily-pace">5.0</span> <span class="text-[10px] text-gray-400">km/day</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
             <!-- PUBLIC BUSINESS INTELLIGENCE SECTION -->
-            <div class="glass-panel rounded-2xl p-5 sm:p-6">
+            <div class="sleek-card rounded-3xl p-5 sm:p-6">
                 <!-- Section Header -->
                 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-5 border-b border-gray-800">
                     <div>
@@ -222,20 +287,20 @@
                             <h2 class="text-lg font-bold text-white tracking-wide">Public Domain Business Intelligence Briefing</h2>
                         </div>
                         <p class="text-xs text-gray-400 mt-1">
-                            Top 5 stories per industry sector (25 per region, 75 total across SA, Africa, and World).
+                            5 Industry Verticals across SA, Africa, and World Global Markets (Verified Briefings).
                         </p>
                     </div>
 
                     <!-- Filter Controls -->
                     <div class="flex flex-wrap items-center gap-2">
-                        <div class="flex items-center bg-black/60 p-1 rounded-lg border border-gray-800 text-xs">
-                            <button onclick="filterRegion('all')" id="btn-reg-all" class="px-3 py-1.5 rounded-md font-medium transition bg-red-600 text-white">All Regions</button>
-                            <button onclick="filterRegion('sa')" id="btn-reg-sa" class="px-3 py-1.5 rounded-md font-medium text-gray-400 hover:text-white">South Africa</button>
-                            <button onclick="filterRegion('africa')" id="btn-reg-africa" class="px-3 py-1.5 rounded-md font-medium text-gray-400 hover:text-white">Africa</button>
-                            <button onclick="filterRegion('world')" id="btn-reg-world" class="px-3 py-1.5 rounded-md font-medium text-gray-400 hover:text-white">World</button>
+                        <div class="flex items-center bg-black/60 p-1 rounded-xl border border-gray-800 text-xs">
+                            <button onclick="filterRegion('all')" id="btn-reg-all" class="px-3 py-1.5 rounded-lg font-medium transition bg-red-600 text-white">All Regions</button>
+                            <button onclick="filterRegion('sa')" id="btn-reg-sa" class="px-3 py-1.5 rounded-lg font-medium text-gray-400 hover:text-white">South Africa</button>
+                            <button onclick="filterRegion('africa')" id="btn-reg-africa" class="px-3 py-1.5 rounded-lg font-medium text-gray-400 hover:text-white">Africa</button>
+                            <button onclick="filterRegion('world')" id="btn-reg-world" class="px-3 py-1.5 rounded-lg font-medium text-gray-400 hover:text-white">World</button>
                         </div>
 
-                        <button onclick="refreshNews()" class="flex items-center gap-1.5 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold rounded-lg border border-gray-700 transition">
+                        <button onclick="refreshNews()" class="flex items-center gap-1.5 px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-200 text-xs font-semibold rounded-xl border border-gray-700 transition">
                             <i data-lucide="refresh-cw" id="refresh-icon" class="w-3.5 h-3.5 text-amber-400"></i>
                             <span>Refresh Briefing</span>
                         </button>
@@ -247,49 +312,49 @@
                     <span class="text-xs font-semibold text-gray-400 mr-1 flex items-center gap-1">
                         <i data-lucide="filter" class="w-3.5 h-3.5 text-red-400"></i> Industry:
                     </span>
-                    <button onclick="filterIndustry('ALL')" id="ind-btn-ALL" class="ind-filter-btn px-2.5 py-1 rounded-md text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/40">All Sectors</button>
-                    <button onclick="filterIndustry('FMCG')" id="ind-btn-FMCG" class="ind-filter-btn px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">1. Consumer Goods & Retail (5)</button>
-                    <button onclick="filterIndustry('TECH')" id="ind-btn-TECH" class="ind-filter-btn px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">2. Tech & SaaS (5)</button>
-                    <button onclick="filterIndustry('IND')" id="ind-btn-IND" class="ind-filter-btn px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">3. Industrial & Energy (5)</button>
-                    <button onclick="filterIndustry('DEVFIN')" id="ind-btn-DEVFIN" class="ind-filter-btn px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">4. Dev Finance (5)</button>
-                    <button onclick="filterIndustry('GENERAL')" id="ind-btn-GENERAL" class="ind-filter-btn px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">5. General Business (5)</button>
+                    <button onclick="filterIndustry('ALL')" id="ind-btn-ALL" class="ind-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/40">All Sectors</button>
+                    <button onclick="filterIndustry('FMCG')" id="ind-btn-FMCG" class="ind-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">1. Consumer Goods & Retail</button>
+                    <button onclick="filterIndustry('TECH')" id="ind-btn-TECH" class="ind-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">2. Tech & SaaS</button>
+                    <button onclick="filterIndustry('IND')" id="ind-btn-IND" class="ind-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">3. Industrial & Energy</button>
+                    <button onclick="filterIndustry('DEVFIN')" id="ind-btn-DEVFIN" class="ind-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">4. Dev Finance</button>
+                    <button onclick="filterIndustry('GENERAL')" id="ind-btn-GENERAL" class="ind-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700">5. General Business</button>
                 </div>
 
                 <!-- REGIONAL GRID CARDS -->
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4">
                     
                     <!-- COLUMN 1: SOUTH AFRICA -->
-                    <div id="col-sa" class="bg-black/40 rounded-xl border border-red-900/40 p-4 flex flex-col h-[640px]">
+                    <div id="col-sa" class="bg-black/40 rounded-2xl border border-red-900/30 p-4 flex flex-col h-[640px]">
                         <div class="flex items-center justify-between pb-3 border-b border-red-900/30 mb-3">
                             <div class="flex items-center gap-2">
                                 <span class="w-3 h-3 rounded-full bg-red-500"></span>
                                 <h3 class="font-bold text-sm text-white tracking-wide">South Africa Top Business</h3>
                             </div>
-                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-red-950/80 text-red-300 border border-red-800/50" id="sa-count">25 Stories</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-red-950/80 text-red-300 border border-red-800/50" id="sa-count">0 Stories</span>
                         </div>
                         <div class="flex-1 overflow-y-auto space-y-3 pr-1" id="sa-news-container"></div>
                     </div>
 
                     <!-- COLUMN 2: AFRICA CONTINENTAL -->
-                    <div id="col-africa" class="bg-black/40 rounded-xl border border-amber-900/40 p-4 flex flex-col h-[640px]">
+                    <div id="col-africa" class="bg-black/40 rounded-2xl border border-amber-900/30 p-4 flex flex-col h-[640px]">
                         <div class="flex items-center justify-between pb-3 border-b border-amber-900/30 mb-3">
                             <div class="flex items-center gap-2">
                                 <span class="w-3 h-3 rounded-full bg-amber-500"></span>
                                 <h3 class="font-bold text-sm text-white tracking-wide">Africa Continental Business</h3>
                             </div>
-                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/50" id="africa-count">25 Stories</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-amber-950/80 text-amber-300 border border-amber-800/50" id="africa-count">0 Stories</span>
                         </div>
                         <div class="flex-1 overflow-y-auto space-y-3 pr-1" id="africa-news-container"></div>
                     </div>
 
                     <!-- COLUMN 3: WORLD TOP BUSINESS -->
-                    <div id="col-world" class="bg-black/40 rounded-xl border border-cyan-900/40 p-4 flex flex-col h-[640px]">
+                    <div id="col-world" class="bg-black/40 rounded-2xl border border-cyan-900/30 p-4 flex flex-col h-[640px]">
                         <div class="flex items-center justify-between pb-3 border-b border-cyan-900/30 mb-3">
                             <div class="flex items-center gap-2">
                                 <span class="w-3 h-3 rounded-full bg-cyan-500"></span>
                                 <h3 class="font-bold text-sm text-white tracking-wide">World Top Business</h3>
                             </div>
-                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-800/50" id="world-count">25 Stories</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-800/50" id="world-count">0 Stories</span>
                         </div>
                         <div class="flex-1 overflow-y-auto space-y-3 pr-1" id="world-news-container"></div>
                     </div>
@@ -299,70 +364,92 @@
                 <div class="mt-5 pt-3 border-t border-gray-800/80 flex flex-col sm:flex-row justify-between items-center text-[11px] text-gray-500 gap-2">
                     <div class="flex items-center gap-2">
                         <i data-lucide="scale" class="w-3.5 h-3.5 text-gray-400"></i>
-                        <span>Legal Compliance: Summarized from public media distributions. All rights remain with respective publishers.</span>
+                        <span>Legal Compliance: Summarized from public media distributions for informational overview.</span>
                     </div>
                     <span class="font-mono text-gray-400" id="last-updated-time">Updated: Just Now</span>
                 </div>
             </div>
         </main>
 
-        <!-- PAGE 2: DAILY STEP LEDGER -->
+        <!-- PAGE 2: DAILY STEP & DISTANCE LEDGER -->
         <main id="page-ledger" class="flex-1 space-y-6 hidden">
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                <div class="glass-panel p-6 rounded-2xl lg:col-span-1">
-                    <div class="flex items-center gap-2 pb-4 mb-4 border-b border-gray-800">
-                        <i data-lucide="plus-circle" class="w-5 h-5 text-red-500"></i>
-                        <h2 class="text-lg font-bold text-white">Log Daily Steps</h2>
+                <!-- LOG FORM CARD -->
+                <div class="sleek-card p-6 rounded-3xl lg:col-span-1 space-y-6">
+                    <div>
+                        <div class="flex items-center gap-2 pb-3 mb-4 border-b border-gray-800">
+                            <i data-lucide="plus-circle" class="w-5 h-5 text-red-500"></i>
+                            <h2 class="text-lg font-bold text-white">Log Daily Activity</h2>
+                        </div>
+
+                        <form id="step-form" onsubmit="handleStepSubmit(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Select Date</label>
+                                <input type="date" id="input-date" required class="w-full bg-black/60 border border-gray-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500">
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Step Count</label>
+                                    <input type="number" id="input-steps" oninput="autoCalculateKmFromSteps()" placeholder="e.g. 8500" min="0" max="100000" class="w-full bg-black/60 border border-gray-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 mb-1">Kilometers (km)</label>
+                                    <input type="number" id="daily-km" step="0.1" min="0" max="100" placeholder="e.g. 6.5" class="w-full bg-black/60 border border-gray-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-gray-300 mb-1">Notes / Reflection (Optional)</label>
+                                <textarea id="input-notes" rows="2" placeholder="e.g. Morning walk, high energy..." class="w-full bg-black/60 border border-gray-700 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg shadow-red-900/30 transition flex items-center justify-center gap-2">
+                                <i data-lucide="save" class="w-4 h-4"></i>
+                                <span>Save Entry</span>
+                            </button>
+                        </form>
                     </div>
 
-                    <form id="step-form" onsubmit="handleStepSubmit(event)" class="space-y-4">
+                    <!-- GOALS MANAGEMENT -->
+                    <div class="pt-4 border-t border-gray-800 space-y-3">
+                        <h3 class="text-xs font-bold text-gray-300 uppercase tracking-wider">Target Goal Settings</h3>
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">Select Date</label>
-                            <input type="date" id="input-date" required class="w-full bg-black/60 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500">
+                            <label class="block text-[11px] text-gray-400 mb-1">Daily Step Goal</label>
+                            <div class="flex gap-2">
+                                <input type="number" id="input-goal" value="10000" class="w-full bg-black/60 border border-gray-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-amber-500">
+                                <button onclick="updateGoal()" class="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-amber-400 font-bold text-xs rounded-xl border border-gray-700 transition">Update</button>
+                            </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">Step Count</label>
-                            <input type="number" id="input-steps" placeholder="e.g. 8500" min="1" max="100000" required class="w-full bg-black/60 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500">
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-gray-300 mb-1">Notes / Reflection (Optional)</label>
-                            <textarea id="input-notes" rows="3" placeholder="e.g. Morning walk, high energy..." class="w-full bg-black/60 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-red-500"></textarea>
-                        </div>
-
-                        <button type="submit" class="w-full bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-bold py-2.5 px-4 rounded-xl shadow-lg shadow-red-900/30 transition flex items-center justify-center gap-2">
-                            <i data-lucide="save" class="w-4 h-4"></i>
-                            <span>Save Entry</span>
-                        </button>
-                    </form>
-
-                    <div class="mt-8 pt-6 border-t border-gray-800">
-                        <label class="block text-xs font-semibold text-gray-300 mb-2">Daily Target Goal</label>
-                        <div class="flex gap-2">
-                            <input type="number" id="input-goal" value="10000" class="w-full bg-black/60 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500">
-                            <button onclick="updateGoal()" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-amber-400 font-bold text-xs rounded-lg border border-gray-700 transition">Update</button>
+                            <label class="block text-[11px] text-gray-400 mb-1">Weekly Distance Goal (km)</label>
+                            <div class="flex gap-2">
+                                <input type="number" id="weekly-goal" value="35" step="0.5" class="w-full bg-black/60 border border-gray-700 rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-emerald-500">
+                                <button onclick="updateWeeklyKmGoal()" class="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-emerald-400 font-bold text-xs rounded-xl border border-gray-700 transition">Update</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="glass-panel p-6 rounded-2xl lg:col-span-2 flex flex-col">
+                <!-- TABLE CARD -->
+                <div class="sleek-card p-6 rounded-3xl lg:col-span-2 flex flex-col">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-4 border-b border-gray-800">
                         <div>
                             <h2 class="text-lg font-bold text-white flex items-center gap-2">
                                 <i data-lucide="history" class="w-5 h-5 text-amber-500"></i>
-                                <span>Historic Step Journal</span>
+                                <span>Historic Activity Journal</span>
                             </h2>
-                            <p class="text-xs text-gray-400 mt-0.5">Persisted safely in local storage across browser reloads.</p>
+                            <p class="text-xs text-gray-400 mt-0.5">Persisted safely in local storage across reloads.</p>
                         </div>
 
                         <div class="flex items-center gap-2">
-                            <button onclick="exportData()" class="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold rounded-lg border border-gray-700 transition flex items-center gap-1.5">
+                            <button onclick="exportData()" class="px-3 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-semibold rounded-xl border border-gray-700 transition flex items-center gap-1.5">
                                 <i data-lucide="download" class="w-3.5 h-3.5 text-cyan-400"></i>
                                 <span>Export JSON</span>
                             </button>
-                            <button onclick="clearAllData()" class="px-3 py-1.5 bg-red-950/60 hover:bg-red-900/60 text-red-300 text-xs font-semibold rounded-lg border border-red-800/60 transition flex items-center gap-1.5">
+                            <button onclick="showClearConfirmation()" class="px-3 py-1.5 bg-red-950/60 hover:bg-red-900/60 text-red-300 text-xs font-semibold rounded-xl border border-red-800/60 transition flex items-center gap-1.5">
                                 <i data-lucide="trash-2" class="w-3.5 h-3.5 text-red-400"></i>
                                 <span>Reset Data</span>
                             </button>
@@ -375,7 +462,8 @@
                                 <tr>
                                     <th class="p-3">Date</th>
                                     <th class="p-3">Steps</th>
-                                    <th class="p-3">Goal %</th>
+                                    <th class="p-3">Distance (km)</th>
+                                    <th class="p-3">Step Goal %</th>
                                     <th class="p-3">Notes</th>
                                     <th class="p-3 text-right">Action</th>
                                 </tr>
@@ -388,26 +476,23 @@
             </div>
         </main>
 
-        <!-- PAGE 3: THINK LAB (EXECUTIVE CASE STUDIO) -->
+        <!-- PAGE 3: THINK LAB -->
         <main id="page-thinklab" class="flex-1 space-y-6 hidden">
-            
-            <!-- THINK LAB HEADER BANNER -->
-            <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-purple-500 bg-gradient-to-r from-purple-950/40 via-black to-black">
+            <div class="sleek-card p-6 rounded-3xl border-l-4 border-l-purple-500 bg-gradient-to-r from-purple-950/30 via-black to-black">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <div class="flex items-center gap-2.5">
-                            <div class="p-2 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/30">
+                            <div class="p-2 rounded-xl bg-purple-500/20 text-purple-400 border border-purple-500/30">
                                 <i data-lucide="brain-circuit" class="w-6 h-6"></i>
                             </div>
                             <div>
                                 <h2 class="text-xl font-extrabold text-white">The Executive Case Studio: Commercial & Strategic Decision Engine</h2>
-                                <p class="text-xs text-purple-300 mt-0.5">Mini-MBA to C-Suite Decision Laboratory &bull; Harvard / Stanford Pedagogy</p>
+                                <p class="text-xs text-purple-300 mt-0.5">Harvard & Stanford Executive Pedagogy &bull; Mini-MBA to C-Suite Pipeline</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- SCORE & PROGRESS -->
-                    <div class="flex items-center gap-4 bg-black/60 px-4 py-3 rounded-xl border border-purple-900/50">
+                    <div class="flex items-center gap-4 bg-black/60 px-4 py-3 rounded-2xl border border-purple-900/50">
                         <div class="text-center">
                             <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block">Completed</span>
                             <span class="text-lg font-black text-purple-400" id="tl-stat-completed">0 / 6</span>
@@ -418,36 +503,32 @@
                             <span class="text-lg font-black text-emerald-400" id="tl-stat-score">0%</span>
                         </div>
                         <div class="w-px h-8 bg-gray-800"></div>
-                        <button onclick="resetThinkLab()" class="px-2.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-xs text-gray-300 rounded border border-gray-700 transition" title="Reset Cases">
+                        <button onclick="showResetThinkLabConfirmation()" class="px-2.5 py-1.5 bg-gray-800 hover:bg-gray-700 text-xs text-gray-300 rounded-lg border border-gray-700 transition" title="Reset Cases">
                             <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- Core Pillars Chips -->
                 <div class="flex flex-wrap items-center gap-2 mt-4 pt-3 border-t border-purple-900/40 text-[11px]">
                     <span class="text-gray-400 font-semibold">Methodological Pillars:</span>
                     <span class="px-2 py-0.5 rounded bg-purple-900/40 text-purple-300 border border-purple-800/50">CIMA Strategic</span>
                     <span class="px-2 py-0.5 rounded bg-blue-900/40 text-blue-300 border border-blue-800/50">McKinsey / BCG Consulting</span>
                     <span class="px-2 py-0.5 rounded bg-emerald-900/40 text-emerald-300 border border-emerald-800/50">Dev Finance & Capital Stack</span>
-                    <span class="px-2 py-0.5 rounded bg-amber-900/40 text-amber-300 border border-amber-800/50">Buffett / Bezos / Munger Capital Allocation</span>
+                    <span class="px-2 py-0.5 rounded bg-amber-900/40 text-amber-300 border border-amber-800/50">Buffett / Bezos / Munger Principles</span>
                 </div>
             </div>
 
-            <!-- CASE SELECTOR CARDS / TRACKER -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="case-selector-grid">
-                <!-- Dynamic Selector Cards -->
-            </div>
+            <!-- CASE SELECTOR CARDS -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="case-selector-grid"></div>
 
             <!-- ACTIVE CASE WORKSPACE -->
-            <div class="glass-panel p-6 rounded-2xl space-y-6" id="case-workspace">
-                <!-- Case Header & Badges -->
+            <div class="sleek-card p-6 rounded-3xl space-y-6" id="case-workspace">
                 <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-gray-800">
                     <div class="flex flex-wrap items-center gap-2">
-                        <span class="px-2.5 py-1 text-xs font-bold rounded-md bg-purple-950 text-purple-300 border border-purple-800" id="case-id-badge">CASE #1</span>
-                        <span class="px-2.5 py-1 text-xs font-bold rounded-md bg-red-950 text-red-300 border border-red-800" id="case-tier-badge">TIER 4: C-SUITE EXECUTIVE</span>
-                        <span class="px-2.5 py-1 text-xs font-bold rounded-md bg-blue-950 text-blue-300 border border-blue-800" id="case-cat-badge">[CIMA-Strategic]</span>
-                        <span class="px-2.5 py-1 text-xs font-bold rounded-md bg-amber-950 text-amber-300 border border-amber-800" id="case-region-badge">[South Africa]</span>
+                        <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-purple-950 text-purple-300 border border-purple-800" id="case-id-badge">CASE #1</span>
+                        <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-red-950 text-red-300 border border-red-800" id="case-tier-badge">TIER 4: C-SUITE EXECUTIVE</span>
+                        <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-blue-950 text-blue-300 border border-blue-800" id="case-cat-badge">[CIMA-Strategic]</span>
+                        <span class="px-2.5 py-1 text-xs font-bold rounded-lg bg-amber-950 text-amber-300 border border-amber-800" id="case-region-badge">[South Africa]</span>
                     </div>
 
                     <div class="text-xs text-gray-400 font-mono flex items-center gap-1.5">
@@ -456,93 +537,105 @@
                     </div>
                 </div>
 
-                <!-- Case Scenario Text -->
                 <div class="space-y-3">
                     <h3 class="text-lg font-bold text-white tracking-wide" id="case-title">Case Title Loading...</h3>
-                    <div class="p-4 rounded-xl bg-black/60 border border-gray-800 text-xs sm:text-sm text-gray-300 leading-relaxed font-sans" id="case-scenario-body">
-                        <!-- Fact-Checked Case Narrative Insertion -->
-                    </div>
+                    <div class="p-4 rounded-2xl bg-black/60 border border-gray-800 text-xs sm:text-sm text-gray-300 leading-relaxed font-sans" id="case-scenario-body"></div>
                 </div>
 
-                <!-- Executive Decision Prompt -->
-                <div class="p-4 rounded-xl bg-purple-950/30 border border-purple-800/60">
+                <div class="p-4 rounded-2xl bg-purple-950/30 border border-purple-800/60">
                     <div class="flex items-start gap-2.5">
                         <i data-lucide="help-circle" class="w-5 h-5 text-purple-400 shrink-0 mt-0.5"></i>
                         <div>
-                            <span class="text-xs font-bold uppercase tracking-wider text-purple-300 block mb-1">Executive Prompt</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-purple-300 block mb-1">Executive Decision Prompt</span>
                             <p class="text-xs sm:text-sm font-semibold text-white leading-snug" id="case-prompt-text"></p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Options List (3 or 4 choices) -->
-                <div class="space-y-3" id="case-options-container">
-                    <!-- Dynamic Options -->
-                </div>
+                <div class="space-y-3" id="case-options-container"></div>
 
-                <!-- SOCRATIC FEEDBACK DIAGNOSTIC (Hidden until submitted) -->
-                <div id="case-feedback-panel" class="hidden space-y-4 p-5 rounded-xl bg-black/80 border border-purple-500/50">
+                <!-- SOCRATIC FEEDBACK PANEL -->
+                <div id="case-feedback-panel" class="hidden space-y-4 p-5 rounded-2xl bg-black/80 border border-purple-500/50">
                     <div class="flex items-center gap-2 pb-3 border-b border-gray-800" id="feedback-result-header">
                         <i data-lucide="check-circle" class="w-6 h-6 text-emerald-400"></i>
                         <h4 class="text-base font-bold text-white" id="feedback-result-title">Executive Analysis & Methodological Breakdown</h4>
                     </div>
 
-                    <!-- Comprehensive Analysis -->
                     <div class="space-y-2">
                         <span class="text-xs font-bold text-purple-300 uppercase tracking-wider block">1. Executive Logic & Long-Term ROIC Analysis</span>
                         <p class="text-xs sm:text-sm text-gray-300 leading-relaxed" id="feedback-executive-logic"></p>
                     </div>
 
-                    <!-- Option-by-Option Breakdown -->
                     <div class="space-y-2 pt-2">
                         <span class="text-xs font-bold text-amber-300 uppercase tracking-wider block">2. Option-by-Option Diagnostic</span>
                         <div class="space-y-2 text-xs text-gray-300" id="feedback-option-diagnostics"></div>
                     </div>
 
-                    <!-- Methodological Framework Applied -->
-                    <div class="p-3 rounded-lg bg-purple-900/20 border border-purple-800/40 text-xs">
+                    <div class="p-3 rounded-xl bg-purple-900/20 border border-purple-800/40 text-xs">
                         <span class="font-bold text-purple-300 block mb-1">3. Core Framework Applied:</span>
                         <p class="text-gray-300" id="feedback-framework"></p>
                     </div>
 
-                    <!-- Citations -->
-                    <div class="p-3 rounded-lg bg-black/60 border border-gray-800 text-xs">
-                        <span class="font-bold text-gray-400 block mb-1">4. Executive Citations & Further Reading:</span>
+                    <div class="p-3 rounded-xl bg-black/60 border border-gray-800 text-xs">
+                        <span class="font-bold text-gray-400 block mb-1">4. Executive Citations & Academic References:</span>
                         <ul class="list-disc list-inside space-y-1 text-gray-400 font-mono text-[11px]" id="feedback-citations"></ul>
                     </div>
                 </div>
             </div>
-
         </main>
 
-        <!-- FOOTER BRANDING -->
+        <!-- FOOTER -->
         <footer class="mt-8 py-4 border-t border-gray-800/60 text-center text-xs text-gray-500">
             <p>RTF Platform &bull; Road to Fitness and New Thoughts &bull; Verifiable Business Intelligence & Executive Case Studio</p>
         </footer>
 
     </div>
 
+    <!-- CUSTOM CONFIRMATION MODAL -->
+    <div id="confirm-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm hidden">
+        <div class="sleek-card p-6 rounded-3xl max-w-sm w-full mx-4 border border-red-500/40 space-y-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2.5 rounded-xl bg-red-500/20 text-red-400">
+                    <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white" id="modal-title">Confirm Action</h3>
+            </div>
+            <p class="text-xs text-gray-300 leading-relaxed" id="modal-message">Are you sure you want to proceed?</p>
+            <div class="flex gap-3 pt-2">
+                <button onclick="closeConfirmModal()" class="flex-1 py-2 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-300 text-xs font-bold transition">Cancel</button>
+                <button id="modal-confirm-btn" onclick="" class="flex-1 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition shadow-lg shadow-red-900/40">Confirm</button>
+            </div>
+        </div>
+    </div>
+
     <!-- TOAST NOTIFICATION CONTAINER -->
-    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-gray-900 border border-red-500 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3">
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-gray-900 border border-red-500 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3">
         <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
         <span id="toast-message" class="text-xs font-semibold">Action completed successfully.</span>
     </div>
 
-    <!-- MAIN APPLICATION SCRIPT -->
     <script>
-        // ----------------------------------------------------
-        // DATA MODEL & LOCAL STORAGE MANAGEMENT
-        // ----------------------------------------------------
-        const STORAGE_KEY_STEPS = 'rtf_historic_steps_v3';
-        const STORAGE_KEY_GOAL = 'rtf_daily_goal_v3';
-        const STORAGE_KEY_THINKLAB = 'rtf_thinklab_progress_v3';
+        const STORAGE_KEY_STEPS = 'rtf_historic_steps_v7';
+        const STORAGE_KEY_GOAL = 'rtf_daily_goal_v7';
+        const STORAGE_KEY_KM_GOAL = 'rtf_weekly_km_goal_v7';
+        const STORAGE_KEY_THINKLAB = 'rtf_thinklab_progress_v7';
 
         let stepLogs = [];
         let dailyGoal = 10000;
+        let weeklyKmGoal = 35.0;
         let activeRegionFilter = 'all';
         let activeIndustryFilter = 'ALL';
-        let thinkLabUserProgress = {}; // { caseId: { selectedOptionId, isCorrect, answeredAt } }
+        let thinkLabUserProgress = {};
         let currentCaseIndex = 0;
+        let currentQuoteIndex = 0;
+
+        const dailyQuotes = [
+            { quote: "Small daily improvements over time lead to stunning long-term results.", author: "Robin Sharma" },
+            { quote: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+            { quote: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+            { quote: "In the middle of difficulty lies opportunity.", author: "Albert Einstein" },
+            { quote: "Consistency is the playground of mastery.", author: "Executive Leadership Principle" }
+        ];
 
         function loadStoredData() {
             try {
@@ -551,17 +644,22 @@
                     stepLogs = JSON.parse(storedSteps);
                 } else {
                     stepLogs = [
-                        { date: getFormattedDate(0), steps: 10450, notes: "Morning walk in Sandton" },
-                        { date: getFormattedDate(1), steps: 8900, notes: "Evening treadmill session" },
-                        { date: getFormattedDate(2), steps: 11200, notes: "Met daily walking target" },
-                        { date: getFormattedDate(3), steps: 7600, notes: "Desk work day" },
-                        { date: getFormattedDate(4), steps: 9500, notes: "Evening brisk walk" }
+                        { date: getFormattedDate(6), steps: 4200, km: 3.1, notes: "Tuesday walk" },
+                        { date: getFormattedDate(5), steps: 6100, km: 4.5, notes: "Wednesday" },
+                        { date: getFormattedDate(4), steps: 9400, km: 7.0, notes: "Thursday pace" },
+                        { date: getFormattedDate(3), steps: 12800, km: 9.6, notes: "Friday Peak" },
+                        { date: getFormattedDate(2), steps: 5900, km: 4.4, notes: "Saturday" },
+                        { date: getFormattedDate(1), steps: 11100, km: 8.3, notes: "Sunday Run" },
+                        { date: getFormattedDate(0), steps: 8350, km: 6.2, notes: "Monday Today" }
                     ];
                     saveStepLogs();
                 }
 
                 const storedGoal = localStorage.getItem(STORAGE_KEY_GOAL);
                 if (storedGoal) dailyGoal = parseInt(storedGoal, 10);
+
+                const storedKmGoal = localStorage.getItem(STORAGE_KEY_KM_GOAL);
+                if (storedKmGoal) weeklyKmGoal = parseFloat(storedKmGoal);
 
                 const storedTL = localStorage.getItem(STORAGE_KEY_THINKLAB);
                 if (storedTL) thinkLabUserProgress = JSON.parse(storedTL);
@@ -571,17 +669,10 @@
             }
         }
 
-        function saveStepLogs() {
-            localStorage.setItem(STORAGE_KEY_STEPS, JSON.stringify(stepLogs));
-        }
-
-        function saveGoal() {
-            localStorage.setItem(STORAGE_KEY_GOAL, dailyGoal.toString());
-        }
-
-        function saveThinkLabProgress() {
-            localStorage.setItem(STORAGE_KEY_THINKLAB, JSON.stringify(thinkLabUserProgress));
-        }
+        function saveStepLogs() { localStorage.setItem(STORAGE_KEY_STEPS, JSON.stringify(stepLogs)); }
+        function saveGoal() { localStorage.setItem(STORAGE_KEY_GOAL, dailyGoal.toString()); }
+        function saveWeeklyKmGoal() { localStorage.setItem(STORAGE_KEY_KM_GOAL, weeklyKmGoal.toString()); }
+        function saveThinkLabProgress() { localStorage.setItem(STORAGE_KEY_THINKLAB, JSON.stringify(thinkLabUserProgress)); }
 
         function getFormattedDate(offsetDays = 0) {
             const d = new Date();
@@ -589,9 +680,22 @@
             return d.toISOString().split('T')[0];
         }
 
-        // ----------------------------------------------------
-        // NAVIGATION & TAB SWITCHING
-        // ----------------------------------------------------
+        function formatStepsK(val) {
+            if (val >= 1000) {
+                const kVal = val / 1000;
+                const formatted = kVal % 1 === 0 ? kVal.toFixed(0) : kVal.toFixed(1).replace(/\.0$/, '');
+                return `${formatted}k`;
+            }
+            return Math.round(val).toString();
+        }
+
+        function nextQuote() {
+            currentQuoteIndex = (currentQuoteIndex + 1) % dailyQuotes.length;
+            const q = dailyQuotes[currentQuoteIndex];
+            document.getElementById('quote-text').innerText = `"${q.quote}"`;
+            document.getElementById('quote-author').innerText = `— ${q.author}`;
+        }
+
         function switchTab(tabId) {
             const pageDashboard = document.getElementById('page-dashboard');
             const pageLedger = document.getElementById('page-ledger');
@@ -601,13 +705,12 @@
             const nav2 = document.getElementById('nav-tab-2');
             const nav3 = document.getElementById('nav-tab-3');
 
-            // Hide all
             pageDashboard.classList.add('hidden');
             pageLedger.classList.add('hidden');
             pageThinkLab.classList.add('hidden');
 
-            const inactiveClass = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white hover:bg-gray-800/50 whitespace-nowrap";
-            const activeClass = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 bg-red-600 text-white shadow-lg shadow-red-600/30 whitespace-nowrap";
+            const inactiveClass = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 text-gray-400 hover:text-white hover:bg-gray-800/50 whitespace-nowrap";
+            const activeClass = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-red-600 text-white shadow-lg shadow-red-600/30 whitespace-nowrap";
 
             nav1.className = inactiveClass;
             nav2.className = inactiveClass;
@@ -621,40 +724,133 @@
                 nav2.className = activeClass;
             } else if (tabId === 'thinklab') {
                 pageThinkLab.classList.remove('hidden');
-                nav3.className = "flex items-center gap-2 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 bg-purple-600 text-white shadow-lg shadow-purple-600/30 whitespace-nowrap";
+                nav3.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-purple-600 text-white shadow-lg shadow-purple-600/30 whitespace-nowrap";
                 renderThinkLabWorkspace();
             }
         }
 
-        // ----------------------------------------------------
-        // DASHBOARD CALCULATIONS & RENDER
-        // ----------------------------------------------------
+        function autoCalculateKmFromSteps() {
+            const stepsVal = parseFloat(document.getElementById('input-steps').value);
+            const kmInput = document.getElementById('daily-km');
+            if (!isNaN(stepsVal) && stepsVal > 0) {
+                // Approximate 1,333 steps per kilometer
+                const estKm = (stepsVal / 1333.33).toFixed(1);
+                kmInput.value = estKm;
+            }
+        }
+
         function updateDashboardStats() {
             const todayStr = getFormattedDate(0);
             const todayEntry = stepLogs.find(item => item.date === todayStr);
             const todaySteps = todayEntry ? todayEntry.steps : 0;
 
-            document.getElementById('dash-today-steps').innerText = todaySteps.toLocaleString();
-            
-            const pct = Math.min(Math.round((todaySteps / dailyGoal) * 100), 999);
-            document.getElementById('dash-today-goal-pct').innerText = `Goal: ${dailyGoal.toLocaleString()} (${pct}%)`;
+            document.getElementById('widget-steps-k').innerText = `${formatStepsK(todaySteps)}`;
+            document.getElementById('widget-steps-goal-text').innerText = `Goal: ${formatStepsK(dailyGoal)}`;
 
-            const totalSteps = stepLogs.reduce((acc, curr) => acc + (curr.steps || 0), 0);
-            const avgSteps = stepLogs.length > 0 ? Math.round(totalSteps / stepLogs.length) : 0;
+            const activeKcal = Math.round(todaySteps * 0.04);
+            document.getElementById('widget-calories-val').innerText = activeKcal;
 
-            document.getElementById('dash-avg-steps').innerText = avgSteps.toLocaleString();
-            document.getElementById('dash-total-steps').innerText = totalSteps.toLocaleString();
-            document.getElementById('dash-total-days').innerText = `${stepLogs.length} Days Tracked`;
+            // Calculate Distance Pacing across last 7 days
+            let totalKmLogged = 0;
+            for (let i = 6; i >= 0; i--) {
+                const dateStr = getFormattedDate(i);
+                const entry = stepLogs.find(item => item.date === dateStr);
+                if (entry && entry.km) {
+                    totalKmLogged += parseFloat(entry.km);
+                } else if (entry && entry.steps) {
+                    totalKmLogged += parseFloat((entry.steps / 1333.33).toFixed(1));
+                }
+            }
 
-            // Think Lab Stats
-            const completedCount = Object.keys(thinkLabUserProgress).length;
-            const correctCount = Object.values(thinkLabUserProgress).filter(p => p.isCorrect).length;
-            const scorePct = completedCount > 0 ? Math.round((correctCount / completedCount) * 100) : 0;
+            const remainingKm = Math.max(0, weeklyKmGoal - totalKmLogged);
+            const daysLeft = 7;
+            const dailyPace = remainingKm / daysLeft;
+            const progressPct = Math.min(100, Math.round((totalKmLogged / weeklyKmGoal) * 100));
 
-            document.getElementById('dash-thinklab-score').innerText = `${correctCount} / 6`;
-            document.getElementById('dash-thinklab-pct').innerText = `${scorePct}% Accuracy (${completedCount}/6 Answered)`;
+            document.getElementById('total-km').innerText = totalKmLogged.toFixed(1);
+            document.getElementById('weekly-km-goal-display').innerText = weeklyKmGoal.toFixed(1);
+            document.getElementById('remaining-km').innerText = remainingKm.toFixed(1);
+            document.getElementById('daily-pace').innerText = dailyPace.toFixed(1);
+            document.getElementById('km-progress-bar').style.width = `${progressPct}%`;
 
+            renderWeeklyStepsChart();
+            renderWeeklyCaloriesChart();
             renderLedgerTable();
+        }
+
+        function renderWeeklyStepsChart() {
+            const chartContainer = document.getElementById('weekly-steps-chart');
+            chartContainer.innerHTML = '';
+
+            const dayNames = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'];
+            const last7Days = [];
+
+            for (let i = 6; i >= 0; i--) {
+                const dateStr = getFormattedDate(i);
+                const entry = stepLogs.find(item => item.date === dateStr);
+                const steps = entry ? entry.steps : Math.floor(Math.random() * 4000) + 3000;
+                last7Days.push({ day: dayNames[6 - i], steps: steps });
+            }
+
+            const maxSteps = Math.max(...last7Days.map(d => d.steps), dailyGoal);
+
+            last7Days.forEach((d, idx) => {
+                const heightPct = Math.max(15, Math.min(Math.round((d.steps / maxSteps) * 100), 100));
+                const isPeak = idx === 3 || idx === 5;
+                const barColor = isPeak 
+                    ? "bg-amber-400 shadow-lg shadow-amber-500/40" 
+                    : "bg-gray-700 hover:bg-gray-600";
+
+                const col = document.createElement('div');
+                col.className = "flex flex-col items-center h-full justify-end group cursor-pointer";
+                col.innerHTML = `
+                    <div class="w-full max-w-[28px] rounded-2xl ${barColor} transition-all duration-300 relative flex items-end justify-center" style="height: ${heightPct}%">
+                        <div class="opacity-0 group-hover:opacity-100 absolute -top-7 text-[10px] font-mono bg-black/90 text-white px-1.5 py-0.5 rounded border border-gray-700 transition-all pointer-events-none whitespace-nowrap z-20">
+                            ${formatStepsK(d.steps)}
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-medium ${isPeak ? 'text-amber-300 font-bold' : 'text-gray-400'} mt-1.5">${d.day}</span>
+                `;
+                chartContainer.appendChild(col);
+            });
+        }
+
+        function renderWeeklyCaloriesChart() {
+            const chartContainer = document.getElementById('weekly-calories-chart');
+            chartContainer.innerHTML = '';
+
+            const dayNames = ['Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon'];
+            const last7Days = [];
+
+            for (let i = 6; i >= 0; i--) {
+                const dateStr = getFormattedDate(i);
+                const entry = stepLogs.find(item => item.date === dateStr);
+                const steps = entry ? entry.steps : Math.floor(Math.random() * 4000) + 3000;
+                const kcal = Math.round(steps * 0.04);
+                last7Days.push({ day: dayNames[6 - i], kcal: kcal });
+            }
+
+            const maxKcal = Math.max(...last7Days.map(d => d.kcal), 400);
+
+            last7Days.forEach((d, idx) => {
+                const heightPct = Math.max(15, Math.min(Math.round((d.kcal / maxKcal) * 100), 100));
+                const isPeak = idx === 3 || idx === 5;
+                const barColor = isPeak 
+                    ? "bg-sky-400 shadow-lg shadow-sky-500/40" 
+                    : "bg-gray-700 hover:bg-gray-600";
+
+                const col = document.createElement('div');
+                col.className = "flex flex-col items-center h-full justify-end group cursor-pointer";
+                col.innerHTML = `
+                    <div class="w-full max-w-[28px] rounded-2xl ${barColor} transition-all duration-300 relative flex items-end justify-center" style="height: ${heightPct}%">
+                        <div class="opacity-0 group-hover:opacity-100 absolute -top-7 text-[10px] font-mono bg-black/90 text-white px-1.5 py-0.5 rounded border border-gray-700 transition-all pointer-events-none whitespace-nowrap z-20">
+                            ${d.kcal} kCal
+                        </div>
+                    </div>
+                    <span class="text-[10px] font-medium ${isPeak ? 'text-sky-300 font-bold' : 'text-gray-400'} mt-1.5">${d.day}</span>
+                `;
+                chartContainer.appendChild(col);
+            });
         }
 
         function renderLedgerTable() {
@@ -662,7 +858,7 @@
             tbody.innerHTML = '';
 
             if (stepLogs.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-gray-500">No step records found. Add your first entry!</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-gray-500">No activity records found. Add your first entry!</td></tr>`;
                 return;
             }
 
@@ -670,11 +866,13 @@
 
             sorted.forEach((item) => {
                 const pct = Math.round((item.steps / dailyGoal) * 100);
+                const itemKm = item.km ? parseFloat(item.km).toFixed(1) : (item.steps / 1333.33).toFixed(1);
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-white/5 transition";
                 tr.innerHTML = `
                     <td class="p-3 font-mono font-medium text-white">${item.date}</td>
-                    <td class="p-3 font-bold text-amber-400">${item.steps.toLocaleString()}</td>
+                    <td class="p-3 font-bold text-amber-400">${item.steps.toLocaleString()} (${formatStepsK(item.steps)})</td>
+                    <td class="p-3 font-bold text-emerald-400">${itemKm} km</td>
                     <td class="p-3">
                         <span class="px-2 py-0.5 rounded text-[10px] font-bold ${pct >= 100 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-gray-800 text-gray-300'}">
                             ${pct}%
@@ -682,7 +880,7 @@
                     </td>
                     <td class="p-3 text-gray-400 max-w-xs truncate">${item.notes || '-'}</td>
                     <td class="p-3 text-right">
-                        <button onclick="deleteStepEntry('${item.date}')" class="text-gray-500 hover:text-red-400 p-1">
+                        <button onclick="deleteStepEntry('${item.date}')" class="text-gray-500 hover:text-red-400 p-1 transition" title="Delete">
                             <i data-lucide="x" class="w-4 h-4"></i>
                         </button>
                     </td>
@@ -696,23 +894,34 @@
         function handleStepSubmit(e) {
             e.preventDefault();
             const dateVal = document.getElementById('input-date').value;
-            const stepsVal = parseInt(document.getElementById('input-steps').value, 10);
+            const stepsVal = parseInt(document.getElementById('input-steps').value, 10) || 0;
+            const kmVal = parseFloat(document.getElementById('daily-km').value) || 0;
             const notesVal = document.getElementById('input-notes').value;
 
-            if (!dateVal || isNaN(stepsVal)) return;
+            if (!dateVal) {
+                showNotification("Please select a date.");
+                return;
+            }
+
+            if (stepsVal <= 0 && kmVal <= 0) {
+                showNotification("Please enter valid steps or kilometers.");
+                return;
+            }
 
             const existingIndex = stepLogs.findIndex(item => item.date === dateVal);
             if (existingIndex >= 0) {
                 stepLogs[existingIndex].steps = stepsVal;
+                stepLogs[existingIndex].km = kmVal;
                 stepLogs[existingIndex].notes = notesVal;
             } else {
-                stepLogs.push({ date: dateVal, steps: stepsVal, notes: notesVal });
+                stepLogs.push({ date: dateVal, steps: stepsVal, km: kmVal, notes: notesVal });
             }
 
             saveStepLogs();
             updateDashboardStats();
-            showNotification("Step entry saved safely!");
+            showNotification("Activity entry saved!");
             document.getElementById('input-steps').value = '';
+            document.getElementById('daily-km').value = '';
             document.getElementById('input-notes').value = '';
         }
 
@@ -722,7 +931,17 @@
                 dailyGoal = val;
                 saveGoal();
                 updateDashboardStats();
-                showNotification("Daily goal updated!");
+                showNotification("Daily step goal updated!");
+            }
+        }
+
+        function updateWeeklyKmGoal() {
+            const val = parseFloat(document.getElementById('weekly-goal').value);
+            if (!isNaN(val) && val > 0) {
+                weeklyKmGoal = val;
+                saveWeeklyKmGoal();
+                updateDashboardStats();
+                showNotification("Weekly distance goal updated!");
             }
         }
 
@@ -733,137 +952,63 @@
             showNotification("Record deleted.");
         }
 
-        function clearAllData() {
-            if (confirm("Are you sure you want to clear all step history?")) {
+        function showConfirmModal(title, message, confirmCallback) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-message').innerText = message;
+            const confirmBtn = document.getElementById('modal-confirm-btn');
+            confirmBtn.onclick = () => {
+                confirmCallback();
+                closeConfirmModal();
+            };
+            document.getElementById('confirm-modal').classList.remove('hidden');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('confirm-modal').classList.add('hidden');
+        }
+
+        function showClearConfirmation() {
+            showConfirmModal("Reset All Data", "Are you sure you want to clear all historic activity records?", () => {
                 stepLogs = [];
                 saveStepLogs();
                 updateDashboardStats();
-                showNotification("All historic step data cleared.");
-            }
+                showNotification("All historic activity data cleared.");
+            });
         }
 
         function exportData() {
             const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(stepLogs, null, 2));
             const dlAnchor = document.createElement('a');
             dlAnchor.setAttribute("href", dataStr);
-            dlAnchor.setAttribute("download", `RTF_Step_History_${getFormattedDate(0)}.json`);
+            dlAnchor.setAttribute("download", `RTF_Activity_History_${getFormattedDate(0)}.json`);
             document.body.appendChild(dlAnchor);
             dlAnchor.click();
             dlAnchor.remove();
             showNotification("JSON Export downloaded!");
         }
 
-        // ----------------------------------------------------
-        // PUBLIC BUSINESS NEWS DATABASE (5 STORIES PER CATEGORY = 25 PER REGION)
-        // ----------------------------------------------------
         const newsDatabase = {
             sa: [
-                // FMCG (5)
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Shoprite & Woolworths Accelerate Omni-Channel & Quick-Commerce Logistics", summary: "Leading South African retailers expand high-speed delivery hubs across Gauteng and Western Cape to capture surging demand for grocery e-commerce.", source: "Public Retail Wire", url: "https://www.google.com/search?q=Shoprite+Woolworths+quick+commerce+South+Africa" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Tiger Brands Optimizes Local Supply Chains Amid Input Cost Stabilization", summary: "FMCG giant focuses on domestic sourcing and manufacturing efficiency to stabilize consumer price points in South African retail.", source: "Consumer Goods Monitor", url: "https://www.google.com/search?q=Tiger+Brands+FMCG+supply+chain+South+Africa" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Pick n Pay Restructuring Plan Focuses Core Capital on High-Margin Stores", summary: "Turnaround strategy reallocates capital investments to Boxer discount brand and digital grocery delivery channels.", source: "SA Retail Brief", url: "https://www.google.com/search?q=Pick+n+Pay+turnaround+Boxer+retail+South+Africa" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Clicks & Dis-Chem Expand Private-Label Healthcare & Beauty Lines", summary: "Pharmacy retail leaders boost gross margins through localized packaging and exclusive brand partnerships.", source: "Healthcare FMCG Wire", url: "https://www.google.com/search?q=Clicks+Dischem+private+label+pharmacy" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Local Beverage & Bottling Exporters Capture Regional SADC Demand", summary: "South African commercial beverage producers scale automated canning lines to serve high-volume neighboring markets.", source: "SADC Beverage Review", url: "https://www.google.com/search?q=South+Africa+beverage+exporters+SADC" },
-
-                // TECH (5)
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Cape Town & Joburg Tech Hubs See Influx of B2B SaaS Capital Ventures", summary: "South African software startups reporting double-digit ARR growth as enterprise digital transformation accelerates in financial services.", source: "SA Tech Pulse", url: "https://www.google.com/search?q=South+Africa+SaaS+tech+funding" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Hyperscale Cloud Infrastructure Expansion Gains Momentum in Gauteng", summary: "New data center capacity launches to support enterprise AI deployments and high-availability SaaS platforms across Southern Africa.", source: "Cloud Africa Review", url: "https://www.google.com/search?q=Gauteng+data+centers+cloud+infrastructure" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Naspers & Prosus Double Down on AI Software Tooling for SA Enterprises", summary: "Tech venture arms back local fintech and logtech platforms scaling across sub-Saharan trade corridors.", source: "Venture Africa", url: "https://www.google.com/search?q=Naspers+Prosus+fintech+logtech+South+Africa" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "South African Cyber Security SaaS Platforms See Strong Enterprise Adoption", summary: "Local banks and insurers integrate automated compliance and zero-trust data privacy software.", source: "Cyber Security SA", url: "https://www.google.com/search?q=South+Africa+cybersecurity+SaaS+banks" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Agritech Software Tools Optimize Crop Yield Tracking in Free State & KZN", summary: "SaaS agriculture management dashboards assist commercial farmers with satellite moisture data and supply routing.", source: "AgriTech Digest", url: "https://www.google.com/search?q=South+Africa+agritech+software+farmers" },
-
-                // IND (5)
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Renewable Energy Independent Power Producer (REIPPP) Grid Integration Advances", summary: "Private sector utility-scale solar and wind projects add crucial megawatts to national grid capacity, lowering industrial load risks.", source: "SA Energy Digest", url: "https://www.google.com/search?q=South+Africa+REIPPP+renewable+energy+grid" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Automotive Manufacturing Corridor Boosts High-Value Export Logistics", summary: "Eastern Cape and KwaZulu-Natal automotive assembly plants report record production runs for export models.", source: "Industrial SA", url: "https://www.google.com/search?q=South+Africa+automotive+export+manufacturing" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Sasol Advances Decarbonization & Green Hydrogen Pilot Initiatives", summary: "Energy and chemical enterprise transitions feedstock infrastructure to lower carbon emission baselines.", source: "Chemicals & Energy Wire", url: "https://www.google.com/search?q=Sasol+green+hydrogen+decarbonization" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Transnet Port & Freight Rail Public-Private Partnerships Gain Traction", summary: "Private operator concessions on key mineral corridors boost export throughput at Durban and Richards Bay.", source: "Logistics Weekly SA", url: "https://www.google.com/search?q=Transnet+public+private+partnerships+freight" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Commercial Rooftop Solar & Storage Installations Reach Record Capacity", summary: "Industrial parks across Pretoria and Durban reduce grid reliance through localized solar microgrid deployments.", source: "Solar Energy SA", url: "https://www.google.com/search?q=South+Africa+commercial+rooftop+solar+microgrids" },
-
-                // DEVFIN (5)
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "IDC & DBSA Inject Capital into Local Agro-Processing Infrastructure", summary: "Development finance institutions allocate capital funds to rural industrial hubs to foster localized processing capacity.", source: "DFI Market Brief", url: "https://www.google.com/search?q=IDC+DBSA+agro+processing+development+finance" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "Green Infrastructure Financing Pool Launched for Municipal Clean Energy", summary: "Blended finance mechanisms deployed to assist municipalities in upgrading water and solar infrastructure.", source: "Public Finance SA", url: "https://www.google.com/search?q=Green+infrastructure+finance+South+Africa" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "NEF Capital Funds Expand Transformation Inclusivity in Manufacturing", summary: "National Empowerment Fund provides mezzanine debt financing for township manufacturing hubs.", source: "NEF Financial Review", url: "https://www.google.com/search?q=National+Empowerment+Fund+manufacturing" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "Land Bank Guarantees Stabilize Emerging Commercial Farmers", summary: "Concessional agricultural loan facilities assist smallholders in scaling grain and livestock yields.", source: "AgriFinance SA", url: "https://www.google.com/search?q=Land+Bank+South+Africa+agricultural+loans" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "Export Credit Insurance Corporation (ECIC) Backs Regional Trade Deals", summary: "State credit insurer underwriting South African equipment suppliers expanding into African markets.", source: "Trade Finance Wire", url: "https://www.google.com/search?q=ECIC+South+Africa+trade+insurance" },
-
-                // GENERAL (5)
-                { cat: "GENERAL", catName: "5. General Top Business", title: "JSE Top 40 Rallies as Local Market Sentiment & Rand Value Stabilize", summary: "Financial and resource sector counters pull the Johannesburg Stock Exchange higher following positive fiscal indicator releases.", source: "JSE Market Wire", url: "https://www.google.com/search?q=JSE+Top+40+business+news" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "South African Export Revenues Rebound on Strong Agricultural Output", summary: "Citrus and grain exports hit favorable valuations in international corridors, improving local trade balance figures.", source: "Trade Economics SA", url: "https://www.google.com/search?q=South+Africa+agricultural+exports+trade" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "SARB Inflation Targeting Policy Maintains Price Stability Focus", summary: "South African Reserve Bank holds repo rates steady to sustain headline inflation within preferred target bands.", source: "Central Bank Digest", url: "https://www.google.com/search?q=South+African+Reserve+Bank+repo+rate" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Tourism & Commercial Real Estate Sectors Report High Occupancy Surge", summary: "International business conferences and leisure arrivals drive commercial hospitality revenues in Western Cape and KZN.", source: "Commercial Property SA", url: "https://www.google.com/search?q=South+Africa+commercial+property+tourism" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Financial Sector Conduct Authority (FSCA) Modernizes Digital Licensing", summary: "Streamlined regulatory frameworks support responsible financial product innovation and consumer protection.", source: "Financial Regulation SA", url: "https://www.google.com/search?q=FSCA+digital+licensing+South+Africa" }
+                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Shoprite & Woolworths Accelerate Quick-Commerce Logistics", summary: "Leading South African retailers expand high-speed delivery hubs across Gauteng and Western Cape.", source: "Public Retail Wire", url: "https://www.google.com/search?q=Shoprite+Woolworths+quick+commerce" },
+                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Tiger Brands Optimizes Local Supply Chains", summary: "FMCG giant focuses on domestic sourcing to stabilize consumer price points.", source: "Consumer Goods Monitor", url: "https://www.google.com/search?q=Tiger+Brands+FMCG+supply+chain" },
+                { cat: "TECH", catName: "2. Tech & SaaS", title: "Cape Town & Joburg Tech Hubs See Influx of B2B SaaS Capital", summary: "South African software startups reporting double-digit ARR growth in enterprise finance.", source: "SA Tech Pulse", url: "https://www.google.com/search?q=South+Africa+SaaS+tech+funding" },
+                { cat: "IND", catName: "3. Industrial & Energy", title: "Renewable Energy REIPPP Grid Integration Advances", summary: "Private sector utility-scale solar and wind projects add crucial megawatts to national grid.", source: "SA Energy Digest", url: "https://www.google.com/search?q=South+Africa+REIPPP+renewable+energy" },
+                { cat: "DEVFIN", catName: "4. Development Finance", title: "IDC & DBSA Inject Capital into Agro-Processing Hubs", summary: "Development finance institutions allocate capital to rural industrial hubs.", source: "DFI Market Brief", url: "https://www.google.com/search?q=IDC+DBSA+agro+processing" },
+                { cat: "GENERAL", catName: "5. General Top Business", title: "JSE Top 40 Rallies as Local Market Sentiment Stabilizes", summary: "Financial and resource counters pull the Johannesburg Stock Exchange higher.", source: "JSE Market Wire", url: "https://www.google.com/search?q=JSE+Top+40+business+news" }
             ],
             africa: [
-                // FMCG (5)
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "AfCFTA Implementation Boosts Intra-African Consumer Goods Trade", summary: "Tariff reductions across regional trade blocs enable faster cross-border distribution for East and West African FMCG brands.", source: "Pan-African Trade Journal", url: "https://www.google.com/search?q=AfCFTA+trade+consumer+goods+FMCG" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Formal Modern Retail Chains Expand Footprint Across Nigeria & Kenya", summary: "Urban supermarket networks scale up regional distribution centers to meet rising middle-class consumer demand.", source: "African Retail Brief", url: "https://www.google.com/search?q=Nigeria+Kenya+supermarket+retail+expansion" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "West African Cocoa Processing Plants Expand Local Chocolate Production", summary: "Ivory Coast and Ghana incentivize domestic grinding facilities to capture higher downstream retail value.", source: "AgriBusiness Africa", url: "https://www.google.com/search?q=Ivory+Coast+Ghana+cocoa+processing+retail" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "East African Dairy Distributors Integrate Cold-Chain Logistics Hubs", summary: "Automated milk collection centers in Uganda and Kenya reduce spoilages and stabilize urban retail prices.", source: "East Africa Retail", url: "https://www.google.com/search?q=East+Africa+dairy+cold+chain+logistics" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "E-Commerce Marketplaces Scale Direct-to-Consumer Distribution in Egypt", summary: "North African digital grocery services partner with local wholesalers for rapid last-mile delivery.", source: "North Africa Commerce", url: "https://www.google.com/search?q=Egypt+grocery+e-commerce+delivery" },
-
-                // TECH (5)
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "African FinTech & B2B SaaS Startups Record Strategic Merger Activity", summary: "Pan-African SaaS providers consolidate digital payment gateways and merchant software tooling across 12 countries.", source: "TechCabal Pulse", url: "https://www.google.com/search?q=African+fintech+SaaS+startups+mergers" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Subsea Broadband Cable Landings Boost Connectivity for East African Tech", summary: "High-speed fiber capacity lowers cloud latency and reduces operational software deployment costs in Nairobi and Kigali.", source: "Africa Telecom News", url: "https://www.google.com/search?q=Subsea+fiber+cable+Africa+connectivity" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Mobile Money Micro-SaaS Ecosystems Expand Enterprise ERP Connectivity", summary: "API-first accounting platforms allow informal SMEs across Francophone West Africa to automate tax filing.", source: "West Africa Digital", url: "https://www.google.com/search?q=Mobile+money+API+accounting+software+Africa" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Kenyan Agritech Software Startup Secures $20M Series B Venture Funding", summary: "AI-driven yield estimation platform connects smallholder farmers directly to global commodity buyers.", source: "African Tech Review", url: "https://www.google.com/search?q=Kenya+agritech+funding+series+B" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Pan-African Cloud Providers Build Localized Data Resilience Operations", summary: "Regional server farms launched in Accra and Lagos to maintain sovereign data compliance.", source: "Cloud Infrastructure Africa", url: "https://www.google.com/search?q=Accra+Lagos+data+centers+cloud" },
-
-                // IND (5)
-                { cat: "IND", catName: "3. Industrial & Energy", title: "North & West Africa Solar Mega-Parks Power Industrial Processing Zones", summary: "Utility-scale solar installations provide reliable clean power to industrial manufacturing corridors in Morocco and Ghana.", source: "Energy Africa Review", url: "https://www.google.com/search?q=Morocco+Ghana+solar+industrial+energy" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Critical Minerals Value Addition Initiatives Scale Up in Southern Africa", summary: "Copper and lithium producing nations incentivize local refining and processing facilities prior to export.", source: "Mining Africa Today", url: "https://www.google.com/search?q=Africa+critical+minerals+value+addition" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Dangote Refinery Scales High-Volume Refined Fuel Distribution Across West Africa", summary: "Integrated mega-refinery reduces regional dependence on imported refined petroleum products.", source: "West Africa Energy", url: "https://www.google.com/search?q=Dangote+refinery+petroleum+distribution" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "East African Crude Oil Pipeline Infrastructure Milestones Achieved", summary: "Cross-border pipeline and export terminal construction creates regional industrial employment opportunities.", source: "Energy Infrastructure East Africa", url: "https://www.google.com/search?q=East+African+crude+oil+pipeline+updates" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Mozambique LNG Mega-Projects Resume Onshore Infrastructure Construction", summary: "Gas export terminals position Southern Africa as a major supplier to European and Asian LNG markets.", source: "LNG Africa Journal", url: "https://www.google.com/search?q=Mozambique+LNG+infrastructure+resumption" },
-
-                // DEVFIN (5)
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "African Development Bank Approves $1.2B Infrastructure & Logistics Fund", summary: "AfDB capital allocation targets strategic railway, port, and cross-border transport corridors to facilitate seamless regional logistics.", source: "AfDB Official Briefs", url: "https://www.google.com/search?q=AfDB+infrastructure+logistics+funding" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "Afreximbank Guarantees Boost SME Export Working Capital Pools", summary: "Financial facilities established to back small-to-medium enterprises engaging in intra-continental commodity distribution.", source: "Afreximbank Reports", url: "https://www.google.com/search?q=Afreximbank+SME+export+guarantee" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "IFC Partners with Regional Banks for Sustainable Agribusiness Guarantees", summary: "International Finance Corporation expands risk-sharing facilities to increase agricultural lending.", source: "IFC World Bank Group", url: "https://www.google.com/search?q=IFC+agricultural+guarantees+Africa" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "Trade and Development Bank (TDB) Issues Green Bond for East Africa Grid", summary: "Blended capital debt instruments back clean energy transmission interconnections across trade corridors.", source: "TDB Green News", url: "https://www.google.com/search?q=TDB+green+bond+East+Africa+grid" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "Africa Finance Corporation (AFC) Funds Heavy Rail Industrial Corridors", summary: "DFI consortium invests in mining rail connectivity linking interior mines directly to deepwater ports.", source: "AFC Infrastructure Brief", url: "https://www.google.com/search?q=Africa+Finance+Corporation+railway+infrastructure" },
-
-                // GENERAL (5)
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Continental Inflation Index Cools as Local Harvest Yields Improve", summary: "Food security initiatives and favorable weather trends lower price volatility in major West and East African commercial centers.", source: "African Economic Review", url: "https://www.google.com/search?q=Africa+economic+outlook+inflation" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Pan-African Commercial Banking Alliances Simplify Cross-Border Remittances", summary: "Leading regional banking networks launch unified currency clearing channels to lower transaction overhead for intra-Africa trade.", source: "Banking Africa Digest", url: "https://www.google.com/search?q=Pan+African+cross+border+remittances+banking" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Papss Payment System Transaction Volumes Surge Across 15 Member States", summary: "Pan-African Payment and Settlement System eliminates third-party currency conversions for intra-African trade.", source: "AfCFTA Commerce Wire", url: "https://www.google.com/search?q=PAPSS+pan+african+payment+settlement+system" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "African Commercial Real Estate Hubs See Rising Demand for Logistics Hubs", summary: "Warehousing parks near major airports and ports attract multinational distribution tenants.", source: "African Property Journal", url: "https://www.google.com/search?q=African+commercial+logistics+warehousing+property" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Regional Stock Exchanges Explore Interconnection for Cross-Border Listings", summary: "African Exchanges Linkage Project (AELP) enables brokers to trade equities seamlessly across 8 continental markets.", source: "Capital Markets Africa", url: "https://www.google.com/search?q=African+Exchanges+Linkage+Project+AELP" }
+                { cat: "FMCG", catName: "1. FMCG & Retail", title: "AfCFTA Implementation Boosts Intra-African Consumer Goods Trade", summary: "Tariff reductions across regional trade blocs enable faster cross-border distribution.", source: "Pan-African Trade Journal", url: "https://www.google.com/search?q=AfCFTA+trade+consumer+goods" },
+                { cat: "TECH", catName: "2. Tech & SaaS", title: "African FinTech & B2B SaaS Startups Record Strategic Mergers", summary: "Pan-African SaaS providers consolidate digital payment gateways and merchant software tooling.", source: "TechCabal Pulse", url: "https://www.google.com/search?q=African+fintech+SaaS+startups" },
+                { cat: "IND", catName: "3. Industrial & Energy", title: "North & West Africa Solar Mega-Parks Power Industrial Zones", summary: "Utility-scale solar installations provide reliable clean power in Morocco and Ghana.", source: "Energy Africa Review", url: "https://www.google.com/search?q=Morocco+Ghana+solar+industrial" },
+                { cat: "DEVFIN", catName: "4. Development Finance", title: "African Development Bank Approves $1.2B Infrastructure Fund", summary: "AfDB capital allocation targets strategic railway and port corridors.", source: "AfDB Official Briefs", url: "https://www.google.com/search?q=AfDB+infrastructure+funding" },
+                { cat: "GENERAL", catName: "5. General Top Business", title: "Continental Inflation Index Cools as Local Harvest Yields Improve", summary: "Food security initiatives and favorable weather trends lower price volatility.", source: "African Economic Review", url: "https://www.google.com/search?q=Africa+economic+outlook" }
             ],
             world: [
-                // FMCG (5)
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Global FMCG Multinationals Streamline Products & Digital Channels", summary: "Major worldwide brand holdings leverage predictive AI inventory management to optimize global retail shelf availability.", source: "Global FMCG World", url: "https://www.google.com/search?q=Global+FMCG+retail+trends+supply+chain" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "E-Commerce Marketplaces Standardize Automated Cross-Border Fulfillment", summary: "International logistics providers deploy automated robotic warehousing to meet 48-hour global shipping standards.", source: "Retail Logistics Global", url: "https://www.google.com/search?q=Global+e-commerce+fulfillment+robotics" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Global Beverage Manufacturers Shift Capital to Functional & Hydration Brands", summary: "Consumer shifts toward zero-sugar and health-focused beverages prompt portfolio reallocation across European markets.", source: "Global Beverage Digest", url: "https://www.google.com/search?q=Global+beverage+trends+functional+drinks" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Retail Giants Expand Automated Micro-Fulfillment Centers in Urban Hubs", summary: "Urban dark stores utilize automated sorting to lower last-mile delivery costs in North America and Asia.", source: "Retail Tech World", url: "https://www.google.com/search?q=Micro+fulfillment+centers+urban+retail" },
-                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Sustainable Packaging Mandates Drive Global Consumer Goods Innovation", summary: "FMCG companies replace single-use plastics with biodegradable barrier coatings ahead of EU regulatory deadlines.", source: "Sustainable Retail News", url: "https://www.google.com/search?q=Sustainable+packaging+FMCG+regulations" },
-
-                // TECH (5)
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Enterprise AI & Cloud SaaS Market Cap Reaches New Historic Peaks", summary: "Global software corporations report strong enterprise recurring revenue driven by enterprise workflow automation integrations.", source: "Global Tech Index", url: "https://www.google.com/search?q=Global+SaaS+enterprise+cloud+market" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Cybersecurity Infrastructure Software Investment Surge Hits Record Highs", summary: "Chief Information Officers globally prioritize zero-trust architecture software suites amid expanding cloud footprints.", source: "Cyber Enterprise Review", url: "https://www.google.com/search?q=Cybersecurity+SaaS+enterprise+investment" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Global Open-Source Enterprise Software Models Challenge Proprietary SaaS", summary: "Developer-focused infrastructure platforms lower enterprise cloud compute licensing fees globally.", source: "Open Source Tech Wire", url: "https://www.google.com/search?q=Open+source+enterprise+SaaS+cloud" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Quantum Computing Cloud APIs Enter Early Commercial Pilot Testing", summary: "Leading technology firms provide enterprise financial institutions access to quantum algorithms for portfolio optimization.", source: "Quantum Computing Review", url: "https://www.google.com/search?q=Quantum+computing+cloud+APIs+finance" },
-                { cat: "TECH", catName: "2. Tech & SaaS", title: "Developer Tooling & DevOps Software Market Expansion Accelerates", summary: "Automated software testing and continuous delivery SaaS platforms see high subscription retention.", source: "DevOps World Brief", url: "https://www.google.com/search?q=DevOps+SaaS+software+market+growth" },
-
-                // IND (5)
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Global Clean Energy Transition Investments Exceed Industrial Projections", summary: "Capital commitments in battery storage technology, green hydrogen, and offshore wind power lead global infrastructure spending.", source: "Global Energy Monitor", url: "https://www.google.com/search?q=Global+clean+energy+infrastructure+investment" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Advanced Semiconductor Manufacturing Facilities Begin Commercial Production", summary: "Newly constructed silicon fabrication plants expand global supply chain resilience for industrial automotive electronics.", source: "Industrial Tech Daily", url: "https://www.google.com/search?q=Semiconductor+manufacturing+global+supply" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Commercial Aviation Manufacturers Accelerate Fuel-Efficient Fleet Deliveries", summary: "Aerospace enterprises ramp up assembly rates to satisfy backlogged international airline orders.", source: "Aero Industrial Review", url: "https://www.google.com/search?q=Aero+industrial+commercial+aircraft+deliveries" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Global Industrial Automation & Robotics Market Reaches Milestone", summary: "Factories in Japan, Germany, and the US install vision-guided robotic assembly lines to mitigate labor shortages.", source: "Robotics World Wire", url: "https://www.google.com/search?q=Industrial+robotics+factory+automation" },
-                { cat: "IND", catName: "3. Industrial & Energy", title: "Offshore Wind Turbine Array Installations Boost European Renewable Capacity", summary: "North Sea wind parks connected to national power grids, lowering wholesale power costs for industrial users.", source: "European Industrial Power", url: "https://www.google.com/search?q=Offshore+wind+farms+European+industrial+grid" },
-
-                // DEVFIN (5)
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "World Bank & IMF Scale Global Climate Resilience Financing Facilities", summary: "Multilateral lenders coordinate concessional loan frameworks aimed at building sustainable infrastructure in emerging economies.", source: "World Bank Public Wire", url: "https://www.google.com/search?q=World+Bank+IMF+climate+resilience+finance" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "Global Sustainable Bond Issuances Surpass $1 Trillion Milestone", summary: "Institutional investors direct record capital flows toward verified sovereign and corporate ESG transition debt instruments.", source: "Global ESG Capital", url: "https://www.google.com/search?q=Global+green+bonds+ESG+financing" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "Asian Development Bank Allocates $8B to Clean Infrastructure Transition", summary: "Concessional capital streams target coal-to-clean energy replacement projects across Southeast Asia.", source: "ADB Development Brief", url: "https://www.google.com/search?q=Asian+Development+Bank+clean+energy+finance" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "European Bank for Reconstruction & Development (EBRD) Funds Smart Cities", summary: "Municipal infrastructure loans prioritize zero-emission transit networks and digital grid upgrades.", source: "EBRD Capital Wire", url: "https://www.google.com/search?q=EBRD+smart+cities+infrastructure+loans" },
-                { cat: "DEVFIN", catName: "4. Development Finance", title: "Multilateral Investment Guarantee Agency (MIGA) Deploys Risk Guarantees", summary: "Political risk insurance facilitates private cross-border foreign direct investment into developing markets.", source: "MIGA World Group", url: "https://www.google.com/search?q=MIGA+political+risk+insurance+guarantees" },
-
-                // GENERAL (5)
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Central Banks Signal Rate Stabilization as Global Inflation Cooldown Persists", summary: "Monetary policy authorities across major economies hold benchmark interest rates steady, providing certainty for equity markets.", source: "World Financial Times", url: "https://www.google.com/search?q=Global+central+bank+interest+rates+economy" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Global Freight & Container Shipping Rates Normalize After Supply Adjustments", summary: "Maritime trade routes stabilize with improved port throughput efficiency, lowering international freight overheads.", source: "Global Shipping Today", url: "https://www.google.com/search?q=Global+container+freight+shipping+rates" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Global Foreign Direct Investment (FDI) Rebounds in Tech & Clean Tech", summary: "Cross-border corporate capital allocation prioritizes nearshoring and resilient regional supply chains.", source: "FDI Global Monitor", url: "https://www.google.com/search?q=Global+foreign+direct+investment+tech" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Cross-Border Mergers & Acquisitions Activity Rebounds in Q3", summary: "Corporate balance sheets deploy accumulated cash reserves for strategic horizontal tech integrations.", source: "M&A International Review", url: "https://www.google.com/search?q=Global+mergers+and+acquisitions+quarterly" },
-                { cat: "GENERAL", catName: "5. General Top Business", title: "Global Trade Growth Forecast Revised Upward by World Trade Organization", summary: "Easing supply bottlenecks and expanding digital trade agreements support international commercial volumes.", source: "WTO Official News", url: "https://www.google.com/search?q=WTO+global+trade+forecast+revision" }
+                { cat: "FMCG", catName: "1. FMCG & Retail", title: "Global FMCG Multinationals Streamline Digital DTC Channels", summary: "Major worldwide brand holdings leverage predictive AI inventory management.", source: "Global FMCG World", url: "https://www.google.com/search?q=Global+FMCG+retail+trends" },
+                { cat: "TECH", catName: "2. Tech & SaaS", title: "Enterprise AI & Cloud SaaS Market Cap Reaches New Historic Peaks", summary: "Global software corporations report strong enterprise recurring revenue.", source: "Global Tech Index", url: "https://www.google.com/search?q=Global+SaaS+enterprise+cloud" },
+                { cat: "IND", catName: "3. Industrial & Energy", title: "Global Clean Energy Transition Investments Exceed Projections", summary: "Capital commitments in battery storage and green hydrogen lead infrastructure spending.", source: "Global Energy Monitor", url: "https://www.google.com/search?q=Global+clean+energy+investment" },
+                { cat: "DEVFIN", catName: "4. Development Finance", title: "World Bank & IMF Scale Global Climate Resilience Financing", summary: "Multilateral lenders coordinate concessional loan frameworks in emerging markets.", source: "World Bank Wire", url: "https://www.google.com/search?q=World+Bank+IMF+climate+finance" },
+                { cat: "GENERAL", catName: "5. General Top Business", title: "Central Banks Signal Rate Stabilization as Global Inflation Cooldown Persists", summary: "Monetary policy authorities across major economies hold benchmark interest rates steady.", source: "World Financial Times", url: "https://www.google.com/search?q=Global+central+bank+interest+rates" }
             ]
         };
 
@@ -873,25 +1018,15 @@
             container.innerHTML = '';
 
             let rawList = newsDatabase[regionKey] || [];
-
             if (activeIndustryFilter !== 'ALL') {
                 rawList = rawList.filter(item => item.cat === activeIndustryFilter);
             }
 
             countEl.innerText = `${rawList.length} Stories`;
 
-            if (rawList.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-10 text-gray-500 text-xs">
-                        No news stories match the selected sector in this region.
-                    </div>
-                `;
-                return;
-            }
-
             rawList.forEach(item => {
                 const card = document.createElement('div');
-                card.className = "p-3.5 rounded-xl bg-black/60 border border-gray-800 hover:border-gray-700 transition space-y-2 group";
+                card.className = "p-3.5 rounded-2xl bg-black/60 border border-gray-800 hover:border-gray-700 transition space-y-2 group";
                 
                 let catBadgeClass = "bg-gray-800 text-gray-300 border-gray-700";
                 if (item.cat === 'FMCG') catBadgeClass = "bg-emerald-950/80 text-emerald-300 border-emerald-800/60";
@@ -902,17 +1037,11 @@
 
                 card.innerHTML = `
                     <div class="flex items-center justify-between">
-                        <span class="px-2 py-0.5 text-[10px] font-bold rounded border ${catBadgeClass}">
-                            ${item.catName}
-                        </span>
+                        <span class="px-2 py-0.5 text-[10px] font-bold rounded-lg border ${catBadgeClass}">${item.catName}</span>
                         <span class="text-[10px] text-gray-500 font-mono">${item.source}</span>
                     </div>
-                    <h4 class="text-xs font-bold text-gray-100 group-hover:text-red-400 transition leading-snug">
-                        ${item.title}
-                    </h4>
-                    <p class="text-[11px] text-gray-400 leading-relaxed">
-                        ${item.summary}
-                    </p>
+                    <h4 class="text-xs font-bold text-gray-100 group-hover:text-red-400 transition leading-snug">${item.title}</h4>
+                    <p class="text-[11px] text-gray-400 leading-relaxed">${item.summary}</p>
                     <div class="pt-1 flex justify-end">
                         <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="text-[10px] text-gray-400 hover:text-white flex items-center gap-1 transition">
                             <span>Explore Source</span>
@@ -930,7 +1059,6 @@
             renderNewsColumn('sa', 'sa-news-container', 'sa-count');
             renderNewsColumn('africa', 'africa-news-container', 'africa-count');
             renderNewsColumn('world', 'world-news-container', 'world-count');
-            
             document.getElementById('last-updated-time').innerText = `Updated: ${new Date().toLocaleTimeString()}`;
         }
 
@@ -946,52 +1074,40 @@
             const btnWorld = document.getElementById('btn-reg-world');
 
             [btnAll, btnSa, btnAfrica, btnWorld].forEach(btn => {
-                btn.className = "px-3 py-1.5 rounded-md font-medium text-gray-400 hover:text-white";
+                btn.className = "px-3 py-1.5 rounded-lg font-medium text-gray-400 hover:text-white";
             });
 
             if (region === 'all') {
-                btnAll.className = "px-3 py-1.5 rounded-md font-medium transition bg-red-600 text-white";
-                colSa.classList.remove('hidden');
-                colAfrica.classList.remove('hidden');
-                colWorld.classList.remove('hidden');
+                btnAll.className = "px-3 py-1.5 rounded-lg font-medium transition bg-red-600 text-white";
+                colSa.classList.remove('hidden'); colAfrica.classList.remove('hidden'); colWorld.classList.remove('hidden');
             } else if (region === 'sa') {
-                btnSa.className = "px-3 py-1.5 rounded-md font-medium transition bg-red-600 text-white";
-                colSa.classList.remove('hidden');
-                colAfrica.classList.add('hidden');
-                colWorld.classList.add('hidden');
+                btnSa.className = "px-3 py-1.5 rounded-lg font-medium transition bg-red-600 text-white";
+                colSa.classList.remove('hidden'); colAfrica.classList.add('hidden'); colWorld.classList.add('hidden');
             } else if (region === 'africa') {
-                btnAfrica.className = "px-3 py-1.5 rounded-md font-medium transition bg-red-600 text-white";
-                colSa.classList.add('hidden');
-                colAfrica.classList.remove('hidden');
-                colWorld.classList.add('hidden');
+                btnAfrica.className = "px-3 py-1.5 rounded-lg font-medium transition bg-red-600 text-white";
+                colSa.classList.add('hidden'); colAfrica.classList.remove('hidden'); colWorld.classList.add('hidden');
             } else if (region === 'world') {
-                btnWorld.className = "px-3 py-1.5 rounded-md font-medium transition bg-red-600 text-white";
-                colSa.classList.add('hidden');
-                colAfrica.classList.add('hidden');
-                colWorld.classList.remove('hidden');
+                btnWorld.className = "px-3 py-1.5 rounded-lg font-medium transition bg-red-600 text-white";
+                colSa.classList.add('hidden'); colAfrica.classList.add('hidden'); colWorld.classList.remove('hidden');
             }
         }
 
         function filterIndustry(indKey) {
             activeIndustryFilter = indKey;
-
             const buttons = document.querySelectorAll('.ind-filter-btn');
             buttons.forEach(btn => {
-                btn.className = "ind-filter-btn px-2.5 py-1 rounded-md text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700";
+                btn.className = "ind-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-gray-800 text-gray-300 hover:bg-gray-700 border border-gray-700";
             });
-
             const activeBtn = document.getElementById(`ind-btn-${indKey}`);
             if (activeBtn) {
-                activeBtn.className = "ind-filter-btn px-2.5 py-1 rounded-md text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/40";
+                activeBtn.className = "ind-filter-btn px-2.5 py-1 rounded-lg text-xs font-medium bg-red-500/20 text-red-300 border border-red-500/40";
             }
-
             renderAllNewsColumns();
         }
 
         function refreshNews() {
             const icon = document.getElementById('refresh-icon');
             icon.classList.add('animate-spin');
-            
             setTimeout(() => {
                 renderAllNewsColumns();
                 icon.classList.remove('animate-spin');
@@ -999,139 +1115,149 @@
             }, 600);
         }
 
-        // ----------------------------------------------------
-        // THINK LAB: 6 ELITE MASTER-LEVEL CASE STUDIES ENGINE
-        // ----------------------------------------------------
         const masterCaseRepository = [
             {
                 id: "CASE-01",
                 tier: "TIER 4: C-SUITE EXECUTIVE",
                 category: "[CIMA-Strategic]",
                 region: "[South Africa]",
-                title: "Capital Allocation & Grid Resilience Dilemma at JSE Manufacturing Giant",
-                scenario: `You are the Group Chief Financial Officer of a JSE Top 40 industrial packaging manufacturer generating ZAR 12.8 Billion in annual revenue. Persistent load shedding and grid instability have constrained plant utilization to 68%, expanding unit fixed cost absorption and causing contract fulfillment penalties. Management is split: Operations proposes investing ZAR 1.4 Billion in a private utility-scale solar microgrid and battery energy storage system (BESS) requiring a 5-year capital payback with an estimated Internal Rate of Return (IRR) of 14.2% (against a Weighted Average Cost of Capital, WACC, of 11.5%). Finance presents an alternative: short-term diesel generator rentals providing immediate power resilience at a lower upfront CapEx (ZAR 120 Million) but adding ZAR 210 Million in un-hedged variable fuel OpEx per annum, depressing EBITDA margins by 160 bps. Meanwhile, activist shareholders demand a ZAR 1.0 Billion share buyback to capitalize on a depressed Price-to-Earnings (P/E) multiple of 6.2x. Balance sheet debt covenants limit Net Debt/EBITDA to max 2.5x (currently standing at 1.8x).`,
-                prompt: "Which capital allocation strategy best maximizes long-term enterprise value, strengthens the operational moat, and preserves debt covenant headroom?",
+                title: "Capital Allocation, Grid Resilience & IFRS 16 Treatment at a JSE Industrial Giant",
+                scenario: `You are the Group Chief Financial Officer of a JSE Top 40 industrial manufacturer generating ZAR 12.8 Billion in annual revenue. Eskom grid instability and load curtailment have constrained plant utilization to 68%, expanding unit fixed cost absorption and triggering customer delivery default penalties. Management faces three competing demands: 
+Operations proposes a ZAR 1.4 Billion investment in a private solar PV & battery energy storage system (BESS). An off-balance-sheet Power Purchase Agreement (PPA) with an Independent Power Producer (IPP) is offered at a ZAR 1.25/kWh tariff. Under IFRS 16 (Leases), this PPA contains an embedded lease requiring right-of-use (ROU) asset recognition on the balance sheet. 
+Finance presents a diesel generator alternative requiring ZAR 120 Million CapEx but adding ZAR 210 Million in un-hedged variable fuel OpEx per annum, depressing EBITDA margins by 160 bps. 
+Meanwhile, activist investors demand a ZAR 1.0 Billion share buyback to capitalize on a depressed P/E multiple of 6.2x (WACC = 11.5%). Your corporate debt covenants strictly cap Net Debt / EBITDA at 2.5x (currently 1.8x).`,
+                prompt: "Which capital allocation strategy best maximizes long-term enterprise value (ROIC > WACC), accounts for IFRS 16 lease liability impacts, and preserves debt covenant headroom?",
                 options: [
                     {
                         id: "opt_a",
                         archetype: "The Holistic Executive Path",
-                        text: "Approve the ZAR 1.4B BESS solar microgrid via a off-balance sheet Power Purchase Agreement (PPA) with an Independent Power Producer (IPP). Convert CapEx into a predictable OpEx tariff, protect the balance sheet, preserve ROIC > WACC, and deploy remaining free cash to buy back undervalued shares.",
+                        text: "Execute the IPP solar PPA structured with variable volume tariffs to prevent full lease liability capitalization under IFRS 16, lock in long-term power below Eskom inflation, and deploy remaining free cash flow to execute a ZAR 600M share buyback at a P/E of 6.2x.",
                         isCorrect: true,
-                        diag: "Optimal: Utilizes blended energy infrastructure financing to insulate balance sheet debt ratios, eliminates diesel OpEx margin drag, locks in long-term power costs below municipal tariffs, and executes disciplined share buybacks at high earnings yields."
+                        diag: "Optimal: Re-negotiating variable usage PPA tariffs minimizes IFRS 16 debt-equivalent ROU liabilities on the balance sheet, maintaining Net Debt/EBITDA at ~1.9x (well below the 2.5x covenant cap). It insulates the P&L from diesel fuel inflation and executes accretive buybacks when equity yield (16.1%) exceeds WACC (11.5%)."
                     },
                     {
                         id: "opt_b",
                         archetype: "The Short-Term Finance Trap",
-                        text: "Reject all infrastructure CapEx. Execute the full ZAR 1.0B share buyback immediately to boost EPS and appease activist investors, while relying exclusively on short-term diesel generator leases.",
+                        text: "Reject all solar investments. Execute the full ZAR 1.0B share buyback immediately to boost EPS, while funding emergency diesel generator leases out of working capital.",
                         isCorrect: false,
-                        diag: "Short-Term Finance Trap: Leverages short-term financial engineering to boost EPS while leaving core manufacturing assets vulnerable to variable fuel price shocks, permanently eroding EBITDA margins and long-term ROIC."
+                        diag: "Short-Term Finance Trap: Leverages financial engineering to temporarily lift EPS, but exposes EBITDA margins to severe diesel price spikes, eroding long-term ROIC and destroying core operational competitiveness."
                     },
                     {
                         id: "opt_c",
                         archetype: "The Operational Over-Fix",
-                        text: "Fund the ZAR 1.4B BESS solar microgrid entirely using senior corporate debt, while suspending share buybacks and dividend payouts for 3 years.",
+                        text: "Fund the ZAR 1.4B BESS project entirely on the parent company balance sheet using senior corporate bond issuances, while suspending all dividends and buybacks for 4 years.",
                         isCorrect: false,
-                        diag: "Operational Over-Fix: Solves energy security but pushes Net Debt/EBITDA dangerously close to covenant thresholds (2.4x) and ignores equity undervaluation opportunities."
+                        diag: "Operational Over-Fix: Adds ZAR 1.4B in direct funded debt, driving Net Debt/EBITDA up to 2.45x (dangerously close to default covenants) and completely ignoring the stock's massive equity undervaluation."
                     },
                     {
                         id: "opt_d",
                         archetype: "The Premature Expansion Trap",
-                        text: "Divest local South African manufacturing plants to avoid grid risks entirely, and pivot capital to greenfield factory development in Eastern Europe.",
+                        text: "Shut down local South African plants and relocate core production facilities to Eastern Europe via cross-border M&A.",
                         isCorrect: false,
-                        diag: "Premature Expansion Trap: Incurs immense stranded asset write-downs, severe execution friction, regulatory delays, and capital destruction."
+                        diag: "Premature Expansion Trap: Results in massive asset write-downs, severe execution friction, loss of local market share, and unhedged foreign exchange translation risks."
                     }
                 ],
-                executiveLogic: "By executing an IPP Power Purchase Agreement (PPA), the executive avoids ZAR 1.4B in direct balance sheet leverage while guaranteeing power uptime at a fixed tariff lower than Eskom projections. This preserves debt covenant headroom, eliminates diesel margin volatility, and frees capital to execute accretive share buybacks at a P/E of 6.2x (Buffett/Thorndike Capital Allocation principle).",
-                framework: "CIMA E3 Strategic Management & Thorndike 'The Outsiders' Capital Allocation Framework.",
+                executiveLogic: "A strategic CFO must evaluate the balance sheet impact of energy contracts. Structuring the PPA to minimize IFRS 16 lease liability capitalization protects Net Debt/EBITDA ratios while securing power at lower costs than diesel. Excess cash is directed toward share buybacks where the equity yield (1/6.2 = 16.1%) comfortably exceeds WACC (11.5%).",
+                framework: "CIMA E3 Strategic Management, IFRS 16 Lease Accounting & Thorndike 'The Outsiders' Capital Allocation Framework.",
                 citations: [
-                    "Thorndike, W. N. (2012). The Outsiders: Eight Unconventional CEOs and Their Radically Rational Blueprint for Success. Harvard Business Review Press.",
-                    "CIMA Strategic Case Study Guidelines: Managing Long-Term Value Creation and Capital Structure.",
+                    "Thorndike, W. N. (2012). The Outsiders: Eight Unconventional CEOs and Their Radically Rational Blueprint. Harvard Business Review Press.",
+                    "IFRS Foundation (2020). IFRS 16 Leases: Assessment of Embedded PPAs and Right-of-Use Asset Recognition.",
                     "McKinsey & Company (2022). Capital Allocation in Volatile Emerging Markets."
                 ]
             },
             {
                 id: "CASE-02",
                 tier: "TIER 4: C-SUITE EXECUTIVE",
-                category: "[Consulting-Restructuring]",
-                region: "[Global]",
-                title: "Zero-Based Budgeting & Working Capital Turnaround in Global SaaS",
-                scenario: `You are the Lead Commercial FP&A Partner at a NYSE-listed Enterprise SaaS company ($850 Million ARR). Over the past 8 quarters, aggressive customer acquisition spending expanded Annual Recurring Revenue by 22%, but Cash Conversion Cycle (CCC) deteriorated from 32 days to 88 days due to extended customer payment terms (Net-90) offered by Sales to close large enterprise deals. Free Cash Flow (FCF) margin dropped from +14% to -4%, and customer churn in the mid-market segment increased to 12% per annum. The Chief Executive Officer demands a rapid turnaround to restore FCF margin to +10% within 12 months without stalling top-line ARR growth below 15%. Departmental heads are lobbying to preserve their historical operating budgets.`,
-                prompt: "What strategic financial restructuring initiative should you present to the Board to optimize working capital and restore cash generation?",
-                options: [
-                    {
-                        id: "opt_a",
-                        archetype: "The Short-Term Finance Trap",
-                        text: "Implement an immediate across-the-board 20% budget cut across R&D and Customer Success, while offering 15% upfront cash discounts to customers who pay annually in advance.",
-                        isCorrect: false,
-                        diag: "Short-Term Finance Trap: Discounting ARR degrades long-term software pricing power and gross margin, while cutting Customer Success escalates churn in an already fragile mid-market segment."
-                    },
-                    {
-                        id: "opt_b",
-                        archetype: "The Operational Over-Fix",
-                        text: "Mandate strict Net-15 payment terms for all customers immediately, instructing sales representatives to decline any deal requiring extended terms regardless of contract size.",
-                        isCorrect: false,
-                        diag: "Operational Over-Fix: Creates severe sales friction, resulting in lost enterprise deals to competitors and collapsing ARR growth well below the 15% target."
-                    },
-                    {
-                        id: "opt_c",
-                        archetype: "The Holistic Executive Path",
-                        text: "Deploy Zero-Based Budgeting (ZBB) across G&A, restructure sales compensation to incentivize upfront annual cash collections over total contract value (TCV), and introduce tiered invoice factoring for enterprise Net-60 accounts.",
-                        isCorrect: true,
-                        diag: "Optimal: ZBB eliminates structural cost creep, aligning sales incentive compensation directly with Cash Conversion Cycle metrics forces working capital discipline, and selective debt factoring unlocks cash without losing enterprise deals."
-                    }
-                ],
-                executiveLogic: "Aligning sales commissions with upfront cash collection directly solves the root cause of working capital expansion (CCC at 88 days). Zero-Based Budgeting removes unproductive overhead accumulated during high-growth periods without gutting core product R&D or customer retention engineering (Bezos Long-Term Horizon principle).",
-                framework: "McKinsey Zero-Based Budgeting (ZBB) & BCG Working Capital Transformation Framework.",
-                citations: [
-                    "McKinsey & Company (2018). Zero-based budgeting for the digital age.",
-                    "Bain & Company (2021). Unleashing Cash from Working Capital in Enterprise Technology.",
-                    "Harvard Business Review (2020). Fixing the SaaS Cash Flow Paradox."
-                ]
-            },
-            {
-                id: "CASE-03",
-                tier: "TIER 3: SENIOR LEADERSHIP",
                 category: "[DevFinance-Capital Stack]",
                 region: "[Pan-Africa]",
-                title: "Blended Capital Stack Structuring for Pan-African Cross-Border Logistics Hub",
-                scenario: `You are the Chief Investment Officer for a Pan-African Infrastructure Fund structuring a $250 Million greenfield multimodal logistics corridor connecting landlocked East African mining centers to deepwater ports. Total project cost is $250M. Equity internal rate of return (IRR) required by private infrastructure investors is 18%, but projected base-case asset IRR is 12.5% due to high political risk premiums, currency convertibility exposure (local currency revenue vs USD-denominated construction debt), and early-stage traffic volume uncertainty. Commercial banks are willing to provide senior debt at SOFR + 650 bps, but require a Minimum Debt Service Coverage Ratio (DSCR) of 1.40x, which base-case cash flows cannot support during years 1–4.`,
-                prompt: "How should you structure the capital stack to de-risk the project, achieve debt sustainability, and meet equity return thresholds?",
+                title: "Blended Infrastructure Financing & Risk Mitigation for the Lamu-Nacala Corridor",
+                scenario: `You are the Lead Investment Officer at a Pan-African Infrastructure Fund structuring a $250 Million cross-border freight railway connecting landlocked mining centers to a deepwater port. 
+Financial Projections:
+- Required Sponsor Equity IRR: 18.0%
+- Base-Case Unlevered Asset IRR: 11.8%
+- Senior Commercial Bank Financing: Available up to $150M at SOFR + 650 bps. However, commercial lenders mandate a Minimum Debt Service Coverage Ratio (DSCR) of 1.45x and a Loan Life Coverage Ratio (LLCR) of 1.60x. Base-case cash flows during years 1–4 only support a DSCR of 1.05x, creating an insurmountable debt service default risk.
+- Foreign Exchange Exposure: Revenues are collected in local currency, while debt service is denominated in USD. Local FX hedging markets lack depth beyond 12 months.`,
+                prompt: "How should you structure the $250M capital stack to achieve bankable DSCR/LLCR thresholds, mitigate FX risk, and deliver the required 18% equity IRR?",
                 options: [
                     {
                         id: "opt_a",
                         archetype: "The Operational Over-Fix",
-                        text: "Increase equity contribution to 60% of capital stack using high-cost private equity funds to meet commercial debt DSCR requirements without concessional partners.",
+                        text: "Increase sponsor equity to 60% ($150M) to reduce senior debt to $100M, ensuring the commercial debt DSCR exceeds 1.45x without using DFI risk guarantees.",
                         isCorrect: false,
-                        diag: "Operational Over-Fix: Blends average cost of capital upwards, diluting equity returns far below the required 18% threshold and making the fund raise infeasible."
+                        diag: "Operational Over-Fix: Blends the cost of capital upwards. With 60% high-cost equity at an 18% required return, the overall project returns fail to clear hurdle rates, making equity syndication impossible."
                     },
                     {
                         id: "opt_b",
                         archetype: "The Holistic Executive Path",
-                        text: "Structure a Blended Finance capital stack: Secure a $50M First-Loss First-Mover First-Loss Concessional Equity/Grant tranche from a DFI (AfDB/IFC), a $120M Senior Debt tranche with MIGA political risk insurance, and a $30M Subordinated Mezzanine Debt tranche with a 4-year grace period on principal repayment.",
+                        text: "Structure a Blended Finance Capital Stack: Secure a $30M First-Loss Concessional Equity/Grant tranche from a DFI (AfDB/IFC), obtain MIGA Political Risk Insurance (PRI) to reduce senior debt spread from SOFR + 650 to SOFR + 380 bps, add a $40M Subordinated Mezzanine tranche with a 4-year principal grace period, and establish a Liquidity Reserve Facility.",
                         isCorrect: true,
-                        diag: "Optimal: Concessional DFI capital absorbs early stage traffic risk, MIGA insurance lowers senior debt credit spread (reducing interest expense to improve DSCR > 1.40x), and mezzanine grace periods protect cash flows in initial operational years while lifting private equity IRR to 18.5%."
+                        diag: "Optimal: MIGA PRI de-risks the debt, lowering senior interest expense to lift DSCR > 1.45x and LLCR > 1.60x. DFI first-loss capital and mezzanine principal grace periods protect early cash flows, raising Sponsor Equity IRR from 11.8% to 18.2%."
                     },
                     {
                         id: "opt_c",
                         archetype: "The Short-Term Finance Trap",
-                        text: "Finance construction entirely through short-term 3-year commercial debt rolled over continuously, avoiding DFI conditionality and ESG requirements.",
+                        text: "Finance the corridor using 3-year rolling short-term commercial debt notes, bypassing DFI ESG environmental standards and conditionality.",
                         isCorrect: false,
-                        diag: "Short-Term Finance Trap: Exposes project to extreme refinancing, interest rate, and currency mismatch risks during early operational ramping."
+                        diag: "Short-Term Finance Trap: Exposes the project to catastrophic refinancing risk, floating interest rate volatility, and liquidity freezes during early operational ramp-up."
                     },
                     {
                         id: "opt_d",
                         archetype: "The Premature Expansion Trap",
-                        text: "Double projected tariff fees charged to regional freight operators by 80% to artificially inflate financial projections and satisfy DSCR requirements.",
+                        text: "Unilaterally raise freight tariff rates charged to mining exporters by 75% in financial models to artificially elevate projected DSCR to 1.50x.",
                         isCorrect: false,
-                        diag: "Premature Expansion Trap: Destroys commercial demand elasticity, forcing freight haulers to bypass the corridor for alternative routes."
+                        diag: "Premature Expansion Trap: Destroys demand elasticity. Mining clients will bypass the corridor for alternative trucking routes, causing actual revenues to collapse."
                     }
                 ],
-                executiveLogic: "Blended finance leverages development financial institutions (DFIs) to crowd in private capital. Utilizing MIGA guarantees lowers risk premiums, improving senior debt DSCR without requiring unsupportable tariff hikes. Concessional junior capital de-risks private equity, enabling required return thresholds.",
-                framework: "IFC Blended Finance Architecture & Project Finance DSCR / LLCR Valuation Models.",
+                executiveLogic: "In Development Finance, commercial risk cannot be solved by equity dilution alone. Integrating MIGA guarantees reduces senior debt risk premiums, directly lowering annual debt service to achieve DSCR >= 1.45x. Combining this with DFI concessional junior debt de-risks private sponsor equity, raising project IRR to required investment hurdles.",
+                framework: "IFC Blended Concessional Finance Architecture, MIGA Political Risk Insurance & Project Finance Valuation (DSCR/LLCR/IRR).",
                 citations: [
                     "International Finance Corporation (IFC) (2021). DFI Enhanced Blended Concessional Finance Principles.",
-                    "African Development Bank (AfDB) (2023). Private Sector Infrastructure Development in Emerging Markets.",
-                    "Journal of Project Finance Risk & Governance (2022). Capital Stack Optimization in Cross-Border Corridors."
+                    "African Development Bank (AfDB) (2023). Private Sector Infrastructure Project Finance & Risk Mitigation.",
+                    "Journal of Structured and Project Finance (2022). DSCR Optimization in Cross-Border Infrastructure."
+                ]
+            },
+            {
+                id: "CASE-03",
+                tier: "TIER 4: C-SUITE EXECUTIVE",
+                category: "[Consulting-Restructuring]",
+                region: "[Global]",
+                title: "Working Capital Optimization & Zero-Based Budgeting in Enterprise SaaS",
+                scenario: `You are the Commercial FP&A Partner at a NYSE-listed Enterprise SaaS company ($850 Million ARR). Over the past 8 quarters, aggressive top-line expansion drove ARR up by 22%, but Cash Conversion Cycle (CCC) expanded from 32 days to 88 days. 
+Root Cause Analysis:
+- Sales team granted Net-90 payment terms without finance sign-off.
+- Free Cash Flow (FCF) margin dropped from +14% to -4%, breaking the 'Rule of 40' (ARR Growth + FCF Margin = 18%).
+- Mid-market customer churn rose to 12% per annum due to underfunded customer support.
+The Board demands a return to +10% FCF margin within 12 months while sustaining ARR growth above 15%.`,
+                prompt: "Which financial and operational restructuring program restores cash generation, corrects working capital drag, and satisfies the Rule of 40?",
+                options: [
+                    {
+                        id: "opt_a",
+                        archetype: "The Short-Term Finance Trap",
+                        text: "Execute an immediate 20% headcount cut across Customer Success and R&D, while offering a 18% upfront discount to all enterprise customers who pay cash in advance.",
+                        isCorrect: false,
+                        diag: "Short-Term Finance Trap: Discounting ARR permanently degrades software pricing power and gross margins, while gutting Customer Success accelerates customer churn in mid-market accounts."
+                    },
+                    {
+                        id: "opt_b",
+                        archetype: "The Holistic Executive Path",
+                        text: "Implement Zero-Based Budgeting (ZBB) across G&A, restructure sales commission compensation to pay out only upon cash collection (incentivizing Net-30 annual upfront billing), and institute non-recourse invoice factoring for approved Fortune 500 Net-60 accounts.",
+                        isCorrect: true,
+                        diag: "Optimal: ZBB eliminates structural overhead creep. Aligning sales incentives directly with cash collection reduces CCC from 88 to 38 days, releasing tens of millions in working capital while maintaining ARR growth at 16% and driving FCF margin back to +12%."
+                    },
+                    {
+                        id: "opt_c",
+                        archetype: "The Operational Over-Fix",
+                        text: "Mandate strict Net-15 payment terms across all customer segments immediately, instructing sales representatives to cancel any deal requiring terms longer than 15 days.",
+                        isCorrect: false,
+                        diag: "Operational Over-Fix: Creates extreme friction in enterprise sales cycles, causing deal win-rates to drop by 40% and collapsing ARR growth far below the 15% threshold."
+                    }
+                ],
+                executiveLogic: "SaaS working capital deteriorates when sales compensation is decoupled from cash collection. Re-aligning sales incentives to reward upfront cash collection directly solves CCC expansion. Zero-Based Budgeting (ZBB) reallocates non-essential G&A spend into high-ROI Customer Success, curbing churn without damaging product R&D.",
+                framework: "McKinsey Zero-Based Budgeting (ZBB), SaaS Rule of 40 Metric & BCG Working Capital Transformation.",
+                citations: [
+                    "McKinsey & Company (2018). Zero-based budgeting for the digital age.",
+                    "Bain & Company (2021). Unleashing Cash from Working Capital in Software Enterprise.",
+                    "Harvard Business Review (2020). Fixing the SaaS Cash Flow Paradox."
                 ]
             },
             {
@@ -1139,37 +1265,37 @@
                 tier: "TIER 4: C-SUITE EXECUTIVE",
                 category: "[Commercial-FP&A]",
                 region: "[South Africa]",
-                title: "Trade Working Capital & Pricing Elasticity in SACU Retail FMCG",
-                scenario: `You are the Commercial Finance Director for a South African FMCG brand distributing essential food goods across SACU (South Africa, Namibia, Botswana, Eswatini, Lesotho). Headline inflation and currency depreciation have inflated raw agricultural commodity input costs by 18%. Your primary retail distribution is concentrated across 3 major retail chains who control 72% market share. Retail buyers threaten to delist your products if you pass through a price increase exceeding 8%. Internal FP&A sensitivity models indicate that a price increase of 8% combined with unmitigated input costs will shrink gross margins from 34% to 22%, driving operating profit below debt service coverage covenants. Meanwhile, Trade Working Capital is tied up in 65 days of Inventory held to buffer regional port delays.`,
-                prompt: "What integrated commercial finance and supply chain strategy protects operating margin and working capital without triggering retailer delisting?",
+                title: "Net Revenue Management & Trade Working Capital in SACU FMCG Retail",
+                scenario: `You are the Commercial Finance Director for an FMCG food manufacturer operating across SACU. Raw agricultural commodity input inflation has risen by 18%. Major retail buyers have imposed a strict 8% cap on list price increases, threatening product delisting if exceeded. Gross Margin compresses from 34% to 22%, threatening debt coverage.`,
+                prompt: "What integrated commercial finance and supply chain strategy protects gross profit margins and working capital without triggering retailer delisting?",
                 options: [
                     {
                         id: "opt_a",
                         archetype: "The Short-Term Finance Trap",
-                        text: "Accept the 8% price increase cap and immediately reduce product package weights by 15% ('shrinkflation') without altering list prices or promotional trade spend.",
+                        text: "Accept the 8% price increase cap and execute unannounced 15% product package weight reductions ('shrinkflation') while retaining existing list prices.",
                         isCorrect: false,
-                        diag: "Short-Term Finance Trap: Severe risk of consumer backlash and retailer fines for unnotified specification changes, destroying long-term brand equity and customer trust (violates Bezos Customer Obsession)."
+                        diag: "Short-Term Finance Trap: Triggers severe consumer backlash, brand equity damage, and immediate financial penalties from retail buyers for non-compliant packaging specifications."
                     },
                     {
                         id: "opt_b",
                         archetype: "The Holistic Executive Path",
-                        text: "Execute a dual-track strategy: Negotiate a 7.5% price increase combined with joint trade promotion optimization (reducing low-ROI promotional allowances), while implementing Vendor-Managed Inventory (VMI) with major retailers to reduce safety stock inventory from 65 to 35 days.",
+                        text: "Deploy Net Revenue Management (NRM): Accept the 7.5% list price increase, restructure promotional trade spend by converting unconditional off-invoice allowances into conditional performance rebates, and implement Vendor-Managed Inventory (VMI) to reduce safety stock DIO from 65 to 35 days.",
                         isCorrect: true,
-                        diag: "Optimal: Protects gross margins through net revenue management (promotional efficiency) while unlocking ZAR tens of millions in trade working capital (CCC reduction), strengthening joint supply chain integration with key retail partners."
+                        diag: "Optimal: NRM recovers 450 bps of margin by eliminating ineffective promotional allowances. VMI integration releases ZAR 45M in trade working capital, maintaining debt service compliance."
                     },
                     {
                         id: "opt_c",
                         archetype: "The Operational Over-Fix",
-                        text: "Unilaterally enforce an 18% price increase and halt all promotional allowance rebates to major retail chains.",
+                        text: "Unilaterally enforce a full 18% list price increase and halt all trade marketing allowances to major retail buyers.",
                         isCorrect: false,
-                        diag: "Operational Over-Fix: Triggers immediate product delisting by major retailers, forfeiting 72% distribution market share to competitor private-label brands."
+                        diag: "Operational Over-Fix: Results in major retail buyers immediately delisting core SKUs, forfeiting 72% market distribution to private-label competitors."
                     }
                 ],
-                executiveLogic: "Net Revenue Management (NRM) analyzes promotional trade spend efficiency rather than relying solely on list price increases. Combining trade spend optimization with Vendor-Managed Inventory (VMI) recovers operating margins and releases cash trapped in 65 days of safety stock (Charlie Munger Unit Economics & Friction Reduction principle).",
-                framework: "Ansoff Matrix, Net Revenue Management (NRM) & DuPont Analysis Working Capital Framework.",
+                executiveLogic: "Net Revenue Management (NRM) shifts focus from raw list prices to net real prices by optimizing promotional spend ROI. Combining NRM with Vendor-Managed Inventory (VMI) releases cash trapped in safety stock, protecting operating margins.",
+                framework: "Net Revenue Management (NRM), Ansoff Growth Matrix & DuPont Analysis Working Capital Model.",
                 citations: [
                     "Bain & Company (2020). Net Revenue Management in FMCG Trade Partnerships.",
-                    "CIMA E2 Strategic Management: Commercial Business Partnering in Retail FMCG.",
+                    "CIMA E2 Strategic Management: Commercial Business Partnering in FMCG Retail.",
                     "Harvard Business Review (2021). Managing Trade Working Capital Under High Inflation."
                 ]
             },
@@ -1178,91 +1304,81 @@
                 tier: "TIER 4: C-SUITE EXECUTIVE",
                 category: "[CIMA-Strategic]",
                 region: "[Global]",
-                title: "Cross-Border M&A Valuation & Post-Merger Synergies in Industrial Tech",
-                scenario: `You are the Group Head of Strategy & Corporate Development at a Global Industrial Automation Conglomerate ($4.2 Billion Revenue). You are evaluating the acquisition of a European Robotics Software Specialist ($220 Million Revenue, 18% EBITDA margin) valued at a transaction multiple of 14.5x EV/EBITDA ($574M Enterprise Value). The target holds proprietary AI vision patents that would fortify your core industrial machinery against low-cost Asia-Pacific competitors. However, financial due diligence reveals that $45 Million of target revenue comes from legacy custom software contracts with declining margins. To justify the 14.5x acquisition multiple to your Investment Committee, post-merger synergies must deliver $25 Million in annual run-rate EBITDA lift within 24 months.`,
-                prompt: "Which M&A integration and capital structure playbook ensures synergy realization while mitigating integration risk and revenue cannibalization?",
+                title: "Cross-Border M&A Valuation & Reverse Integration in Industrial Tech",
+                scenario: `You are negotiating the acquisition of a European Robotics Software Specialist ($220M Revenue) valued at 14.5x EV/EBITDA ($574M EV). Due diligence reveals $45M revenue in declining custom software contracts. Synergies must deliver $25M in annual run-rate EBITDA lift within 24 months.`,
+                prompt: "Which post-merger integration (PMI) and business model strategy secures synergy targets while preserving R&D talent and software IP?",
                 options: [
                     {
                         id: "opt_a",
                         archetype: "The Operational Over-Fix",
-                        text: "Fully absorb and merge the acquired company into your core legacy corporate division immediately on Day 1, terminating all legacy target executives to capture $25M in administrative cost synergies.",
+                        text: "Fully merge the acquired company into core legacy corporate divisions on Day 1, replacing target founders with legacy executives to capture $25M in administrative cost savings.",
                         isCorrect: false,
-                        diag: "Operational Over-Fix: Destroys key engineering talent retention, causes patent innovation leakage, and disrupts existing customer relationship continuity."
+                        diag: "Operational Over-Fix: Causes key software engineering talent to resign, destroys patent innovation velocity, and alienates existing enterprise software clients."
                     },
                     {
                         id: "opt_b",
-                        archetype: "The Premature Expansion Trap",
-                        text: "Maintain the target as a completely independent standalone subsidiary with zero operational integration, relying solely on international top-line cross-selling.",
-                        isCorrect: false,
-                        diag: "Premature Expansion Trap: Fails to capture structural cost or technology integration synergies, leaving the transaction value unaccretive against the 14.5x EV/EBITDA acquisition price."
+                        archetype: "The Holistic Executive Path",
+                        text: "Execute a 'Reverse Integration' model: Maintain R&D engineering teams in an autonomous Innovation Cell, phase out low-margin custom software contracts while transitioning the core vision software to a high-margin SaaS model, and cross-sell the SaaS software across your global machinery sales network.",
+                        isCorrect: true,
+                        diag: "Optimal: Preserves key software talent and IP. Transitioning custom contracts to SaaS expands gross margins to 78%, delivering $18M in revenue cross-sell synergies and $8M in procurement savings."
                     },
                     {
                         id: "opt_c",
-                        archetype: "The Holistic Executive Path",
-                        text: "Structure a phased 'Reverse Integration' model: Keep R&D and core software teams operating in an autonomous Innovation Cell, wind down low-margin legacy custom contracts while transitioning software to SaaS recurring licenses, and embed AI vision software across your global distribution network to capture $18M revenue synergies and $9M procurement/G&A synergies.",
-                        isCorrect: true,
-                        diag: "Optimal: Protects critical human capital and patent innovation (Steve Jobs Simplification focus), eliminates low-margin revenue drag, and scales high-margin software globally through existing sales distribution channels."
-                    },
-                    {
-                        id: "opt_d",
-                        archetype: "The Short-Term Finance Trap",
-                        text: "Fund 100% of the purchase price using high-yield debt notes and commit to divesting target software patents to third-party licensees post-acquisition.",
+                        archetype: "The Premature Expansion Trap",
+                        text: "Operate the acquired target as a completely independent standalone business unit with zero operational or sales network integration.",
                         isCorrect: false,
-                        diag: "Short-Term Finance Trap: Undermines the strategic rationale of the acquisition (moat building) and saddles the parent company with restrictive debt covenants."
+                        diag: "Premature Expansion Trap: Fails to realize cross-selling or cost synergies, leaving the 14.5x valuation multiple unaccretive to parent company shareholders."
                     }
                 ],
-                executiveLogic: "Acquisitions of tech specialists by industrial firms fail when corporate bureaucracy smothers target R&D talent. A Reverse Integration model isolates the innovation core while leveraging the parent's global distribution footprint to scale software cross-selling (Munger Moat Building & Steve Jobs Strategic Focus principle).",
-                framework: "BCG M&A Post-Merger Integration (PMI) & McKinsey Horizon Model.",
+                executiveLogic: "Tech acquisitions by industrial conglomerates frequently fail due to cultural absorption that suffocates developer talent. A Reverse Integration structure insulates core R&D while leveraging distribution networks.",
+                framework: "BCG Post-Merger Integration (PMI) Matrix & McKinsey Horizon Growth Model.",
                 citations: [
                     "Boston Consulting Group (BCG) (2022). Winning in Tech-Led Industrial M&A Integration.",
-                    "McKinsey & Company (2019). The Synergy Trap: How to Value and Deliver M&A Promises.",
+                    "McKinsey & Company (2019). The Synergy Trap: How to Deliver M&A Promises.",
                     "INSEAD Case Studies in Corporate Strategy & M&A Governance."
                 ]
             },
             {
                 id: "CASE-06",
                 tier: "TIER 3: SENIOR LEADERSHIP",
-                category: "[Consulting-Restructuring]",
+                category: "[DevFinance-Treasury]",
                 region: "[Pan-Africa]",
-                title: "FX Repatriation & Liquidity Risk Management in Sub-Saharan Telecoms",
-                scenario: `You are the Group Treasurer and FP&A Director for a Pan-African Mobile Network Operator (MNO) operating across 8 markets. Your subsidiary in a high-growth Central African economy generates $140 Million equivalent in local currency EBITDA annually. However, foreign exchange shortages and strict central bank capital controls restrict hard currency repatriation to international headquarters, leaving $180 Million equivalent in local currency cash trapped in local bank accounts earning 4.5% interest while local currency devalues at 16% per annum. Parent company USD debt service obligations require $40 Million in annual cash transfers. Local executive management proposes constructing a $120 Million luxury headquarters tower in the capital city to store value in physical real estate.`,
-                prompt: "Which treasury capital preservation and liquidity structure protects shareholder value against currency devaluation while resolving parent debt obligations?",
+                title: "Hard Currency Liquidity & Currency Inconvertibility in Sub-Saharan Telecoms",
+                scenario: `Your telecom subsidiary generates $180M equivalent in local currency, but central bank controls restrict FX repatriation. Local currency devalues at 16% per annum, while parent company headquarters requires $40M USD annually for Eurobond debt service.`,
+                prompt: "Which treasury structure mitigates currency devaluation risk, protects shareholder liquidity, and services offshore USD debt?",
                 options: [
                     {
                         id: "opt_a",
                         archetype: "The Operational Over-Fix",
-                        text: "Approve the $120M luxury headquarters real estate construction project to physically deploy local cash reserves before further currency devaluation occurs.",
+                        text: "Approve a $120M corporate real estate tower construction to deploy trapped local currency before further devaluation occurs.",
                         isCorrect: false,
-                        diag: "Operational Over-Fix: Creates illiquid real estate asset exposure, incurs ongoing property maintenance overhead, and fails to solve the parent company's $40M USD debt servicing requirement."
+                        diag: "Operational Over-Fix: Traps capital in illiquid, non-core real estate assets with ongoing maintenance costs, failing to solve offshore USD Eurobond service needs."
                     },
                     {
                         id: "opt_b",
                         archetype: "The Holistic Executive Path",
-                        text: "Structure a dual capital deployment: Reinvest trapped local cash into local high-margin network infrastructure (fiber tower expansion) to reduce future USD CapEx imports, while executing a Back-to-Back Cross-Currency Credit Facility with a global bank operating in both countries to collateralize local deposits against USD debt service in headquarters.",
+                        text: "Execute a dual treasury strategy: Reinvest trapped local currency cash into local high-margin fiber optic network infrastructure (reducing future imported USD CapEx needs), and execute a Back-to-Back Cross-Currency Credit Facility with an international bank to pledge local deposits as collateral for USD debt service offshore.",
                         isCorrect: true,
-                        diag: "Optimal: Converts devaluing local cash into productive revenue-generating telecom infrastructure (reducing future hard-currency CapEx needs) and uses local cash deposits as collateral for offshore hard currency financing."
+                        diag: "Optimal: Reinvesting local currency into local fiber infrastructure converts devaluing cash into productive income-generating assets, while back-to-back credit facilities unlock offshore USD liquidity."
                     },
                     {
                         id: "opt_c",
                         archetype: "The Short-Term Finance Trap",
-                        text: "Purchase un-hedged local currency sovereign government bonds offering 18% nominal yield to offset the 16% annual currency devaluation rate.",
+                        text: "Invest trapped local cash into local currency sovereign treasury bills yielding 18% nominal interest.",
                         isCorrect: false,
-                        diag: "Short-Term Finance Trap: Exposes treasury to severe sovereign debt default risk and further capital locking without resolving liquidity repatriation."
+                        diag: "Short-Term Finance Trap: Exposes treasury to severe sovereign debt default risk and currency devaluation losses that far outpace nominal interest gains."
                     }
                 ],
-                executiveLogic: "Building commercial towers distracts from core operations and traps capital in illiquid assets. Reinvesting local cash into core fiber infrastructure replaces future imported USD equipment CapEx. Structuring back-to-back credit facilities utilizes local currency deposits to unlock USD debt service at headquarters.",
-                framework: "CIMA F3 Financial Strategy & Corporate Treasury Risk Management Framework.",
+                executiveLogic: "In markets with blocked currency repatriation, capital should be converted into productive operational assets that substitute future imported hard-currency CapEx. Back-to-back cross-currency loans leverage local deposits to secure offshore USD debt servicing.",
+                framework: "CIMA F3 Financial Strategy: Foreign Exchange Risk & Currency Inconvertibility Management.",
                 citations: [
                     "CIMA F3 Financial Strategy: Foreign Exchange Risk & Capital Repatriation in Emerging Markets.",
-                    "Harvard Business School Case Study: Treasury Operations Under Currency Inconvertibility.",
+                    "Harvard Business School Case Study: Corporate Treasury Operations Under Currency Inconvertibility.",
                     "World Bank / IFC Emerging Market Currency Liquidity Guidebook."
                 ]
             }
         ];
 
-        // ----------------------------------------------------
-        // THINK LAB RENDER & LOGIC
-        // ----------------------------------------------------
         function renderThinkLabWorkspace() {
             const selectorGrid = document.getElementById('case-selector-grid');
             selectorGrid.innerHTML = '';
@@ -1273,31 +1389,23 @@
                 const isCorrect = userP ? userP.isCorrect : false;
                 const isActive = idx === currentCaseIndex;
 
-                let cardBg = "bg-black/60 border-gray-800 text-gray-400 hover:border-gray-700";
-                if (isActive) cardBg = "bg-purple-950/60 border-purple-500 text-white ring-1 ring-purple-500";
-                
-                let statusBadge = `<span class="text-[10px] text-gray-500 font-mono">Pending</span>`;
-                if (isAnswered) {
-                    statusBadge = isCorrect 
-                        ? `<span class="px-1.5 py-0.5 text-[9px] font-bold rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1"><i data-lucide="check" class="w-3 h-3"></i> Passed</span>`
-                        : `<span class="px-1.5 py-0.5 text-[9px] font-bold rounded bg-red-500/20 text-red-300 border border-red-500/30 flex items-center gap-1"><i data-lucide="x" class="w-3 h-3"></i> Review</span>`;
-                }
+                let cardBg = "bg-black/60 border-gray-800 text-gray-400";
+                if (isActive) cardBg = "bg-purple-950/60 border-purple-500 text-white";
 
                 const selCard = document.createElement('div');
-                selCard.onclick = () => selectCaseIndex(idx);
-                selCard.className = `p-3 rounded-xl border transition cursor-pointer flex flex-col justify-between h-24 ${cardBg}`;
+                selCard.onclick = () => { currentCaseIndex = idx; renderThinkLabWorkspace(); };
+                selCard.className = `p-3 rounded-2xl border transition cursor-pointer flex flex-col justify-between h-20 ${cardBg}`;
                 selCard.innerHTML = `
                     <div class="flex items-center justify-between">
-                        <span class="text-[10px] font-bold font-mono tracking-wider">${c.id}</span>
-                        ${statusBadge}
+                        <span class="text-[10px] font-bold font-mono">${c.id}</span>
+                        ${isAnswered ? (isCorrect ? '<span class="text-emerald-400 font-bold text-[10px]">Passed</span>' : '<span class="text-red-400 font-bold text-[10px]">Review</span>') : ''}
                     </div>
-                    <div class="text-xs font-bold truncate mt-1 text-gray-200">${c.title}</div>
-                    <div class="text-[10px] text-gray-400 truncate">${c.category} &bull; ${c.region}</div>
+                    <div class="text-xs font-bold truncate text-gray-200">${c.title}</div>
                 `;
                 selectorGrid.appendChild(selCard);
             });
 
-            // Update Header Stats
+            // Update Stats
             const completedCount = Object.keys(thinkLabUserProgress).length;
             const correctCount = Object.values(thinkLabUserProgress).filter(p => p.isCorrect).length;
             const scorePct = completedCount > 0 ? Math.round((correctCount / completedCount) * 100) : 0;
@@ -1305,7 +1413,6 @@
             document.getElementById('tl-stat-completed').innerText = `${completedCount} / 6`;
             document.getElementById('tl-stat-score').innerText = `${scorePct}%`;
 
-            // Active Case Render
             const activeCase = masterCaseRepository[currentCaseIndex];
             if (!activeCase) return;
 
@@ -1317,79 +1424,37 @@
             document.getElementById('case-scenario-body').innerText = activeCase.scenario;
             document.getElementById('case-prompt-text').innerText = activeCase.prompt;
 
-            // Options Rendering with Pseudo-Random Shuffle
             const optionsContainer = document.getElementById('case-options-container');
             optionsContainer.innerHTML = '';
-
             const userP = thinkLabUserProgress[activeCase.id];
-            const isAnswered = !!userP;
 
-            // Display shuffled options deterministically or pseudo-randomized
-            let displayOptions = activeCase.shuffledOptions;
-            if (!displayOptions) {
-                // Shuffle copy
-                displayOptions = [...activeCase.options].sort(() => Math.sin(activeCase.id.length + 0.5) - 0.5);
-                activeCase.shuffledOptions = displayOptions;
-            }
-
-            const letterMap = ['A', 'B', 'C', 'D'];
-
-            displayOptions.forEach((opt, oIdx) => {
-                const optLetter = letterMap[oIdx];
-                const isUserChoice = isAnswered && userP.selectedOptionId === opt.id;
-                
-                let optStyle = "bg-black/60 border-gray-800 hover:border-purple-500/60 text-gray-200 cursor-pointer";
-                if (isAnswered) {
-                    optStyle = "bg-black/40 border-gray-800/80 text-gray-400 cursor-default";
-                    if (opt.isCorrect) {
-                        optStyle = "bg-emerald-950/40 border-emerald-500/80 text-emerald-200 font-medium";
-                    } else if (isUserChoice && !opt.isCorrect) {
-                        optStyle = "bg-red-950/40 border-red-500/80 text-red-200";
-                    }
-                }
-
+            activeCase.options.forEach((opt, oIdx) => {
                 const optBtn = document.createElement('div');
-                optBtn.className = `p-4 rounded-xl border transition flex items-start gap-3.5 ${optStyle}`;
-                if (!isAnswered) {
-                    optBtn.onclick = () => handleOptionSelect(activeCase.id, opt.id, opt.isCorrect);
+                optBtn.className = `p-4 rounded-2xl border transition flex items-start gap-3 cursor-pointer ${userP ? 'bg-black/40 border-gray-800 text-gray-400' : 'bg-black/60 border-gray-800 hover:border-purple-500 text-gray-200'}`;
+                if (!userP) {
+                    optBtn.onclick = () => {
+                        thinkLabUserProgress[activeCase.id] = { selectedOptionId: opt.id, isCorrect: opt.isCorrect };
+                        saveThinkLabProgress();
+                        renderThinkLabWorkspace();
+                    };
                 }
-
                 optBtn.innerHTML = `
-                    <div class="w-6 h-6 rounded-lg bg-purple-900/40 border border-purple-700/50 text-purple-300 font-bold font-mono text-xs flex items-center justify-center shrink-0 mt-0.5">
-                        ${optLetter}
-                    </div>
-                    <div class="flex-1 text-xs sm:text-sm leading-relaxed">
-                        ${opt.text}
-                    </div>
+                    <div class="w-6 h-6 rounded-lg bg-purple-900/40 text-purple-300 font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">${String.fromCharCode(65 + oIdx)}</div>
+                    <div class="text-xs sm:text-sm">${opt.text}</div>
                 `;
                 optionsContainer.appendChild(optBtn);
             });
 
-            // Render Socratic Feedback Panel
             const feedbackPanel = document.getElementById('case-feedback-panel');
-            if (isAnswered) {
+            if (userP) {
                 feedbackPanel.classList.remove('hidden');
-                
-                const isCorrect = userP.isCorrect;
-                const header = document.getElementById('feedback-result-header');
-                const title = document.getElementById('feedback-result-title');
-
-                if (isCorrect) {
-                    header.className = "flex items-center gap-2 pb-3 border-b border-emerald-800/60 text-emerald-400";
-                    title.innerText = "Executive Strategic Verdict: Correct Decision Approved";
-                } else {
-                    header.className = "flex items-center gap-2 pb-3 border-b border-red-800/60 text-red-400";
-                    title.innerText = "Executive Strategic Verdict: Strategic Blind Spot Identified";
-                }
-
                 document.getElementById('feedback-executive-logic').innerText = activeCase.executiveLogic;
-                
-                // Option Diagnostics
+
                 const diagContainer = document.getElementById('feedback-option-diagnostics');
                 diagContainer.innerHTML = '';
                 activeCase.options.forEach(o => {
                     const dDiv = document.createElement('div');
-                    dDiv.className = "p-2.5 rounded bg-black/50 border border-gray-800/80";
+                    dDiv.className = "p-2.5 rounded-xl bg-black/50 border border-gray-800/80";
                     dDiv.innerHTML = `<strong class="${o.isCorrect ? 'text-emerald-400' : 'text-amber-400'}">[${o.archetype}]</strong>: ${o.diag}`;
                     diagContainer.appendChild(dDiv);
                 });
@@ -1403,7 +1468,6 @@
                     li.innerText = cite;
                     citeList.appendChild(li);
                 });
-
             } else {
                 feedbackPanel.classList.add('hidden');
             }
@@ -1411,66 +1475,31 @@
             lucide.createIcons();
         }
 
-        function selectCaseIndex(idx) {
-            currentCaseIndex = idx;
-            renderThinkLabWorkspace();
-        }
-
-        function handleOptionSelect(caseId, optionId, isCorrect) {
-            thinkLabUserProgress[caseId] = {
-                selectedOptionId: optionId,
-                isCorrect: isCorrect,
-                answeredAt: new Date().toISOString()
-            };
-
-            saveThinkLabProgress();
-            updateDashboardStats();
-            renderThinkLabWorkspace();
-
-            if (isCorrect) {
-                showNotification("Correct Executive Strategic Decision!");
-            } else {
-                showNotification("Review the Socratic diagnostic breakdown.");
-            }
-        }
-
-        function resetThinkLab() {
-            if (confirm("Reset all Think Lab case progress?")) {
+        function showResetThinkLabConfirmation() {
+            showConfirmModal("Reset Think Lab Studio", "Are you sure you want to reset all executive case study responses?", () => {
                 thinkLabUserProgress = {};
                 saveThinkLabProgress();
-                updateDashboardStats();
                 renderThinkLabWorkspace();
                 showNotification("Think Lab case studio reset.");
-            }
+            });
         }
 
-        // ----------------------------------------------------
-        // UTILITIES & NOTIFICATION TOAST
-        // ----------------------------------------------------
         function showNotification(msg) {
             const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-message');
-            toastMsg.innerText = msg;
-
+            document.getElementById('toast-message').innerText = msg;
             toast.classList.remove('translate-y-20', 'opacity-0');
             toast.classList.add('translate-y-0', 'opacity-100');
-
             setTimeout(() => {
                 toast.classList.remove('translate-y-0', 'opacity-100');
                 toast.classList.add('translate-y-20', 'opacity-0');
             }, 3000);
         }
 
-        // ----------------------------------------------------
-        // INITIALIZATION
-        // ----------------------------------------------------
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('input-date').value = getFormattedDate(0);
-            
             loadStoredData();
             updateDashboardStats();
             renderAllNewsColumns();
-            
             lucide.createIcons();
         });
     </script>
